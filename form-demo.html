@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リクルートサイト原稿フォーム - 更新版</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        #sidebar h2 {
+            text-align: center;
+            margin-top: 0;
+            padding: 10px 0;
+            font-size: 1.2em;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #sidebar li a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #ecf0f1;
+            transition: background-color 0.2s, color 0.2s;
+            border-left: 5px solid transparent;
+        }
+
+        #sidebar li a:hover {
+            background-color: #34495e;
+            color: #ffffff;
+        }
+
+        #sidebar li a.active {
+            background-color: #3498db;
+            color: white;
+            border-left: 5px solid #2980b9;
+            font-weight: bold;
+        }
+
+        #main-content {
+            margin-left: 250px;
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .form-section h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95em;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f8f8;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 8px;
+            accent-color: #3498db;
+            width: initial;
+            padding: initial;
+        }
+        .radio-group input[type="radio"]:checked + span {
+            font-weight: bold;
+        }
+        .radio-group input[type="radio"]:checked + span,
+        .radio-group input[type="radio"]:checked + span:hover {
+            background-color: #eaf6ff;
+            border-color: #3498db;
+        }
+        .radio-group label:hover {
+            background-color: #ededed;
+        }
+
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        textarea,
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-group.numeric input[type="number"] {
+            width: 150px;
+        }
+
+        .repeatable-item {
+            border: 2px solid #bdc3c7;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            background-color: white;
+            position: relative;
+        }
+
+        .repeatable-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .repeatable-item-header h3 {
+            margin: 0;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            margin-left: 10px;
+        }
+
+        .btn-add {
+            background-color: #2ecc71;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .btn-add:hover {
+            background-color: #27ae60;
+        }
+
+        .btn-remove {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-remove:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-save {
+            background-color: #3498db;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .btn-save:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-draft-save {
+            background-color: #f39c12;
+            color: white;
+            padding: 15px;
+            font-size: 1.1em;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn-draft-save:hover {
+            background-color: #e67e22;
+        }
+
+        .help-text {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px dashed #ccc;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<form id="RecruitForm" enctype="multipart/form-data">
+    <input type="hidden" name="Client_ID" id="Client_ID" value="">
+    <input type="hidden" name="Jobs_Data" id="Jobs_Data" value="">
+    <input type="hidden" name="Projects_Data" id="Projects_Data" value="">
+    <input type="hidden" name="Environment_Data" id="Environment_Data" value="">
+    <input type="hidden" name="Interviews_Data" id="Interviews_Data" value="">
+    <input type="hidden" name="FAQ_Data" id="FAQ_Data" value="">
+    
+    <input type="hidden" name="Action_Type" id="Action_Type" value="">
+
+
+    <div class="container">
+
+        <nav id="sidebar">
+            <h2>入力フォーム</h2>
+            <ul>
+                <li><a href="#section-general" class="nav-link active">全体設定</a></li>
+                <li><a href="#section-home" class="nav-link">TOP</a></li>
+                <li><a href="#section-projects" class="nav-link">私達の仕事</a></li>
+                <li><a href="#section-jobs" class="nav-link">職種紹介</a></li>
+                <li><a href="#section-environment" class="nav-link">数字で見る企業</a></li>
+                <li><a href="#section-interviews" class="nav-link">社員インタビュー</a></li>
+                <li><a href="#section-faq" class="nav-link">よくある質問</a></li>
+            </ul>
+        </nav>
+
+        <main id="main-content">
+
+            <section id="section-general" class="form-section">
+                <h1>全体設定</h1>
+                
+                <div class="form-group">
+                    <label>リクルートサイトデザイン選択</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="Template_ID" value="1" checked>
+                            <span>デザイン 1</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="Template_ID" value="2">
+                            <span>デザイン 2</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="Template_ID" value="3">
+                            <span>デザイン 3</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="Template_ID" value="4">
+                            <span>デザイン 4</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="Template_ID" value="5">
+                            <span>デザイン 5</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="Template_ID" value="6">
+                            <span>デザイン 6</span>
+                        </label>
+                    </div>
+                    <div class="help-text">サイトの基本となるデザインテンプレートを1〜6の中から一つ選択してください。</div>
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label for="company-name">企業名</label>
+                    <input type="text" id="company-name" name="Company_Name" placeholder="例: 半田中央印刷株式会社">
+                </div>
+                <div class="form-group">
+                    <label for="company-logo-file">企業ロゴ (画像ファイル)</label>
+                    <input type="file" id="company-logo-file" name="Company_Logo_File">
+                    <div class="help-text">サイト全体で使用される企業ロゴの画像ファイルを選択してください。</div>
+                </div>
+                <div class="form-group">
+                    <label for="recruit-email">応募受付メールアドレス</label>
+                    <input type="email" id="recruit-email" name="Recruit_Email" placeholder="例: tamgawa@handa-cp.co.jp">
+                </div>
+                <div class="form-group numeric">
+                    <label for="copyright-year">著作権年</label>
+                    <input type="number" id="copyright-year" name="Copyright_Year" placeholder="例: 2025" maxlength="4">
+                    <div class="help-text">フッターの著作権表記に使用する年 (4桁)。</div>
+                </div>
+            </section>
+
+            <section id="section-home" class="form-section" style="display:none;">
+                <h1>TOP</h1>
+                <div class="form-group">
+                    <label for="hero-image-file">TOP画像 (ファイル)</label>
+                    <input type="file" id="hero-image-file" name="Hero_Image_File">
+                </div>
+                <div class="form-group">
+                    <label for="main-copy">メインキャッチコピー (h1)</label>
+                    <input type="text" id="main-copy" name="Main_Copy" placeholder="例: 可能性を、もっと。">
+                </div>
+                <div class="form-group">
+                    <label for="sub-copy">サブコピー</label>
+                    <input type="text" id="sub-copy" name="Sub_Copy" placeholder="例: ワクワクする仕事、知多半島にあるんです">
+                </div>
+                <div class="form-group">
+                    <label for="hero-button-text">ボタンテキスト</label>
+                    <input type="text" id="hero-button-text" name="Hero_Button_Text" placeholder="例: 今すぐエントリー">
+                </div>
+            </section>
+            
+            <section id="section-projects" class="form-section" style="display:none;">
+                <h1>私達の仕事(ソリューション)</h1>
+                <div class="form-group">
+                    <label for="projects-heading">セクション見出し</label>
+                    <input type="text" id="projects-heading" name="Projects_Heading" placeholder="例: 私達の仕事">
+                </div>
+                <h2>ソリューション (最大6件)</h2>
+                <div id="projects-container">
+                </div>
+                <button type="button" class="btn btn-add" id="add-project-btn">+ 新しいソリューションを追加する</button>
+            </section>
+
+            <section id="section-jobs" class="form-section" style="display:none;">
+                <h1>職種紹介 (#jobs)</h1>
+                <div class="form-group">
+                    <label for="jobs-heading">セクション見出し</label>
+                    <input type="text" id="jobs-heading" name="Jobs_Heading" placeholder="例: 募集中の職種一覧">
+                </div>
+                <h2>職種項目 (最大6件)</h2>
+                <div id="jobs-container">
+                </div>
+                <button type="button" class="btn btn-add" id="add-job-btn">+ 新しい職種を追加する</button>
+            </section>
+
+            <section id="section-environment" class="form-section" style="display:none;">
+                <h1>数字で見る企業(#environment)</h1>
+                <div class="form-group">
+                    <label for="environment-heading">セクション見出し</label>
+                    <input type="text" id="environment-heading" name="Environment_Heading" placeholder="例: 数字で見る、私たちの環境">
+                </div>
+                <h2>数字で見る (最大6件)</h2>
+                <div id="environment-container">
+                </div>
+                <button type="button" class="btn btn-add" id="add-environment-btn">+ 新しい数字を追加する</button>
+            </section>
+
+
+            <section id="section-interviews" class="form-section" style="display:none;">
+                <h1>社員インタビュー (#interviews)</h1>
+                <div class="form-group">
+                    <label for="interview-heading">セクション見出し</label>
+                    <input type="text" id="interview-heading" name="Interview_Heading" placeholder="例: 先輩社員のリアルな声">
+                </div>
+                <h2>インタビュー項目 (最大3件)</h2>
+                <div id="interviews-container">
+                </div>
+                <button type="button" class="btn btn-add" id="add-interview-btn">
+                    + 新しいインタビューを追加する
+                </button>
+            </section>
+
+            <section id="section-faq" class="form-section" style="display:none;">
+                <h1>よくある質問 (FAQ) (#faq)</h1>
+                <div class="form-group">
+                    <label for="faq-heading">セクション見出し</label>
+                    <input type="text" id="faq-heading" name="FAQ_Heading" placeholder="例: よくある質問 (FAQ)">
+                </div>
+                <h2>FAQ項目 (最大10件)</h2>
+                <div id="faq-container">
+                </div>
+                <button type="button" class="btn btn-add" id="add-faq-btn">+ 新しいFAQを追加する</button>
+            </section>
+
+            <button type="button" class="btn btn-draft-save" id="btn-draft">途中保存（下書き）</button>
+            <button type="button" class="btn btn-save" id="btn-final">最終確定・サイト生成</button>
+
+        </main>
+    </div>
+</form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('RecruitForm');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // --- 0. クライアントIDの取得とセット（GAS連携のための仮のロジック） ---
+            // 実際はGAS側でURLパラメータから取得してセットします
+            document.getElementById('Client_ID').value = 'C001_DEMO';
+
+
+            // --- 1. ナビゲーション切り替え機能 ---
+            const initialSectionId = navLinks[0].getAttribute('href');
+            document.querySelector(initialSectionId).style.display = 'block';
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = e.target.getAttribute('href');
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    document.querySelector(targetId).style.display = 'block';
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    e.target.classList.add('active');
+                });
+            });
+
+
+            // --- 2. 汎用繰り返し項目管理関数 ---
+            
+            // 繰り返し項目を作成し、コンテナに追加する
+            function initializeRepeatableSection(containerId, buttonId, itemNameJp, MAX_ITEMS, getHtmlContent, initialCount = 2) {
+                const container = document.getElementById(containerId);
+                const addButton = document.getElementById(buttonId);
+
+                const updateNumbers = () => {
+                    container.querySelectorAll('.repeatable-item').forEach((item, index) => {
+                        const newNumber = index + 1;
+                        item.querySelector('h3').textContent = `${itemNameJp} #${newNumber}`;
+                        
+                        // 復元ロジックのためにインデックスを属性に持たせる
+                        item.setAttribute('data-index', newNumber); 
+                    });
+                };
+
+                const addItem = () => {
+                    const currentItems = container.querySelectorAll('.repeatable-item').length;
+                    if (currentItems >= MAX_ITEMS) {
+                        alert(`${itemNameJp}の追加は最大${MAX_ITEMS}件までです。`);
+                        return;
+                    }
+
+                    const count = currentItems + 1;
+
+                    const item = document.createElement('div');
+                    item.className = 'repeatable-item';
+                    item.setAttribute('data-index', count); // 項目固有のインデックス
+
+                    item.innerHTML = `
+                        <div class="repeatable-item-header">
+                            <h3>${itemNameJp} #${count}</h3>
+                            <button type="button" class="btn btn-remove">この${itemNameJp}を削除</button>
+                        </div>
+                        ${getHtmlContent(count)}
+                    `;
+
+                    container.appendChild(item);
+                    updateNumbers();
+
+                    item.querySelector('.btn-remove').addEventListener('click', (e) => {
+                        if (confirm(`この${itemNameJp}項目を削除してもよろしいですか？`)) {
+                            item.remove();
+                            updateNumbers();
+                        }
+                    });
+                };
+                
+                addButton.addEventListener('click', addItem);
+                
+                // 初期項目の追加
+                for (let i = 0; i < initialCount; i++) {
+                    addItem();
+                }
+
+                // 外部から利用するために返す
+                return { addItem, container };
+            }
+
+
+            // --- 3. 各セクションの繰り返し項目定義と初期化 ---
+            // ※ ポイント: input要素にname属性を追加し、データ抽出用にclass属性（例: 'interview-field'）を追加
+
+            // 3-1. 社員インタビュー (#interviews) の定義
+            const interviewContent = (i) => `
+                <div class="form-group">
+                    <label>名前</label>
+                    <input type="text" name="Interview_Name" class="interview-field" placeholder="例: 山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label>役職/部署</label>
+                    <input type="text" name="Interview_Position" class="interview-field" placeholder="例: 営業部 マネージャー">
+                </div>
+                <div class="form-group">
+                    <label>写真ファイル</label>
+                    <input type="file" name="Interview_Photo_${i}" class="interview-field interview-file-field">
+                    <div class="help-text">社員の写真ファイルを選択してください。</div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label>Q1 質問</label>
+                    <input type="text" name="Interview_Q1" class="interview-field" placeholder="例: 現在の仕事内容を教えてください。">
+                </div>
+                <div class="form-group">
+                    <label>Q1 回答</label>
+                    <textarea name="Interview_A1" class="interview-field" placeholder="複数行の回答を入力します。"></textarea>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label>Q2 質問</label>
+                    <input type="text" name="Interview_Q2" class="interview-field" placeholder="例: 仕事のやりがいは何ですか？">
+                </div>
+                <div class="form-group">
+                    <label>Q2 回答</label>
+                    <textarea name="Interview_A2" class="interview-field" placeholder="複数行の回答を入力します。"></textarea>
+                </div>
+            `;
+
+
+            // 3-2. 私達の仕事（ソリューション事例）(#projects) の定義
+            const projectContent = (i) => `
+                <div class="form-group">
+                    <label>タイトル</label>
+                    <input type="text" name="Project_Title" class="project-field" placeholder="例: クライアント向け販促物デザイン">
+                </div>
+                <div class="form-group">
+                    <label>画像ファイル</label>
+                    <input type="file" name="Project_Image_${i}" class="project-field project-file-field">
+                </div>
+                <div class="form-group">
+                    <label>説明</label>
+                    <textarea name="Project_Description" class="project-field" placeholder="ソリューションの内容を説明します。"></textarea>
+                </div>
+            `;
+
+
+            // 3-3. 職種紹介 (#jobs) の定義
+            const jobContent = (i) => `
+                <div class="form-group">
+                    <label>職種名</label>
+                    <input type="text" name="Job_Name" class="job-field" placeholder="例: クリエイティブデザイナー">
+                </div>
+                <div class="form-group">
+                    <label>キャッチコピー</label>
+                    <input type="text" name="Job_Catchcopy" class="job-field" placeholder="例: クライアントの想いを形にする仕事">
+                </div>
+                <div class="form-group">
+                    <label>仕事内容</label>
+                    <textarea name="Job_Content" class="job-field" placeholder="具体的な仕事内容を箇条書きで入力します。"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>応募資格</label>
+                    <textarea name="Job_Qualification" class="job-field" placeholder="求めるスキルや経験を入力します。"></textarea>
+                </div>
+            `;
+
+
+            // 3-4. 数字で見る企業(#environment) の定義
+            const environmentContent = (i) => `
+                <div class="form-group numeric" style="display:flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label>数字</label>
+                        <input type="number" name="Env_Number" class="environment-field" placeholder="例: 70" style="width: 100%;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>単位</label>
+                        <input type="text" name="Env_Unit" class="environment-field" placeholder="例: %" style="width: 100%;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>説明</label>
+                    <input type="text" name="Env_Description" class="environment-field" placeholder="例: 有給消化率">
+                </div>
+            `;
+
+            
+            // 3-5. よくある質問 (FAQ) の定義
+            const faqContent = (i) => `
+                <div class="form-group">
+                    <label>質問</label>
+                    <input type="text" name="FAQ_Question" class="faq-field" placeholder="例: リモートワークは可能ですか？">
+                </div>
+                <div class="form-group">
+                    <label>回答</label>
+                    <textarea name="FAQ_Answer" class="faq-field" placeholder="質問に対する詳細な回答を入力します。"></textarea>
+                </div>
+            `;
+
+
+            // 全ての繰り返しセクションを初期化
+            const MAX_THREE = 3;
+            const MAX_SIX = 6;
+            const MAX_TEN = 10;
+            
+            const interviewSection = initializeRepeatableSection('interviews-container', 'add-interview-btn', 'インタビュー', MAX_THREE, interviewContent, 2);
+            const projectSection = initializeRepeatableSection('projects-container', 'add-project-btn', 'ソリューション', MAX_SIX, projectContent, 2);
+            const jobSection = initializeRepeatableSection('jobs-container', 'add-job-btn', '職種', MAX_SIX, jobContent, 2);
+            const environmentSection = initializeRepeatableSection('environment-container', 'add-environment-btn', '環境情報', MAX_SIX, environmentContent, 2);
+            const faqSection = initializeRepeatableSection('faq-container', 'add-faq-btn', 'FAQ', MAX_TEN, faqContent, 2);
+
+
+            // --- 4. 動的フォームデータをJSONに変換する汎用関数 ---
+            
+            /**
+             * 繰り返しセクションからデータを抽出し、JSON文字列として返却する
+             * @param {HTMLElement} container - 繰り返しアイテムのコンテナ要素
+             * @param {string} itemClassName - 繰り返しアイテム内のinputの共通クラス名 (例: 'job-field')
+             * @param {string[]} fieldNames - 繰り返しアイテム内のフィールドの name 属性の配列 (例: ['Job_Name', 'Job_Content'])
+             * @returns {string} JSON文字列
+             */
+            function extractRepeatableDataToJson(container, itemClassName, fieldNames) {
+                const items = container.querySelectorAll('.repeatable-item');
+                const dataArray = [];
+
+                items.forEach((item) => {
+                    const itemObject = {};
+                    let isAllEmpty = true;
+                    
+                    // 各フィールドの値を抽出
+                    fieldNames.forEach(fieldName => {
+                        // name属性で要素を取得 (複数ある場合は最初のもの)
+                        const input = item.querySelector(`[name="${fieldName}"]`);
+
+                        if (input) {
+                            let value = input.value;
+                            
+                            // ファイルフィールドの場合、値はファイル名になるため、ファイルが存在するかチェック
+                            if (input.type === 'file') {
+                                // ファイルが選択されていない場合は空文字列を格納
+                                value = input.files.length > 0 ? input.files[0].name : ''; 
+                            }
+                            
+                            itemObject[fieldName] = value;
+                            if (value.trim() !== '') {
+                                isAllEmpty = false;
+                            }
+                        }
+                    });
+
+                    // 全てのフィールドが空でなければ追加
+                    if (!isAllEmpty) {
+                        dataArray.push(itemObject);
+                    }
+                });
+
+                return JSON.stringify(dataArray);
+            }
+            
+            // --- 5. フォーム送信処理 ---
+            
+            /**
+             * フォーム送信前にJSONデータを隠しフィールドに格納し、GASに送信する
+             * @param {string} actionType - 'Draft' または 'Final'
+             */
+            function submitForm(actionType) {
+                // 1. 全ての動的フォームデータをJSON化し、隠しフィールドにセット
+                document.getElementById('Jobs_Data').value = extractRepeatableDataToJson(
+                    jobSection.container, 'job-field', ['Job_Name', 'Job_Catchcopy', 'Job_Content', 'Job_Qualification']
+                );
+                document.getElementById('Projects_Data').value = extractRepeatableDataToJson(
+                    projectSection.container, 'project-field', ['Project_Title', 'Project_Image', 'Project_Description']
+                );
+                document.getElementById('Environment_Data').value = extractRepeatableDataToJson(
+                    environmentSection.container, 'environment-field', ['Env_Number', 'Env_Unit', 'Env_Description']
+                );
+                document.getElementById('Interviews_Data').value = extractRepeatableDataToJson(
+                    interviewSection.container, 'interview-field', ['Interview_Name', 'Interview_Position', 'Interview_Q1', 'Interview_A1', 'Interview_Q2', 'Interview_A2']
+                );
+                document.getElementById('FAQ_Data').value = extractRepeatableDataToJson(
+                    faqSection.container, 'faq-field', ['FAQ_Question', 'FAQ_Answer']
+                );
+                
+                // 2. 実行アクションを設定
+                document.getElementById('Action_Type').value = actionType;
+
+                // 3. GAS送信処理 (デモのためアラートで代用)
+                // 実際はここで google.script.run.withSuccessHandler(...).processForm(form) を実行します
+                const fileFields = form.querySelectorAll('input[type="file"]');
+                let hasFiles = false;
+                fileFields.forEach(f => {
+                    if (f.files.length > 0) hasFiles = true;
+                });
+                
+                if (hasFiles) {
+                    alert(`アクション: ${actionType} \nファイルアップロードを含むため、GASのprocessForm()を実行します。\n（実際の送信は省略）`);
+                } else {
+                    alert(`アクション: ${actionType} \nJSONデータ:\n${document.getElementById('Jobs_Data').value}\n...が送信されます。\n（実際の送信は省略）`);
+                }
+
+                // 実際にはこの後、google.script.runを使ってGAS関数を呼び出します。
+            }
+
+            // 保存ボタンの動作 (GASへの送信をシミュレート)
+            document.getElementById('btn-draft').addEventListener('click', () => {
+                submitForm('Draft');
+            });
+            document.getElementById('btn-final').addEventListener('click', () => {
+                submitForm('Final');
+            });
+            
+            // --- 6. 復元処理（GASからのデータ読み込みを想定した関数） ---
+            
+            // GASからの復元データを受信したら実行される関数（デモ）
+            // 実際は、google.script.run.withSuccessHandler(loadDraftData).getDraftData('C001_DEMO') の SuccessHandler に指定します
+            window.loadDraftData = function(draftData) {
+                if (!draftData) return;
+                
+                alert('前回の下書きデータをロードします。（復元処理のシミュレーション）');
+                
+                // 1. 静的項目の復元 (name属性を使って対応)
+                document.getElementsByName('Company_Name')[0].value = draftData.Company_Name || '';
+                document.getElementsByName('Recruit_Email')[0].value = draftData.Recruit_Email || '';
+                document.getElementsByName('Copyright_Year')[0].value = draftData.Copyright_Year || '';
+                document.getElementsByName('Main_Copy')[0].value = draftData.Main_Copy || '';
+                // ラジオボタンの復元
+                document.querySelector(`input[name="Template_ID"][value="${draftData.Template_ID}"]`).checked = true;
+
+                // 2. 動的項目の復元 (Jobs_Dataをパースしてフォームを再構築)
+                
+                // Jobs_Dataの復元例（他のセクションも同様に実装）
+                const jobDataArray = JSON.parse(draftData.Jobs_Data || '[]');
+                
+                // 既存の動的フォームを全て削除し、新しいデータで再構築
+                jobSection.container.innerHTML = '';
+                jobDataArray.forEach(job => {
+                    // ここで jobSection.addItem() を呼び出し、追加された要素に値をセットするロジックが必要
+                    // 複雑なため、デモHTMLでは割愛しますが、実装方針としてはこのようになります。
+                    console.log('ジョブデータを復元:', job.Job_Name);
+                });
+                // 初期項目数をリセットし、復元後に addItem() を呼び出す必要がありますが、
+                // 複雑化を避けるため、今回はロジックの方向性のみ示します。
+                
+                alert('データ復元が完了しました。');
+            }
+            
+            // デモとして、ページロード時に復元関数を呼び出す
+            window.loadDraftData({
+                Company_Name: "テスト企業名",
+                Recruit_Email: "test@example.com",
+                Template_ID: "3",
+                Jobs_Data: '[{"Job_Name":"テスト職種A","Job_Catchcopy":"テストコピー","Job_Content":"テスト内容"}]'
+            });
+
+        });
+    </script>
+</body>
+</html>
