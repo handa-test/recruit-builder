@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>半田中央印刷株式会社-採用情報</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header / Navigation */
+        header {
+            background: #293241;
+            /* ダークネイビー系 */
+            color: #fff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #ee6c4d;
+            /* アクセントカラー */
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            width: 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 100%;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #ee6c4d;
+            transition: all 0.3s ease-in-out;
+            border-radius: 1px;
+        }
+
+        /* Hamburger Active State Animation */
+        .hamburger.is-active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.is-active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.is-active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a,
+        .nav-links button {
+            font-weight: 600;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            /* ナビゲーションリンクが折り返さないように設定 */
+            background: none;
+            /* ボタンのデフォルトスタイルをリセット */
+            border: none;
+            padding: 0;
+            color: #fff;
+            /* デフォルトのリンク色 */
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links button:hover {
+            color: #ee6c4d;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            color: #293241;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: #ee6c4d;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Button Style */
+        .btn {
+            background: #ee6c4d;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(238, 108, 77, 0.3);
+            letter-spacing: 0.1em;
+            border: none;
+            /* ボタンとして統一 */
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d4593f;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(41, 50, 65, 0.75), rgba(41, 50, 65, 0.75)),
+                url('images/hero.png') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-content p {
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        /* Message Section */
+        #message .content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        #message .text-box {
+            flex: 1;
+        }
+
+        #message .text-box h3 {
+            font-size: 1.8em;
+            color: #ee6c4d;
+            margin-bottom: 20px;
+        }
+
+        #message .text-box p {
+            margin-bottom: 15px;
+        }
+
+        #message .image-box {
+            flex: 1;
+        }
+
+        #message .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Requirements Section */
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .requirement-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .requirement-item h3 {
+            color: #293241;
+            border-bottom: 3px solid #98c1d9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .requirement-item ul {
+            list-style: none;
+        }
+
+        .requirement-item li {
+            display: flex;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .requirement-item li::before {
+            content: '▶';
+            color: #ee6c4d;
+            font-size: 0.8em;
+            margin-right: 10px;
+            flex-shrink: 0;
+            /* アイコンが縮まないように */
+        }
+
+        /* Stats Section (数字で見る) */
+        #stats {
+            background-color: #293241;
+            color: #fff;
+        }
+
+        #stats h2 {
+            color: #fff;
+            margin-bottom: 70px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #ee6c4d;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-item p {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        /* Interview Section */
+        #interview .interview-card {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        #interview .profile-area {
+            flex-shrink: 0;
+            width: 200px;
+            text-align: center;
+        }
+
+        #interview .profile-area img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #98c1d9;
+            margin-bottom: 10px;
+        }
+
+        #interview .profile-area h4 {
+            font-size: 1.3em;
+            color: #293241;
+            margin: 5px 0;
+        }
+
+        #interview .profile-area p {
+            color: #ee6c4d;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        #interview .interview-content {
+            flex-grow: 1;
+        }
+
+        .interview-content h3 {
+            font-size: 1.5em;
+            color: #293241;
+            border-left: 4px solid #ee6c4d;
+            padding-left: 10px;
+            margin-bottom: 20px;
+        }
+
+        .qa-item {
+            margin-bottom: 15px;
+        }
+
+        .qa-item strong {
+            color: #293241;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .qa-item strong::before {
+            content: 'Q.';
+            color: #98c1d9;
+            margin-right: 5px;
+        }
+
+        .qa-item p::before {
+            content: 'A.';
+            color: #ee6c4d;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        /* FAQ Section (Accordion Style) */
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            background: #fff;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #293241;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #f4f6f8;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5em;
+            transition: transform 0.3s;
+            color: #ee6c4d;
+        }
+
+        .faq-question.active::after {
+            content: '−';
+            transform: rotate(0deg);
+            /* "+"が"-"に見えるように調整 */
+            color: #98c1d9;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            background: #f1f3f5;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .faq-answer p {
+            padding: 15px 0;
+        }
+
+        /* .faq-answer.open はJSで制御 */
+
+
+        /* Entry Section */
+        #entry {
+            text-align: center;
+            background: #293241;
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        #entry h2 {
+            color: #fff;
+        }
+
+        #entry p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background: #212529;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        /* --- 新規追加セクションのスタイル --- */
+
+        /* Projects Section */
+        #projects {
+            background-color: #f1f3f5;
+        }
+
+        .project-list-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card h4 {
+            font-size: 1.2em;
+            color: #293241;
+            padding: 15px 20px 10px;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            font-size: 0.9em;
+            padding: 0 20px 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #98c1d9;
+            color: #293241;
+            font-size: 0.75em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 0 5px 10px 20px;
+            font-weight: 600;
+        }
+
+        /* Benefits Section */
+        #benefits {
+            background-color: #fff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .benefit-item {
+            padding: 25px;
+            border: 2px solid #ee6c4d;
+            border-radius: 8px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .benefit-item:hover {
+            background-color: #fef0ec;
+            box-shadow: 0 6px 15px rgba(238, 108, 77, 0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.2em;
+            color: #293241;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .benefit-item p {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- モーダルスタイル (修正: レスポンシブメディアクエリの前に配置) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 2000;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-content h3 {
+            color: #293241;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ee6c4d;
+            padding-bottom: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #555;
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+
+        /* フォームの共通スタイル */
+        #entry-form label {
+            display: block;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #293241;
+        }
+
+        #entry-form input[type="text"],
+        #entry-form input[type="email"],
+        #entry-form input[type="tel"],
+        #entry-form input[type="file"],
+        /* ファイル入力にもスタイル適用 */
+        #entry-form select,
+        #entry-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        /* ファイル入力フィールドの調整 */
+        #entry-form input[type="file"] {
+            padding: 8px;
+            /* ファイル入力は少しパディングを減らす */
+            background-color: #f7f7f7;
+        }
+
+        #entry-form .form-submit-btn {
+            width: 100%;
+            margin-top: 30px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+
+        /* フォームグループのレイアウト */
+        .form-group-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-group-row>div {
+            flex: 1;
+        }
+
+        /* カスタムアラートメッセージ */
+        #custom-alert {
+            background-color: #fef0ec;
+            /* 薄いオレンジ */
+            color: #ee6c4d;
+            /* アクセントカラー */
+            border: 1px solid #ee6c4d;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: left;
+            display: none;
+            /* 初期は非表示 */
+        }
+
+        #custom-alert strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* --- レスポンシブ対応 --- */
+        @media (max-width: 1024px) {
+            .nav-links li {
+                margin-left: 15px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .project-list-grid {
+                grid-template-columns: 1fr 1fr;
+                /* 2列表示 */
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                /* 2列表示 */
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+
+            /* ハンバーガーメニューを表示 */
+            .hamburger {
+                display: block;
+            }
+
+            /* ナビゲーションをモバイル向けに調整 */
+            .nav-links {
+                position: absolute;
+                top: 60px;
+                /* ヘッダーの高さに応じて調整 */
+                left: 0;
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                background: #293241;
+                padding: 20px 0;
+                text-align: center;
+                /* 初期状態で画面外に非表示 */
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            /* .nav-links.active クラスが付与されたら表示 */
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .nav-links li {
+                display: block;
+                margin: 15px 0;
+            }
+
+            .nav-links a,
+            .nav-links button {
+                padding: 10px 20px;
+                display: block;
+                color: #fff;
+                /* ナビゲーションボタンのスタイルを上書き */
+                background: none;
+            }
+
+            /* ナビゲーション内のボタンもリンクと同様の装飾を適用 */
+            .nav-links li:last-child button {
+                display: inline-block;
+                /* ボタンは再表示して目立たせる */
+                margin-top: 10px;
+            }
+
+            .nav-links li:last-child button.btn {
+                background: #ee6c4d;
+                /* ボタンの背景色を適用 */
+                color: #fff;
+                padding: 12px 30px;
+            }
+
+
+            section {
+                padding: 60px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            #message .content {
+                flex-direction: column;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+                /* 1列表示 */
+            }
+
+            #interview .interview-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #interview .profile-area {
+                width: 100%;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+            /* モバイルではフォームを1列にする */
+            .form-group-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .project-list-grid,
+            .benefits-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+                /* 全てのグリッドを1列表示 */
+            }
+
+            .stat-item h3 {
+                font-size: 2.5em;
+            }
+
+            .stat-item p {
+                font-size: 1em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">半田中央印刷株式会社 | RECRUIT</div>
+                <!-- ハンバーガーボタン -->
+                <button class="hamburger" id="hamburger-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <!-- ナビゲーションリンク -->
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">TOP</a></li>
+                    <!-- 変更: ナビゲーションテキストを修正 -->
+                    <li><a href="#projects">実績</a></li>
+                    <li><a href="#stats">数字で見る</a></li>
+                    <li><a href="#requirements">募集要項</a></li>
+                    <li><a href="#benefits">福利厚生</a></li>
+                    <li><a href="#interview">インタビュー</a></li>
+                    <li><a href="#faq">よくある質問</a></li>
+                    <li><a href="#message">メッセージ</a></li>
+                    <li><button id="open-entry-modal-nav" class="btn">ENTRY</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>「伝える」ってワクワク</h1>
+            <p>ワクワクする仕事、知多半島にあるんです。</p>
+            <button id="open-entry-modal-hero" class="btn">今すぐエントリー</button>
+        </div>
+    </section>
+    <section id="projects">
+        <div class="container">
+            <h2>私達の仕事</h2>
+            <p class="text-center" style="margin-bottom: 50px; font-size: 1.1em; color: #555;">私たちが手がけた、制作実績をご紹介します。</p>
+
+            <div class="project-list-grid">
+
+                <div class="project-card">
+                    <img src="images/project-a.png" alt="老舗酒蔵のサイトリニューアル画像">
+                    <h4>老舗酒蔵のサイトリニューアル</h4>
+                    <p>200年以上の歴史を伝えるために、冒頭に没入感のあるスクロールアニメーションを設置。サイトのデザインも施設の魅力が伝わるよう随所に工夫を凝らしました。</p>
+                    <span class="project-tag">#ブランディング</span><span class="project-tag">#UI/UX</span>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/project-b.png" alt="自治体の観光ガイドブック画像">
+                    <h4>自治体の観光ガイドブック作成</h4>
+                    <p>テーマである「発酵と醸造」をもとに随所に発酵をイメージさせるデザインをしています。地域の発展の源である運河を大きく採り上げ、表紙をはじめとした撮影にも拘りました。</p>
+                    <span class="project-tag">#パンフレット制作</span><span class="project-tag">#クリエイティブ</span>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/project-c.png" alt="創業150周年を記念した店舗装飾">
+                    <h4>創業150周年を記念した店舗装飾</h4>
+                    <p>普段から担当している紙媒体の案件を通して、お店のイメージを深く汲み取り、お客様の笑顔が溢れる、明るい雰囲気が伝わるデザインを制作しました。</p>
+                    <span class="project-tag">#店舗外観装飾</span><span class="project-tag">#記念事業</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats">
+        <div class="container">
+            <h2>数字で見る 半田中央印刷</h2>
+            <div class="stats-grid">
+
+                <div class="stat-item">
+                    <h3>1:1</h3>
+                    <p>男女比</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>66%</h3>
+                    <p>勤続年数(10年以上)</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>47.2歳</h3>
+                    <p>社員の平均年齢</p>
+                </div>
+
+                <div class="stat-item">
+                    <h3>1944年</h3>
+                    <p>設立</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="requirements">
+        <div class="container">
+            <h2>募集要項</h2>
+            <div class="requirements-grid">
+
+                <div class="requirement-item">
+                    <h3>アカウントプランナー</h3>
+                    <ul>
+                        <li>業務内容: 企画・提案、制作進行管理、製造工程・納期管理、納品</li>
+                        <li>必須スキル: 基本的なPCスキル、コミュニケーション能力</li>
+                        <li>歓迎スキル: 広告・マーケティングの知識、DTP・デザインの基礎知識</li>
+                        <li>給与: 年収 350万〜900万円（経験・能力に応じて決定）</li>
+                        <li>勤務地: 愛知県半田市</li>
+                    </ul>
+                </div>
+
+                <div class="requirement-item">
+                    <h3>Webデザイナー</h3>
+                    <ul>
+                        <li>業務内容: クライアントWebサイトのデザイン、UI/UX設計</li>
+                        <li>必須スキル: HTML/CSS/JavaScriptの基礎知識、Figma/Sketchの使用経験</li>
+                        <li>歓迎スキル: アニメーション制作経験、マーケティング知識</li>
+                        <li>給与: 年収 300万〜800万円（経験・能力に応じて決定）</li>
+                        <li>勤務地: 愛知県半田市</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits">
+        <div class="container">
+            <h2>福利厚生・待遇</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>フレックスタイム
+                    </h3>
+                    <p>コアタイム（11:00〜15:00）以外は、始業・終業時刻を自分で自由に調整可能です。</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>業績連動型ボーナス</h3>
+                    <p>会社の業績と個人の貢献度に応じて、年2回の特別ボーナスを支給。頑張りがダイレクトに評価されます。</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>スキルアップ支援</h3>
+                    <p>書籍購入費、外部セミナー/オンライン講座の受講費を全額会社が負担。知的好奇心を応援します。</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>通勤交通費</h3>
+                    <p>マイカー通勤可能。ガソリン代規定支給、無料駐車場完備。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interview">
+        <div class="container">
+            <h2>社員インタビュー</h2>
+
+            <div class="interview-card">
+                <div class="profile-area">
+                    <img src="images/member-a.png" alt="山田太郎の写真">
+                    <h4>山田 太郎</h4>
+                    <p>アカウントプランナー / 入社18年目</p>
+                    <span>#地域密着 #やりがい感じる</span>
+                </div>
+                <div class="interview-content">
+                    <h3>「地域とともに、自分も成長。」</h3>
+                    <div class="qa-item">
+                        <strong>入社の決め手は何ですか？</strong>
+                        <p>「モノづくり」に直接関われることです。単に既製品を売るのではなく、クライアントと一緒にゼロから製品を作り上げていくプロセスに携わりたいということが決め手となりました。</p>
+                    </div>
+                    <div class="qa-item">
+                        <strong>仕事のやりがいは？</strong>
+                        <p>自街中で自分の仕事を見かける喜びです。自分が担当したチラシが新聞に折り込まれていたり、駅の看板になっていたり、店頭で商品パッケージとして並んでいるのを目にするのは、大きなモチベーションになります。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interview-card">
+                <div class="profile-area">
+                    <img src="images/member-b.png" alt="佐藤花子の写真">
+                    <h4>佐藤 花子</h4>
+                    <p>Webマーケター / 入社4年目</p>
+                    <span style="font-size: 0.9em; color: #777;">#AIの探求 #新たな価値の創造</span>
+                </div>
+                <div class="interview-content">
+                    <h3>「安心して挑戦できる、フラットなチーム文化が自慢です。」</h3>
+                    <div class="qa-item">
+                        <strong>職場の雰囲気はどうですか？</strong>
+                        <p>非常にフラットで、役職に関係なく意見が言えます。気軽に横の先輩に相談や質問ができ、働きやすい環境です。</p>
+                    </div>
+                    <div class="qa-item">
+                        <strong>今後の目標はありますか？</strong>
+                        <p>webマーケティングのスペシャリストとして、クライアントに頼られるポジションとして確立したいです。</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>よくある質問</h2>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Q. リモートワークは可能ですか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A. はい、職種にもよりますが、原則として週2〜3日のリモートワークを推奨しています。柔軟な働き方を支援しています。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Q. 選考プロセスについて教えてください。</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A. 書類選考 → 一次面接（現場マネージャー） → 二次面接（役員） → 内定、という流れが基本です。職種によっては実技テストをお願いすることがあります。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Q. 応募資格に年齢制限はありますか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A. いいえ、年齢による制限はありません。実務経験とスキルを重視した採用を行っています。新卒、中途問わず歓迎します。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Q. 研修制度やOJTはありますか？</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A. 入社後、3ヶ月間の導入研修（OJT）を実施し、プロジェクトにスムーズに入れるようサポートします。また、メンター制度もあり、専門知識の習得を支援します。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="message">
+        <div class="container">
+            <h2>メッセージ</h2>
+            <div class="content">
+                <div class="text-box">
+                    <h3>挑戦を通じて、未来を創造しよう</h3>
+                    <p>私たちは「新しい価値の創造」をミッションに掲げ、常に変化と成長を続けています。この場所は、あなたのアイデアや情熱が、形となり、世の中を動かす力になる場所です。</p>
+                    <p>決まったレールはありません。自ら道を切り拓き、失敗を恐れずに挑戦し続ける。そんなアグレッシブなマインドを持つ方との出会いを心から楽しみにしています。</p>
+                    <p>最高のチームと最高の環境で、あなたの<strong>可能性</strong>を、もっと広げてみませんか。</p>
+                </div>
+                <div class="image-box">
+                    <img src="images/message-ceo.png" alt="CEOからのメッセージ画像">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entry">
+        <div class="container">
+            <h2>エントリー</h2>
+            <p>あなたの熱意を、ぜひ私たちに伝えてください。</p>
+            <button id="open-entry-modal" class="btn">今すぐエントリーする</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 半田中央印刷株式会社</p>
+        </div>
+    </footer>
+
+    <!-- ★★★ モーダルオーバーレイ ★★★ -->
+    <div id="entry-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <h3>応募フォーム</h3>
+            <!-- closeボタンも<button>に変更し、アクセシビリティとクリックエリアを改善 -->
+            <button class="modal-close" id="close-entry-modal" aria-label="閉じる">×</button>
+
+            <!-- カスタムアラートメッセージエリア -->
+            <div id="custom-alert" style="display:none;">
+                <strong>【重要】PDF手動添付のお願い</strong>
+                <p id="alert-message">メールが作成されました。選択したファイル（<span id="attached-filename"></span>）は**自動で添付されません**。必ず、メーラー側でこのPDFファイルを**手動で添付**してから送信してください。</p>
+            </div>
+
+            <form id="entry-form">
+
+                <!-- 氏名 (Kanji) -->
+                <div class="form-group-row">
+                    <div>
+                        <label for="applicant-last-name">姓 (必須)</label>
+                        <input type="text" id="applicant-last-name" required placeholder="山田">
+                    </div>
+                    <div>
+                        <label for="applicant-first-name">名 (必須)</label>
+                        <input type="text" id="applicant-first-name" required placeholder="太郎">
+                    </div>
+                </div>
+
+                <!-- フリガナ (Kana) -->
+                <div class="form-group-row">
+                    <div>
+                        <label for="applicant-last-kana">セイ (必須)</label>
+                        <input type="text" id="applicant-last-kana" required placeholder="ヤマダ">
+                    </div>
+                    <div>
+                        <label for="applicant-first-kana">メイ (必須)</label>
+                        <input type="text" id="applicant-first-kana" required placeholder="タロウ">
+                    </div>
+                </div>
+
+                <label for="applicant-email">メールアドレス (必須)</label>
+                <input type="email" id="applicant-email" required placeholder="example@mail.com">
+
+                <label for="applicant-phone">電話番号 (必須)</label>
+                <input type="tel" id="applicant-phone" required placeholder="090-xxxx-xxxx">
+
+                <label for="applicant-dob">生年月日 (必須)</label>
+                <input type="text" id="applicant-dob" required placeholder="YYYY-MM-DD (例: 1990-01-01)">
+
+                <label for="applicant-position">希望職種 (必須)</label>
+                <select id="applicant-position" required>
+                    <option value="">選択してください</option>
+                    <option value="Webデザイナー">Webデザイナー</option>
+                    <option value="フロントエンドエンジニア">フロントエンドエンジニア</option>
+                    <option value="ディレクター">ディレクター</option>
+                    <option value="その他">その他</option>
+                </select>
+
+                <!-- 職務経歴書 (PDF添付) のためのファイル入力フィールドに修正 -->
+                <label for="applicant-resume-file">職務経歴書 (PDF添付) (必須)</label>
+                <input type="file" id="applicant-resume-file" accept=".pdf" required>
+
+                <label for="applicant-resume-text">補足情報/ポートフォリオURL</label>
+                <textarea id="applicant-resume-text" rows="3" placeholder="職務経歴の補足情報や、ポートフォリオ・クラウドストレージの共有リンクがある場合はこちらに記入してください。"></textarea>
+
+                <label for="applicant-message">志望動機・自己PR (必須)</label>
+                <textarea id="applicant-message" rows="5" required placeholder="志望動機や自己PRを具体的にお書きください"></textarea>
+
+                <button type="submit" class="btn form-submit-btn" id="submit-btn">入力内容でメールを作成</button>
+                <p style="font-size: 0.85em; color: #777; margin-top: 10px;" id="final-instruction">
+                    ※送信ボタンを押すと、入力内容がメーラーに転送されます。必ず**PDFファイルをメーラーで手動添付**し、内容をご確認の上、**ご自身で送信**をお願いいたします。
+                </p>
+            </form>
+        </div>
+    </div>
+    <!-- /モーダルオーバーレイ -->
+
+    <script>
+        // カスタムアラート（alert()の代替）を表示する関数
+        const showCustomAlert = (message) => {
+            const alertDiv = document.getElementById('custom-alert');
+            // ファイル選択エラーの場合
+            if (message.includes('PDFファイル')) {
+                alertDiv.style.display = 'block';
+                alertDiv.style.backgroundColor = '#ffdddd';
+                alertDiv.style.color = '#cc0000';
+                alertDiv.innerHTML = `<strong>【エラー】</strong> ${message}`;
+            } else if (message.includes('必須項目')) {
+                // 必須項目エラーの場合
+                alertDiv.style.display = 'block';
+                alertDiv.style.backgroundColor = '#ffdddd';
+                alertDiv.style.color = '#cc0000';
+                alertDiv.innerHTML = `<strong>【エラー】</strong> ${message}`;
+            } else {
+                // 最終確認メッセージの場合
+                const filename = message;
+                alertDiv.style.display = 'block';
+                alertDiv.style.backgroundColor = '#fef0ec';
+                alertDiv.style.color = '#ee6c4d';
+                alertDiv.innerHTML = `<strong>【重要】PDF手動添付のお願い</strong>
+                    メールが作成されました。選択したファイル（<span id="attached-filename-alert">${filename}</span>）は**自動で添付されません**。必ず、メーラー側でこのPDFファイルを**手動で添付**してから送信してください。`;
+            }
+        };
+
+        const hideCustomAlert = () => {
+            const alertDiv = document.getElementById('custom-alert');
+            alertDiv.style.display = 'none';
+        };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. FAQのアコーディオン機能 ---
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isOpen = question.classList.contains('active');
+
+                    // 全てのアコーディオンを閉じる
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                        const a = q.nextElementSibling;
+                        a.style.maxHeight = null;
+                        a.style.padding = '0 20px';
+                    });
+
+                    // クリックされたものが開いていなかった場合のみ開く
+                    if (!isOpen) {
+                        question.classList.add('active');
+                        // scrollHeightを使ってコンテンツの高さに合わせる
+                        answer.style.maxHeight = answer.scrollHeight + 30 + "px";
+                        answer.style.padding = '15px 20px';
+                    }
+                });
+            });
+
+
+            // --- 2. ハンバーガーメニューのトグル機能 ---
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            const toggleNav = () => {
+                hamburger.classList.toggle('is-active');
+                navLinks.classList.toggle('active');
+            };
+
+            if (hamburger) hamburger.addEventListener('click', toggleNav);
+
+            // リンクをクリックしたらメニューを閉じる
+            if (navLinks) {
+                navLinks.querySelectorAll('a, button').forEach(link => {
+                    link.addEventListener('click', () => {
+                        // モーダルオープンボタンは別途モーダルJSで処理するためここではトグルのみ
+                        if (navLinks.classList.contains('active') && link.tagName === 'A') {
+                            toggleNav();
+                        }
+                    });
+                });
+            }
+
+
+            // --- 3. モーダル制御とフォーム機能 ---
+            const modalOverlay = document.getElementById('entry-modal-overlay');
+            const entryForm = document.getElementById('entry-form');
+            const openModalBtns = document.querySelectorAll('#open-entry-modal, #open-entry-modal-hero, #open-entry-modal-nav');
+            const closeModalBtn = document.getElementById('close-entry-modal');
+
+            const openModal = () => {
+                modalOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden'; // 背景スクロール禁止
+                hideCustomAlert(); // モーダルを開くときにアラートを隠す
+            };
+
+            const closeModal = () => {
+                modalOverlay.classList.remove('open');
+                document.body.style.overflow = ''; // 背景スクロール許可
+                entryForm.reset(); // 閉じる際にフォーム内容をリセット
+                hideCustomAlert(); // 閉じる時にアラートを隠す
+            };
+
+            // モーダルを開くイベント
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', openModal);
+            });
+
+            // モーダルを閉じるイベント
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+            // オーバーレイクリックで閉じる
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+            }
+
+
+            // フォーム送信（mailto生成）
+            if (entryForm) {
+                entryForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // --- フォームデータの取得 ---
+                    const lastName = document.getElementById('applicant-last-name').value.trim();
+                    const firstName = document.getElementById('applicant-first-name').value.trim();
+                    const lastKana = document.getElementById('applicant-last-kana').value.trim();
+                    const firstKana = document.getElementById('applicant-first-kana').value.trim();
+                    const email = document.getElementById('applicant-email').value.trim();
+                    const phone = document.getElementById('applicant-phone').value.trim();
+                    const dob = document.getElementById('applicant-dob').value.trim();
+                    const position = document.getElementById('applicant-position').value;
+
+                    // 職務経歴書 (PDFファイル) の取得
+                    const resumeFileInput = document.getElementById('applicant-resume-file');
+                    const resumeFile = resumeFileInput.files[0];
+                    const resumeText = document.getElementById('applicant-resume-text').value.trim(); // 補足情報
+                    const message = document.getElementById('applicant-message').value.trim();
+
+                    // --- バリデーション ---
+                    if (!lastName || !firstName || !lastKana || !firstKana || !email || !phone || !dob || !position || !message) {
+                        showCustomAlert('必須項目を全て入力してください。');
+                        return;
+                    }
+
+                    // PDFファイル添付のチェック（必須としたため）
+                    if (!resumeFile || resumeFile.type !== 'application/pdf') {
+                        showCustomAlert('PDF形式の職務経歴書ファイルを選択してください。');
+                        return;
+                    }
+
+                    // --- 最終確認メッセージを表示する ---
+                    showCustomAlert(resumeFile.name);
+
+
+                    // --- メール本文の整形 ---
+                    let mailBody = `【Creative Agency X 採用応募】\n\n`;
+                    mailBody += `--- 応募情報 ---\n`;
+                    mailBody += `氏名: ${lastName} ${firstName}\n`;
+                    mailBody += `フリガナ: ${lastKana} ${firstKana}\n`;
+                    mailBody += `メールアドレス: ${email}\n`;
+                    mailBody += `電話番号: ${phone}\n`;
+                    mailBody += `生年月日: ${dob}\n`;
+                    mailBody += `希望職種: ${position}\n`;
+
+                    mailBody += `\n--- 添付ファイル情報 ---\n`;
+                    mailBody += `添付予定ファイル名: ${resumeFile.name}\n`;
+                    mailBody += `※このファイルは自動添付されません。必ず応募者様ご自身でメーラーに添付してください。\n`;
+
+                    mailBody += `\n--- 補足情報/ポートフォリオURL ---\n`;
+                    mailBody += resumeText || '（入力なし）\n';
+
+                    mailBody += `\n--- 志望動機・自己PR ---\n`;
+                    mailBody += message;
+
+                    mailBody += `\n--------------------------\n`;
+                    mailBody += `\n\n※このメールは応募者 (${lastName} ${firstName}) のメーラーを介して作成されました。PDFファイルを添付の上、送信してください。`;
+
+
+                    // URLエンコード
+                    const subject = encodeURIComponent(`【採用応募】${position}への応募 - ${lastName} ${firstName}`);
+                    const body = encodeURIComponent(mailBody);
+                    const recipient = 'recruit@agencyx.com'; // 企業の受付メールアドレス（ダミー）
+
+                    const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+                    // メーラーを起動
+                    // Note: closeModal()の前にmailtoを起動することで、メーラーが開いた後、元のフォームが閉じる。
+                    window.location.href = mailtoLink;
+
+                    // フォームをリセットし、モーダルを閉じる
+                    entryForm.reset();
+                    closeModal();
+
+                });
+            }
+
+            console.log('リクルートサイトJSがロードされました。');
+        });
+
+    </script>
+</body>
+
+</html>
