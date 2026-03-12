@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 協材砕石株式会社</title>
+<style>
+:root {
+  --primary: #2E7D32;
+  --primary-light: #4CAF50;
+  --primary-dark: #1B5E20;
+  --accent: #FF9800;
+  --text-main: #333333;
+  --text-light: #666666;
+  --bg-color: #F4F7F6;
+  --white: #FFFFFF;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Typography */
+h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--primary-dark); position: relative; }
+.section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent); margin: 1rem auto 0; border-radius: 2px; }
+
+/* Utility Classes */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft);
+  border-radius: 16px;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* Header & Navigation */
+.pc-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  padding: 1rem 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 1000;
+  transition: var(--transition);
+}
+.pc-header.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+  padding: 0.8rem 2rem;
+}
+.logo img { height: 40px; width: auto; }
+.pc-nav ul { display: flex; gap: 2rem; }
+.pc-nav a {
+  font-weight: 600; font-size: 0.95rem; position: relative;
+  transition: color 0.3s;
+}
+.pc-nav a:hover, .pc-nav a.current { color: var(--primary); }
+.pc-nav a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--primary); transition: width 0.3s;
+}
+.pc-nav a:hover::after, .pc-nav a.current::after { width: 100%; }
+
+/* SP Floating Menu */
+.sp-nav {
+  display: none;
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  width: 90%; max-width: 400px;
+  background: rgba(46, 125, 50, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  box-shadow: var(--shadow-hover);
+}
+.sp-nav ul {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.sp-nav a {
+  color: var(--white); font-size: 0.75rem; display: flex; flex-direction: column; align-items: center;
+  opacity: 0.8; transition: opacity 0.3s;
+}
+.sp-nav a.current { opacity: 1; font-weight: bold; }
+.sp-nav .entry-btn-sp {
+  background: var(--accent); padding: 0.5rem 1rem; border-radius: 20px;
+  font-weight: bold; color: white;
+}
+
+@media (max-width: 768px) {
+  .pc-nav { display: none; }
+  .sp-nav { display: block; }
+  .pc-header { padding: 1rem; }
+}
+
+/* Button */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: var(--white); font-weight: 700;
+  padding: 1rem 3rem; border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 152, 0, 0.6);
+}
+
+/* Sections */
+section { padding: 8rem 0; position: relative; }
+
+/* 1. Hero */
+.hero {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  background-size: cover; background-position: center; background-attachment: fixed;
+  position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+}
+.hero-content {
+  position: relative; z-index: 10; text-align: center; color: var(--white);
+  max-width: 800px; padding: 2rem;
+}
+.hero-title {
+  font-size: 3.5rem; margin-bottom: 1.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+.hero-subtitle {
+  font-size: 1.2rem; margin-bottom: 3rem; text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+@media (max-width: 768px) {
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+}
+
+/* SVG Divider */
+.shape-divider {
+  position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0;
+}
+.shape-divider svg { position: relative; display: block; width: calc(100% + 1.3px); height: 80px; }
+.shape-divider .shape-fill { fill: var(--bg-color); }
+
+/* 2. Vision */
+.vision-wrap { display: flex; flex-direction: column; gap: 3rem; }
+.vision-box { padding: 3rem; text-align: center; }
+.vision-lead { font-size: 1.8rem; font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+.vision-text { font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.value-card { padding: 2rem; text-align: center; transition: var(--transition); }
+.value-card:hover { transform: translateY(-5px); }
+.value-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
+
+/* 3. Services */
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.service-card { padding: 2.5rem; transition: var(--transition); display: flex; flex-direction: column; height: 100%; }
+.service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+.service-name { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem; display: inline-block; }
+.service-desc { flex-grow: 1; font-size: 0.95rem; }
+
+/* 4. Environment */
+.env-stats { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 4rem; }
+.stat-item { width: 200px; height: 200px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: var(--transition); }
+.stat-item:hover { transform: scale(1.05); }
+.stat-num { font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.9rem; font-weight: bold; }
+.culture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.culture-card { padding: 2rem; border-left: 4px solid var(--primary); }
+
+/* 5. Interviews */
+.interview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+.interview-card { overflow: hidden; display: flex; flex-direction: column; transition: var(--transition); }
+.interview-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+.interview-img-wrap { height: 300px; overflow: hidden; }
+.interview-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.interview-card:hover .interview-img { transform: scale(1.05); }
+.interview-content { padding: 2rem; flex-grow: 1; }
+.interview-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--primary-dark); }
+.qa-item { margin-bottom: 1.5rem; }
+.qa-q { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--text-main); display: flex; }
+.qa-q::before { content: 'Q.'; color: var(--accent); margin-right: 0.5rem; }
+.qa-a { font-size: 0.9rem; color: var(--text-light); display: flex; }
+.qa-a::before { content: 'A.'; color: var(--primary); margin-right: 0.5rem; font-weight: bold; }
+
+/* 6. Jobs */
+.jobs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.job-card {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.job-card::before {
+  content: '詳細を見る'; position: absolute; inset: 0; background: rgba(46, 125, 50, 0.9);
+  color: white; font-weight: bold; display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s; z-index: 10;
+}
+.job-card:hover::before { opacity: 1; }
+.job-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+.job-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); }
+
+/* Modal */
+.modal {
+  position: fixed; inset: 0; z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal.active { opacity: 1; pointer-events: auto; }
+.modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+.modal-content {
+  position: relative; z-index: 10;
+  background: var(--white); width: 90%; max-width: 700px; max-height: 90vh;
+  overflow-y: auto; border-radius: 16px; padding: 3rem 2rem;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  transform: translateY(20px); transition: transform 0.3s ease;
+}
+.modal.active .modal-content { transform: translateY(0); }
+.modal-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: #eee; border: none; width: 40px; height: 40px; border-radius: 50%;
+  cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: #ddd; }
+.modal-body th { text-align: left; padding: 1rem; background: var(--bg-color); width: 30%; border-bottom: 1px solid #ddd; }
+.modal-body td { padding: 1rem; border-bottom: 1px solid #ddd; }
+.modal-body table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+
+/* 7. Flow */
+.flow-steps { max-width: 800px; margin: 0 auto; }
+.step { display: flex; margin-bottom: 2rem; position: relative; }
+.step:not(:last-child)::after {
+  content: ''; position: absolute; top: 50px; left: 24px; width: 2px; height: calc(100% - 30px);
+  background: var(--primary-light); opacity: 0.5;
+}
+.step-num {
+  width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold;
+  flex-shrink: 0; z-index: 2;
+}
+.step-content {
+  margin-left: 2rem; padding: 1.5rem; flex-grow: 1;
+}
+.step-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+
+/* 8. FAQ */
+.faq-wrap { max-width: 800px; margin: 0 auto; }
+.faq-item { margin-bottom: 1rem; border-radius: 8px; overflow: hidden; }
+.faq-q {
+  padding: 1.5rem; background: var(--white); cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  font-weight: 700; transition: background 0.2s;
+}
+.faq-q:hover { background: #f0f0f0; }
+.faq-q::after { content: '+'; font-size: 1.5rem; color: var(--primary); transition: transform 0.3s; }
+.faq-item.active .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: var(--bg-color);
+}
+.faq-item.active .faq-a { max-height: 300px; }
+.faq-a-inner { padding: 1.5rem; border-top: 1px dashed #ccc; }
+
+/* 9. Entry */
+.entry-section {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white; text-align: center;
+}
+.entry-section .section-title { color: white; }
+.entry-section .section-title::after { background: var(--white); }
+
+/* Footer */
+.footer { background: #222; color: #aaa; text-align: center; padding: 3rem 0; }
+</style>
+</head>
+<body>
+
+<header class="pc-header" id="header">
+  <div class="logo">
+    <img src="assets/logo.png" alt="協材砕石株式会社 ロゴ">
+  </div>
+  <nav class="pc-nav">
+    <ul>
+      <li><a href="#vision" class="nav-link">会社について</a></li>
+      <li><a href="#service" class="nav-link">事業・サービス</a></li>
+      <li><a href="#environment" class="nav-link">働く環境</a></li>
+      <li><a href="#interview" class="nav-link">先輩インタビュー</a></li>
+      <li><a href="#jobs" class="nav-link">募集要項</a></li>
+      <li><a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" class="btn-primary" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">エントリー</a></li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="sp-nav">
+  <ul>
+    <li><a href="#vision" class="nav-link">会社</a></li>
+    <li><a href="#service" class="nav-link">事業</a></li>
+    <li><a href="#interview" class="nav-link">先輩</a></li>
+    <li><a href="#jobs" class="nav-link">募集</a></li>
+    <li><a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" class="entry-btn-sp">応募</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- 1. Hero -->
+  <section id="hero" class="hero" style="background-image: url('assets/hero.png');">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">世の中に無駄なものはない。</h1>
+      <p class="hero-subtitle">ゴミは全て資源として有効利用できる。<br>70年以上の歴史が紡ぐ、資源循環型社会への挑戦。</p>
+      <a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" class="btn-primary">エントリーはこちら</a>
+    </div>
+    <div class="shape-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.3,201.3,114.12Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 2. Vision -->
+  <section id="vision">
+    <div class="container">
+      <h2 class="section-title reveal">会社について</h2>
+      <div class="vision-wrap">
+        <div class="vision-box glass-panel reveal">
+          <h3 class="vision-lead">常に新しい技術を求めて邁進し、<br>社会の皆様のお役に立てる企業へ。</h3>
+          <p class="vision-text">当社は1951年創業の前身・協材工業の時代から、「世の中に無駄なものはなく、ゴミは全て資源として有効利用できる」という信念を受け継いできました。<br>多種多様な資源を再利用し、JIS規格をクリアする高品質な再生骨材とダスト材の製造を通じて、環境負荷低減と建設業界の発展に貢献し続けています。</p>
+        </div>
+        <div class="values-grid">
+          <div class="value-card glass-panel reveal delay-1">
+            <div class="value-icon">♻️</div>
+            <h4>資源循環と有効活用</h4>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">揺るぎない創業の信念をもとに、持続可能な事業モデルを確立。</p>
+          </div>
+          <div class="value-card glass-panel reveal delay-2">
+            <div class="value-icon">🛠️</div>
+            <h4>技術革新と探求</h4>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">常に新しい技術を求め、たゆまぬ努力で品質向上を目指します。</p>
+          </div>
+          <div class="value-card glass-panel reveal delay-3">
+            <div class="value-icon">🤝</div>
+            <h4>社会貢献</h4>
+            <p style="font-size: 0.9rem; margin-top: 1rem;">地域社会に貢献し、皆様の生活基盤を支える企業であり続けます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Services -->
+  <section id="service" style="background: var(--white);">
+    <div class="container">
+      <h2 class="section-title reveal">事業・サービス紹介</h2>
+      <p class="reveal" style="text-align: center; margin-bottom: 3rem;">70年以上にわたる長年の実績と高い技術力で、建設資材における「資源の有効活用」を追求しています。</p>
+      <div class="service-grid">
+        <div class="service-card glass-panel reveal">
+          <h3 class="service-name">再生骨材・再生砕石</h3>
+          <p class="service-desc">JIS規格等をクリアする「CS-20再生砕石」。高い強度で骨材そのものを維持し、しっかり締め固めることが可能です。</p>
+        </div>
+        <div class="service-card glass-panel reveal delay-1">
+          <h3 class="service-name">改良土</h3>
+          <p class="service-desc">「CS-20改良土」は土の膨張を抑え、地盤の軟弱化を防ぎます。均一な強度を実現し、転圧ムラを解消します。</p>
+        </div>
+        <div class="service-card glass-panel reveal delay-2">
+          <h3 class="service-name">地盤改良材</h3>
+          <p class="service-desc">大型構造物や軟弱地盤の改良に使用。重さにより沈み込み、強い地盤形成をサポートし効率的な改良が可能です。</p>
+        </div>
+        <div class="service-card glass-panel reveal delay-3">
+          <h3 class="service-name">片マサ生砕石</h3>
+          <p class="service-desc">「カタマSP」は全粒径が締固めやすい粒度で構成。作業時の締固めが簡単で工期短縮に貢献する生砕石です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Environment -->
+  <section id="environment">
+    <div class="container">
+      <h2 class="section-title reveal">働く環境</h2>
+      
+      <div class="env-stats">
+        <div class="stat-item glass-panel reveal">
+          <div class="stat-num">70<span style="font-size:1rem;">年以上</span></div>
+          <div class="stat-label">歴史と実績</div>
+        </div>
+        <div class="stat-item glass-panel reveal delay-1">
+          <div class="stat-num">120<span style="font-size:1rem;">日</span></div>
+          <div class="stat-label">年間休日</div>
+        </div>
+        <div class="stat-item glass-panel reveal delay-2">
+          <div class="stat-num">40<span style="font-size:1rem;">歳</span></div>
+          <div class="stat-label">平均年齢</div>
+        </div>
+        <div class="stat-item glass-panel reveal delay-3">
+          <div class="stat-num">9:1</div>
+          <div class="stat-label">男女比</div>
+        </div>
+      </div>
+
+      <div class="culture-grid">
+        <div class="culture-card glass-panel reveal">
+          <h4>充実の福利厚生と休暇制度</h4>
+          <p style="font-size: 0.9rem; margin-top: 1rem;">退職金制度や慶弔見舞金、出産・育児休業制度を完備。また、有給休暇に加えて誕生日休暇や結婚記念日休暇など、家庭の都合に合わせて臨機応変に対応できる環境です。</p>
+        </div>
+        <div class="culture-card glass-panel reveal delay-1">
+          <h4>風通しの良いカルチャー</h4>
+          <p style="font-size: 0.9rem; margin-top: 1rem;">明るくやる気のある人材を募集しています。自由参加の社員旅行や飲み会など、コミュニケーションを深める機会もあり、前向きな姿勢が歓迎される職場です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Interviews -->
+  <section id="interview" style="background: var(--white);">
+    <div class="container">
+      <h2 class="section-title reveal">先輩インタビュー</h2>
+      <div class="interview-grid">
+        
+        <div class="interview-card glass-panel reveal">
+          <div class="interview-img-wrap">
+            <img src="assets/interview-1.png" alt="佐藤太郎" class="interview-img">
+          </div>
+          <div class="interview-content">
+            <h3 class="interview-name">佐藤太郎</h3>
+            <div class="qa-item">
+              <div class="qa-q">この会社を選んだ理由は何ですか？</div>
+              <div class="qa-a">とにかくデカい機械を操りたかった。子供の頃に見たダンプやショベルカーへの憧れを、一生モノの仕事にできるのはここしかないと思いました。</div>
+            </div>
+            <div class="qa-item">
+              <div class="qa-q">入社して一番驚いたギャップは？</div>
+              <div class="qa-a">豪快な仕事に見えて、実はすごく繊細。数センチ単位の操作で効率が変わる奥深さや、ICT建機の導入などハイテク化が進んでいることに驚きました。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="interview-card glass-panel reveal delay-1">
+          <div class="interview-img-wrap">
+            <img src="assets/interview-2.png" alt="鈴木孝志" class="interview-img">
+          </div>
+          <div class="interview-content">
+            <h3 class="interview-name">鈴木孝志</h3>
+            <div class="qa-item">
+              <div class="qa-q">最も達成感を感じたエピソードは？</div>
+              <div class="qa-a">プラントが故障で止まった時、夜通しで原因を突き止め修理を終えた朝。始動ボタンを押してベルトコンベアが動き出した時の達成感は一生モノです。</div>
+            </div>
+            <div class="qa-item">
+              <div class="qa-q">一番成長したと感じる能力は？</div>
+              <div class="qa-a">『多角的な問題解決能力』。機械の不具合から電気系統、構造上の欠陥まで、あらゆる可能性を疑って答えを導き出す力がつきました。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="interview-card glass-panel reveal delay-2">
+          <div class="interview-img-wrap">
+            <img src="assets/interview-3.png" alt="渡辺賢一" class="interview-img">
+          </div>
+          <div class="interview-content">
+            <h3 class="interview-name">渡辺賢一</h3>
+            <div class="qa-item">
+              <div class="qa-q">この会社はどんな集団ですか？</div>
+              <div class="qa-a">『背中で語る、情熱派の職人集団』。不器用な人も多いですが（笑）、現場の安全と品質には誰よりも熱い人ばかりです。</div>
+            </div>
+            <div class="qa-item">
+              <div class="qa-q">後輩とどんな挑戦をしたいですか？</div>
+              <div class="qa-a">リサイクル砕石や新素材の開発など、環境に配慮した次世代の『砂利・砂』の可能性を一緒に探求していきたいです。</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Jobs -->
+  <section id="jobs">
+    <div class="container">
+      <h2 class="section-title reveal">募集要項</h2>
+      <p class="reveal" style="text-align: center; margin-bottom: 2rem;">未経験者歓迎・第二新卒OK！各職種をクリックすると詳細が表示されます。</p>
+      <div class="jobs-grid">
+        
+        <div class="job-card glass-panel reveal" data-job="1">
+          <h3 class="job-title">砕石工場<br>(重機オペレーター等)</h3>
+          <div class="hidden-data" style="display:none;">
+            <h3 style="margin-bottom:1.5rem; color:var(--primary-dark);">砕石工場 (重機オペレーター等)</h3>
+            <table>
+              <tr><th>雇用形態</th><td>正社員 (半年間研修期間あり)</td></tr>
+              <tr><th>仕事内容</th><td>砕石工場での重機オペレーター等の業務</td></tr>
+              <tr><th>応募条件</th><td>普通自動車免許取得者（AT限定可）、未経験者歓迎、第二新卒OK、ブランクがある方もOK</td></tr>
+              <tr><th>勤務地</th><td>名古屋事業所：愛知県東海市東海町5-3 (日本製鉄株式会社 名古屋製鉄所構内)</td></tr>
+              <tr><th>勤務時間</th><td>月〜金曜日 8:30〜17:30 (休憩12:00～13:00 / 時間外勤務あり)</td></tr>
+              <tr><th>休日休暇</th><td>週休2日制（土日祝休み※当社カレンダーによる、土曜出社の月あり）、夏期・年末年始、慶弔、有給（年間休日120日）、誕生日休暇・結婚記念日休暇OK・代休制度あり</td></tr>
+              <tr><th>給与</th><td>大卒 基本給 181,000円 / 短大・専門卒 基本給 172,000円<br>※給与例(大卒): 基本給＋精勤手当＋残業20時間 220,000円</td></tr>
+              <tr><th>福利厚生</th><td>慶弔見舞金制度、退職金制度、人事評価制度、教育制度、従業員表彰制度、出産・育児休業制度</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="job-card glass-panel reveal delay-1" data-job="2">
+          <h3 class="job-title">試験室<br>(砕石試験業務)</h3>
+          <div class="hidden-data" style="display:none;">
+            <h3 style="margin-bottom:1.5rem; color:var(--primary-dark);">試験室 (砕石試験業務)</h3>
+            <table>
+              <tr><th>雇用形態</th><td>正社員 (半年間研修期間あり)</td></tr>
+              <tr><th>仕事内容</th><td>試験室での砕石試験業務</td></tr>
+              <tr><th>応募条件</th><td>普通自動車免許取得者（AT限定可）、未経験者歓迎、第二新卒OK、ブランクがある方もOK</td></tr>
+              <tr><th>勤務地</th><td>名古屋事業所：愛知県東海市東海町5-3 (日本製鉄株式会社 名古屋製鉄所構内)</td></tr>
+              <tr><th>勤務時間</th><td>月〜金曜日 8:30〜17:30 (休憩12:00～13:00 / 時間外勤務あり)</td></tr>
+              <tr><th>休日休暇</th><td>週休2日制（土日祝休み※当社カレンダーによる、土曜出社の月あり）、夏期・年末年始、慶弔、有給（年間休日120日）、誕生日休暇・結婚記念日休暇OK・代休制度あり</td></tr>
+              <tr><th>給与</th><td>大卒 基本給 181,000円 / 短大・専門卒 基本給 172,000円<br>※給与例(大卒): 基本給＋精勤手当＋残業20時間 220,000円</td></tr>
+              <tr><th>福利厚生</th><td>慶弔見舞金制度、退職金制度、人事評価制度、教育制度、従業員表彰制度、出産・育児休業制度</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="job-card glass-panel reveal delay-2" data-job="3">
+          <h3 class="job-title">機械設備技術者<br>(設備メンテナンス)</h3>
+          <div class="hidden-data" style="display:none;">
+            <h3 style="margin-bottom:1.5rem; color:var(--primary-dark);">機械設備技術者 (設備メンテナンス)</h3>
+            <table>
+              <tr><th>雇用形態</th><td>正社員 (半年間研修期間あり)</td></tr>
+              <tr><th>仕事内容</th><td>機械設備の技術者として設備メンテナンス業務</td></tr>
+              <tr><th>応募条件</th><td>普通自動車免許取得者（AT限定可）、未経験者歓迎、第二新卒OK、ブランクがある方もOK</td></tr>
+              <tr><th>勤務地</th><td>名古屋事業所：愛知県東海市東海町5-3 (日本製鉄株式会社 名古屋製鉄所構内)</td></tr>
+              <tr><th>勤務時間</th><td>月〜金曜日 8:30〜17:30 (休憩12:00～13:00 / 時間外勤務あり)</td></tr>
+              <tr><th>休日休暇</th><td>週休2日制（土日祝休み※当社カレンダーによる、土曜出社の月あり）、夏期・年末年始、慶弔、有給（年間休日120日）、誕生日休暇・結婚記念日休暇OK・代休制度あり</td></tr>
+              <tr><th>給与</th><td>大卒 基本給 181,000円 / 短大・専門卒 基本給 172,000円<br>※給与例(大卒): 基本給＋精勤手当＋残業20時間 220,000円</td></tr>
+              <tr><th>福利厚生</th><td>慶弔見舞金制度、退職金制度、人事評価制度、教育制度、従業員表彰制度、出産・育児休業制度</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="job-card glass-panel reveal delay-3" data-job="4">
+          <h3 class="job-title">営業担当</h3>
+          <div class="hidden-data" style="display:none;">
+            <h3 style="margin-bottom:1.5rem; color:var(--primary-dark);">営業担当</h3>
+            <table>
+              <tr><th>雇用形態</th><td>正社員 (半年間研修期間あり)</td></tr>
+              <tr><th>仕事内容</th><td>法人向け営業業務</td></tr>
+              <tr><th>応募条件</th><td>普通自動車免許取得者（AT限定可）、未経験者歓迎、第二新卒OK、ブランクがある方もOK</td></tr>
+              <tr><th>勤務地</th><td>名古屋事業所：愛知県東海市東海町5-3 (日本製鉄株式会社 名古屋製鉄所構内)</td></tr>
+              <tr><th>勤務時間</th><td>月〜金曜日 8:30〜17:30 (休憩12:00～13:00 / 時間外勤務あり)</td></tr>
+              <tr><th>休日休暇</th><td>週休2日制（土日祝休み※当社カレンダーによる、土曜出社の月あり）、夏期・年末年始、慶弔、有給（年間休日120日）、誕生日休暇・結婚記念日休暇OK・代休制度あり</td></tr>
+              <tr><th>給与</th><td>大卒 基本給 181,000円 / 短大・専門卒 基本給 172,000円<br>※給与例(大卒): 基本給＋精勤手当＋残業20時間 220,000円</td></tr>
+              <tr><th>福利厚生</th><td>慶弔見舞金制度、退職金制度、人事評価制度、教育制度、従業員表彰制度、出産・育児休業制度</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Flow -->
+  <section id="flow" style="background: var(--white);">
+    <div class="container">
+      <h2 class="section-title reveal">選考フロー</h2>
+      <div class="flow-steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-content glass-panel">
+            <h3 class="step-title">エントリー・お問い合わせ</h3>
+            <p>専用フォームからお気軽にご応募・お問い合わせください。</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-content glass-panel">
+            <h3 class="step-title">職場見学 (希望者のみ)</h3>
+            <p>職場見学だけでも受け付けております。会社の雰囲気を知ってから面接申込でも構いません。</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-content glass-panel">
+            <h3 class="step-title">面接</h3>
+            <p>人物重視の選考を行います。熱意ややる気をぜひアピールしてください。</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-content glass-panel">
+            <h3 class="step-title">内定・入社</h3>
+            <p>入社日などは柔軟に相談に応じます。共に働ける日を楽しみにしています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title reveal">よくあるご質問 (Q&A)</h2>
+      <div class="faq-wrap">
+        <div class="faq-item glass-panel reveal">
+          <div class="faq-q">未経験でも応募可能ですか？</div>
+          <div class="faq-a"><div class="faq-a-inner">はい、未経験者歓迎です。第二新卒やブランクがある方もOKですので、安心してご応募ください。入社後半年間の研修期間でしっかりサポートします。</div></div>
+        </div>
+        <div class="faq-item glass-panel reveal delay-1">
+          <div class="faq-q">応募する前に会社を見学することはできますか？</div>
+          <div class="faq-a"><div class="faq-a-inner">はい、職場見学だけでも受け付けております。会社の雰囲気を知ってから面接を申し込んでいただいても構いませんので、お気軽にお問い合わせください。</div></div>
+        </div>
+        <div class="faq-item glass-panel reveal delay-2">
+          <div class="faq-q">どのような人材を求めていますか？</div>
+          <div class="faq-a"><div class="faq-a-inner">熱意がある方を大歓迎しています。若手のやる気のある方を積極採用しており、活気があり前向きな姿勢を評価します。</div></div>
+        </div>
+        <div class="faq-item glass-panel reveal delay-3">
+          <div class="faq-q">休日や休暇について教えてください。</div>
+          <div class="faq-a"><div class="faq-a-inner">週休2日制（土日祝休み、土曜出社月あり）で、年間休日は120日です。有給休暇のほか、誕生日休暇や結婚記念日休暇など、家庭の都合に合わせて臨機応変に対応できる環境です。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Entry -->
+  <section id="entry" class="entry-section">
+    <div class="container reveal">
+      <h2 class="section-title">エントリー</h2>
+      <p style="margin-bottom: 2rem; font-size: 1.1rem;">私たちと一緒に、未来へ続く資源の循環に挑戦しませんか？</p>
+      <a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" class="btn-primary" style="background: var(--white); color: var(--primary-dark);">応募フォームへ進む</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 協材砕石株式会社 All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Job Modal -->
+<div id="job-modal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="modal-close" aria-label="閉じる">&times;</button>
+    <div id="modal-body" class="modal-body">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Scroll Reveal Animation
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+  });
+
+  // 2. Header & Navigation Highlight
+  const header = document.getElementById('header');
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    // Header Glassmorphism
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+
+    // Highlight current section
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('current');
+      if (link.getAttribute('href').includes(current)) {
+        link.classList.add('current');
+      }
+    });
+  });
+
+  // Smooth Scroll for Hash Links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if(targetId === '#') return;
+      const targetEl = document.querySelector(targetId);
+      if(targetEl) {
+        window.scrollTo({
+          top: targetEl.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // 3. Job Modal Logic
+  const modal = document.getElementById('job-modal');
+  const modalBody = document.getElementById('modal-body');
+  const closeBtn = document.querySelector('.modal-close');
+  const overlay = document.querySelector('.modal-overlay');
+
+  function openModal(contentHtml) {
+    modalBody.innerHTML = contentHtml;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.job-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const dataHtml = card.querySelector('.hidden-data').innerHTML;
+      openModal(dataHtml);
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // 4. FAQ Accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+});
+</script>
+</body>
+</html>
