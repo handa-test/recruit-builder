@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 知多自動車学校</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #0056b3;
+  --color-primary-light: #e6f0fa;
+  --color-accent: #1a73e8;
+  --color-text-main: #333333;
+  --color-text-sub: #666666;
+  --color-bg-base: #fcfcfd;
+  --color-bg-alt: #f0f4f8;
+  --color-white: #ffffff;
+  --color-border: #e0e6ed;
+  --font-en: 'Plus Jakarta Sans', sans-serif;
+  --font-ja: 'Noto Sans JP', sans-serif;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-ja); color: var(--color-text-main); background-color: var(--color-bg-base); line-height: 1.8; letter-spacing: 0.05em; font-size: 16px; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+li { list-style: none; }
+button { border: none; background: none; font-family: inherit; cursor: pointer; color: inherit; }
+
+/* Utilities */
+.u-glass { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); }
+.u-section-padding { padding: clamp(80px, 12vw, 160px) 0; }
+.u-container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+.u-text-center { text-align: center; }
+.u-mt-10 { margin-top: clamp(40px, 6vw, 80px); }
+.u-br-pc { display: none; }
+@media (min-width: 768px) { .u-br-pc { display: inline; } }
+
+/* Animations */
+.js-anim { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.js-anim.is-visible { opacity: 1; transform: translateY(0); }
+.js-anim-delay-1 { transition-delay: 0.1s; }
+.js-anim-delay-2 { transition-delay: 0.2s; }
+.js-anim-delay-3 { transition-delay: 0.3s; }
+
+/* Components */
+.c-title { margin-bottom: clamp(40px, 8vw, 80px); text-align: center; }
+.c-title__en { font-family: var(--font-en); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--color-primary); letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+.c-title__ja { font-size: 0.9rem; color: var(--color-text-sub); font-weight: 500; letter-spacing: 0.2em; display: block; }
+
+.c-btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 48px; font-size: 1.1rem; font-weight: 600; color: var(--color-white); background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 40px; box-shadow: 0 8px 24px rgba(26, 115, 232, 0.3); transition: var(--transition); position: relative; overflow: hidden; }
+.c-btn::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: 0.5s; }
+.c-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26, 115, 232, 0.4); }
+.c-btn:hover::after { left: 100%; }
+.c-btn__icon { margin-left: 12px; transition: transform 0.3s; }
+.c-btn:hover .c-btn__icon { transform: translateX(4px); }
+
+.c-card { background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); transition: var(--transition); border: 1px solid var(--color-border); overflow: hidden; height: 100%; display: flex; flex-direction: column; }
+.c-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+
+/* Layout */
+.l-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; transition: var(--transition); padding: 16px 0; }
+.l-header.is-scrolled { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--shadow-sm); padding: 12px 0; }
+.l-header__inner { max-width: 1400px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; }
+.l-header__logo img { height: 40px; }
+.l-header__nav { display: none; }
+@media (min-width: 1024px) { .l-header__nav { display: flex; align-items: center; gap: 32px; } }
+.l-header__link { font-family: var(--font-en); font-size: 0.9rem; font-weight: 500; color: var(--color-text-main); transition: color 0.3s; position: relative; }
+.l-header__link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--color-primary); transition: width 0.3s; }
+.l-header__link:hover::after, .l-header__link.is-active::after { width: 100%; }
+.l-header__link:hover, .l-header__link.is-active { color: var(--color-primary); }
+.l-header__btn { background: var(--color-primary); color: var(--color-white); padding: 10px 24px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+.l-header__btn:hover { background: var(--color-accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(26,115,232,0.3); }
+
+.l-bottom-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 40px; padding: 8px 16px; box-shadow: var(--shadow-md); z-index: 99; display: flex; justify-content: space-around; align-items: center; }
+@media (min-width: 1024px) { .l-bottom-nav { display: none; } }
+.l-bottom-nav__item { display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; color: var(--color-text-sub); gap: 4px; }
+.l-bottom-nav__item.is-active { color: var(--color-primary); }
+.l-bottom-nav__item svg { width: 20px; height: 20px; stroke-width: 1.5px; }
+.l-bottom-nav__entry { background: var(--color-primary); color: var(--color-white); padding: 8px 24px; border-radius: 20px; font-weight: 600; }
+
+/* Hero */
+.p-hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 80px; overflow: hidden; }
+.p-hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+.p-hero__bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.9); }
+.p-hero__overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.4) 100%); z-index: -1; }
+.p-hero__content { text-align: center; max-width: 800px; padding: 40px; border-radius: 24px; position: relative; }
+.p-hero__logo { margin: 0 auto 32px; width: clamp(160px, 20vw, 240px); }
+.p-hero__catch { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; color: var(--color-primary); line-height: 1.3; margin-bottom: 24px; letter-spacing: 0.05em; text-shadow: 0 4px 12px rgba(255,255,255,0.8); }
+.p-hero__sub { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 500; color: var(--color-text-main); margin-bottom: 48px; }
+.p-hero__scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; font-family: var(--font-en); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--color-text-main); z-index: 10; }
+.p-hero__scroll-line { width: 1px; height: 40px; background: var(--color-text-main); margin-top: 8px; animation: scrollDown 2s infinite cubic-bezier(0.25, 1, 0.5, 1); transform-origin: top; }
+@keyframes scrollDown { 0% { transform: scaleY(0); opacity: 0; } 50% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(0); opacity: 0; transform-origin: bottom; } }
+
+/* Philosophy */
+.p-philosophy { position: relative; background: var(--color-white); }
+.p-philosophy::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100px; background: var(--color-bg-base); clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%); z-index: 1; }
+.p-philosophy__mission { text-align: center; margin-bottom: 80px; }
+.p-philosophy__mission-text { font-size: clamp(1.2rem, 2.5vw, 1.75rem); font-weight: 700; line-height: 1.6; color: var(--color-primary); }
+.p-philosophy__mission-desc { margin-top: 24px; font-size: 1rem; color: var(--color-text-sub); max-width: 700px; margin-left: auto; margin-right: auto; }
+.p-philosophy__values { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+.p-philosophy__value-card { padding: 40px 32px; text-align: center; position: relative; background: var(--color-bg-base); }
+.p-philosophy__value-num { font-family: var(--font-en); font-size: 4rem; font-weight: 700; color: var(--color-primary-light); position: absolute; top: 16px; left: 24px; line-height: 1; opacity: 0.5; }
+.p-philosophy__value-title { font-size: 1.25rem; font-weight: 700; margin: 24px 0 16px; position: relative; z-index: 2; }
+.p-philosophy__value-desc { font-size: 0.95rem; color: var(--color-text-sub); text-align: justify; position: relative; z-index: 2; }
+
+/* Service */
+.p-service { background: var(--color-bg-alt); position: relative; }
+.p-service__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+@media (min-width: 992px) { .p-service__grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+.p-service__content { padding-right: 4vw; }
+.p-service__lead { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 32px; color: var(--color-primary); }
+.p-service__list { display: flex; flex-direction: column; gap: 24px; }
+.p-service__item { background: var(--color-white); padding: 24px; border-radius: var(--radius-md); border-left: 4px solid var(--color-primary); box-shadow: var(--shadow-sm); }
+.p-service__item-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.p-service__item-title::before { content: ''; display: block; width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; }
+.p-service__item-desc { font-size: 0.9rem; color: var(--color-text-sub); }
+.p-service__visual { position: relative; }
+.p-service__stat { position: absolute; top: -20px; right: -20px; width: 140px; height: 140px; background: linear-gradient(135deg, var(--color-primary), var(--color-accent)); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-white); box-shadow: var(--shadow-md); transform: rotate(10deg); }
+.p-service__stat-num { font-family: var(--font-en); font-size: 2.5rem; font-weight: 700; line-height: 1; }
+.p-service__stat-unit { font-size: 0.8rem; font-weight: 500; margin-top: 4px; }
+.p-service__visual-box { background: var(--color-white); border-radius: var(--radius-lg); padding: 40px; text-align: center; box-shadow: var(--shadow-lg); }
+.p-service__visual-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; }
+.p-service__tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.p-service__tag { background: var(--color-primary-light); color: var(--color-primary); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+
+/* Environment */
+.p-environment { background: var(--color-white); position: relative; }
+.p-environment__numbers { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(24px, 4vw, 48px); margin-bottom: 80px; }
+.p-environment__number-item { text-align: center; }
+.p-environment__number-label { font-size: 0.9rem; font-weight: 600; color: var(--color-text-sub); margin-bottom: 8px; }
+.p-environment__number-val { font-family: var(--font-en); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: var(--color-primary); line-height: 1; }
+.p-environment__number-val span { font-size: 1.5rem; }
+.p-environment__features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.p-environment__feature { padding: 32px 24px; text-align: center; border-radius: var(--radius-md); background: var(--color-bg-base); border: 1px solid var(--color-border); transition: var(--transition); }
+.p-environment__feature:hover { background: var(--color-primary-light); border-color: transparent; }
+.p-environment__feature-icon { margin-bottom: 16px; display: inline-flex; justify-content: center; align-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--color-white); color: var(--color-accent); box-shadow: var(--shadow-sm); }
+.p-environment__feature-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+.p-environment__feature-desc { font-size: 0.85rem; color: var(--color-text-sub); }
+
+/* Interview */
+.p-interview { background: linear-gradient(180deg, var(--color-bg-base) 0%, var(--color-bg-alt) 100%); }
+.p-interview__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+.p-interview__card { cursor: pointer; }
+.p-interview__img-wrap { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; margin-bottom: 24px; }
+.p-interview__img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+.p-interview__card:hover .p-interview__img { transform: scale(1.05); }
+.p-interview__info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 32px 24px 24px; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); color: var(--color-white); }
+.p-interview__name { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: baseline; gap: 8px; }
+.p-interview__name span { font-size: 0.85rem; font-weight: 400; opacity: 0.8; }
+.p-interview__quote { font-size: 1.1rem; font-weight: 600; color: var(--color-text-main); margin-bottom: 16px; line-height: 1.5; padding-left: 16px; border-left: 3px solid var(--color-primary); }
+.p-interview__readmore { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--color-accent); }
+
+/* Jobs */
+.p-jobs { background: var(--color-white); }
+.p-jobs__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+.p-jobs__card { padding: 40px 32px; display: flex; flex-direction: column; align-items: flex-start; cursor: pointer; }
+.p-jobs__type { display: inline-block; padding: 4px 12px; background: var(--color-bg-alt); color: var(--color-text-sub); font-size: 0.8rem; font-weight: 600; border-radius: 4px; margin-bottom: 16px; }
+.p-jobs__title { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--color-primary); }
+.p-jobs__summary { display: flex; flex-direction: column; gap: 12px; width: 100%; margin-bottom: 32px; }
+.p-jobs__summary-row { display: flex; border-bottom: 1px dashed var(--color-border); padding-bottom: 8px; }
+.p-jobs__summary-dt { width: 30%; font-size: 0.85rem; font-weight: 600; color: var(--color-text-sub); }
+.p-jobs__summary-dd { width: 70%; font-size: 0.9rem; font-weight: 500; }
+.p-jobs__btn { margin-top: auto; align-self: flex-end; width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary-light); color: var(--color-primary); display: flex; justify-content: center; align-items: center; transition: var(--transition); }
+.p-jobs__card:hover .p-jobs__btn { background: var(--color-primary); color: var(--color-white); transform: translateX(8px); }
+
+/* Process & FAQ */
+.p-faq { background: var(--color-bg-alt); }
+.p-process__steps { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto 80px; }
+@media (min-width: 768px) { .p-process__steps { flex-direction: row; } }
+.p-process__step { flex: 1; background: var(--color-white); padding: 24px; border-radius: var(--radius-md); text-align: center; position: relative; box-shadow: var(--shadow-sm); }
+.p-process__step:not(:last-child)::after { content: ''; position: absolute; right: -12px; top: 50%; transform: translateY(-50%) rotate(45deg); width: 16px; height: 16px; border-top: 2px solid var(--color-primary); border-right: 2px solid var(--color-primary); z-index: 2; display: none; }
+@media (min-width: 768px) { .p-process__step:not(:last-child)::after { display: block; } }
+.p-process__step-num { font-family: var(--font-en); font-size: 1.25rem; font-weight: 700; color: var(--color-accent); margin-bottom: 8px; display: block; }
+.p-process__step-title { font-weight: 700; font-size: 1.1rem; }
+
+.p-faq__list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+.p-faq__item { background: var(--color-white); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; }
+.p-faq__q { width: 100%; text-align: left; padding: 24px 32px; font-size: 1.1rem; font-weight: 700; display: flex; justify-content: space-between; align-items: center; color: var(--color-primary); }
+.p-faq__icon { transition: transform 0.3s ease; flex-shrink: 0; margin-left: 16px; }
+.p-faq__q[aria-expanded="true"] .p-faq__icon { transform: rotate(45deg); }
+.p-faq__a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.p-faq__a-inner { padding: 0 32px 24px; font-size: 0.95rem; color: var(--color-text-sub); border-top: 1px dashed var(--color-border); margin-top: 8px; padding-top: 24px; }
+
+/* Entry CTA */
+.p-entry { background: linear-gradient(135deg, var(--color-bg-base) 0%, var(--color-bg-alt) 100%); position: relative; overflow: hidden; }
+.p-entry__inner { text-align: center; position: relative; z-index: 2; }
+.p-entry__msg { font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--color-primary); margin-bottom: 24px; line-height: 1.4; }
+.p-entry__sub { font-size: 1.1rem; color: var(--color-text-sub); margin-bottom: 48px; }
+.p-entry__bg-circle { position: absolute; border-radius: 50%; background: linear-gradient(135deg, rgba(26,115,232,0.05), rgba(0,86,179,0.05)); z-index: 1; }
+.p-entry__bg-circle-1 { width: 400px; height: 400px; top: -100px; left: -100px; }
+.p-entry__bg-circle-2 { width: 600px; height: 600px; bottom: -200px; right: -200px; }
+
+/* Footer */
+.l-footer { background: var(--color-text-main); color: var(--color-white); padding: 60px 0 24px; text-align: center; }
+.l-footer__info { margin-bottom: 40px; }
+.l-footer__logo { filter: brightness(0) invert(1); width: 200px; margin: 0 auto 24px; }
+.l-footer__address { font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
+.l-footer__copy { font-size: 0.75rem; font-family: var(--font-en); color: rgba(255,255,255,0.5); }
+
+/* Modals */
+.c-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 900; opacity: 0; visibility: hidden; transition: var(--transition); }
+.c-modal-overlay.is-active { opacity: 1; visibility: visible; }
+.c-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -48%) scale(0.95); width: 90%; max-width: 800px; max-height: 90vh; background: var(--color-white); border-radius: var(--radius-lg); z-index: 901; opacity: 0; visibility: hidden; transition: var(--transition); display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg); }
+.c-modal.is-active { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
+.c-modal__header { padding: 24px 32px; border-bottom: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; background: var(--color-bg-base); }
+.c-modal__title { font-size: 1.25rem; font-weight: 700; color: var(--color-primary); }
+.c-modal__close { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--color-bg-alt); transition: var(--transition); }
+.c-modal__close:hover { background: #e0e6ed; transform: rotate(90deg); }
+.c-modal__body { padding: 32px; overflow-y: auto; overscroll-behavior: contain; }
+.c-modal__body::-webkit-scrollbar { width: 8px; }
+.c-modal__body::-webkit-scrollbar-track { background: var(--color-bg-alt); }
+.c-modal__body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* Modal specific contents */
+.p-modal-job__section { margin-bottom: 32px; }
+.p-modal-job__h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid var(--color-primary); }
+.p-modal-job__table { width: 100%; border-collapse: collapse; }
+.p-modal-job__table th, .p-modal-job__table td { padding: 16px; border-bottom: 1px solid var(--color-border); font-size: 0.95rem; }
+.p-modal-job__table th { width: 30%; text-align: left; background: var(--color-bg-alt); font-weight: 600; color: var(--color-text-sub); }
+.p-modal-job__table td { width: 70%; }
+.p-modal-job__table ul { padding-left: 20px; list-style-type: disc; }
+
+.p-modal-int__header { display: flex; gap: 24px; align-items: center; margin-bottom: 32px; }
+.p-modal-int__img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+.p-modal-int__name { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+.p-modal-int__qa { margin-bottom: 24px; background: var(--color-bg-alt); padding: 24px; border-radius: var(--radius-md); }
+.p-modal-int__q { font-weight: 700; font-size: 1.05rem; color: var(--color-primary); margin-bottom: 12px; display: flex; gap: 8px; }
+.p-modal-int__q::before { content: 'Q.'; font-family: var(--font-en); font-size: 1.2rem; color: var(--color-accent); }
+.p-modal-int__a { font-size: 0.95rem; line-height: 1.8; display: flex; gap: 8px; }
+.p-modal-int__a::before { content: 'A.'; font-family: var(--font-en); font-size: 1.2rem; font-weight: 700; color: var(--color-text-sub); }
+</style>
+</head>
+<body>
+
+<header class="l-header js-header">
+  <div class="l-header__inner">
+    <a href="#hero" class="l-header__logo">
+      <img src="assets/logo.png" alt="知多自動車学校">
+    </a>
+    <nav class="l-header__nav">
+      <a href="#philosophy" class="l-header__link js-nav-link">Philosophy</a>
+      <a href="#service" class="l-header__link js-nav-link">Service</a>
+      <a href="#environment" class="l-header__link js-nav-link">Environment</a>
+      <a href="#interview" class="l-header__link js-nav-link">Interview</a>
+      <a href="#jobs" class="l-header__link js-nav-link">Jobs</a>
+      <a href="#faq" class="l-header__link js-nav-link">Process & FAQ</a>
+      <a href="https://en-gage.net/chitaji_jobs/work_12407387/" target="_blank" rel="noopener" class="l-header__btn">Entry</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="l-bottom-nav">
+  <a href="#philosophy" class="l-bottom-nav__item js-nav-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+    <span>会社</span>
+  </a>
+  <a href="#environment" class="l-bottom-nav__item js-nav-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+    <span>環境</span>
+  </a>
+  <a href="#jobs" class="l-bottom-nav__item js-nav-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+    <span>募集</span>
+  </a>
+  <a href="https://en-gage.net/chitaji_jobs/work_12407387/" target="_blank" rel="noopener" class="l-bottom-nav__entry">
+    Entry
+  </a>
+</nav>
+
+<main>
+  <section id="hero" class="p-hero">
+    <div class="p-hero__bg">
+      <img src="assets/hero.png" alt="知多自動車学校の風景">
+    </div>
+    <div class="p-hero__overlay"></div>
+    <div class="p-hero__content js-anim">
+      <img src="assets/logo.png" alt="知多自動車学校" class="p-hero__logo">
+      <h1 class="p-hero__catch">
+        「生涯無事故」を創る、<br>プロフェッショナルへ。
+      </h1>
+      <p class="p-hero__sub">
+        愛知県半田市・知多自動車学校で、<br class="u-br-pc">あなたの新しいキャリアを。
+      </p>
+      <a href="https://en-gage.net/chitaji_jobs/work_12407387/" target="_blank" rel="noopener" class="c-btn">
+        エントリーはこちら
+        <svg class="c-btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+    <div class="p-hero__scroll">
+      SCROLL
+      <div class="p-hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <section id="philosophy" class="p-philosophy u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">PHILOSOPHY</span>
+        <span class="c-title__ja">会社について</span>
+      </div>
+      <div class="p-philosophy__mission js-anim js-anim-delay-1">
+        <h2 class="p-philosophy__mission-text">
+          生涯無事故のカーライフを支え、<br>
+          地域社会と社員の豊かな未来を育む。
+        </h2>
+        <p class="p-philosophy__mission-desc">
+          知多半島での免許取得をサポートし、お客様がいつまでも快適なカーライフを楽しめるよう、運転技術と安全運転への心を育むことをミッションとしています。
+        </p>
+      </div>
+      <div class="p-philosophy__values">
+        <div class="p-philosophy__value-card u-glass js-anim js-anim-delay-1">
+          <span class="p-philosophy__value-num">01</span>
+          <h3 class="p-philosophy__value-title">安全運転への深いコミットメント</h3>
+          <p class="p-philosophy__value-desc">
+            「生涯無事故」を掲げ、適切な判断力と運転技術の指導を通じて、卒業生が安全で快適なカーライフを送れるようサポートします。
+          </p>
+        </div>
+        <div class="p-philosophy__value-card u-glass js-anim js-anim-delay-2">
+          <span class="p-philosophy__value-num">02</span>
+          <h3 class="p-philosophy__value-title">顧客満足と革新の追求</h3>
+          <p class="p-philosophy__value-desc">
+            最新のIT学習環境や広大なコース、快適な施設を備え、一人ひとりのニーズに応じた多様なプランでお客様に寄り添います。
+          </p>
+        </div>
+        <div class="p-philosophy__value-card u-glass js-anim js-anim-delay-3">
+          <span class="p-philosophy__value-num">03</span>
+          <h3 class="p-philosophy__value-title">社員の成長と幸福の支援</h3>
+          <p class="p-philosophy__value-desc">
+            国家資格取得の全額サポート、豊富な育児支援や充実した福利厚生により、社員の長期的なキャリア形成とライフワークバランスを全面的に支援します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="service" class="p-service u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">BUSINESS</span>
+        <span class="c-title__ja">事業・サービス紹介</span>
+      </div>
+      <div class="p-service__grid">
+        <div class="p-service__content js-anim js-anim-delay-1">
+          <h2 class="p-service__lead">県下最大級の設備とIT化による、新しい教習体験</h2>
+          <div class="p-service__list">
+            <div class="p-service__item">
+              <h3 class="p-service__item-title">広大な教習コース</h3>
+              <p class="p-service__item-desc">約30,000㎡の県下最大級のコース。直線距離160mで公道の走りを実感でき、他の車を気にせずのびのびと実車教習が可能です。</p>
+            </div>
+            <div class="p-service__item">
+              <h3 class="p-service__item-title">最新のIT学習環境</h3>
+              <p class="p-service__item-desc">県下トップクラスの48台の新型コンピューター学習機を完備。オンライン学習システム「i-武蔵」で24時間学科試験対策が可能です。</p>
+            </div>
+            <div class="p-service__item">
+              <h3 class="p-service__item-title">快適な校内施設とサービス</h3>
+              <p class="p-service__item-desc">無料Wi-Fiや電源付きラウンジ、託児室のほか、500円でお釣りがくる低価格食堂「赤レンガ」が生徒や職員の休憩をサポートします。</p>
+            </div>
+          </div>
+        </div>
+        <div class="p-service__visual js-anim js-anim-delay-2">
+          <div class="p-service__stat">
+            <span class="p-service__stat-num">89.5</span>
+            <span class="p-service__stat-unit">%</span>
+            <span style="font-size:0.75rem; font-weight:700;">平針合格率</span>
+          </div>
+          <div class="p-service__visual-box">
+            <h3 class="p-service__visual-title">取得可能免許一覧</h3>
+            <div class="p-service__tags">
+              <span class="p-service__tag">普通自動車 (一種・二種)</span>
+              <span class="p-service__tag">大型・中型自動車</span>
+              <span class="p-service__tag">準中型自動車</span>
+              <span class="p-service__tag">大型特殊</span>
+              <span class="p-service__tag">牽引自動車</span>
+            </div>
+            <p style="margin-top:24px; font-size:0.85rem; color:var(--color-text-sub); text-align:left;">
+              お客様のニーズに合わせた「短期プラン」「安心プラン」「セット割」など多様なプランや、便利な予約システム（おまかせ予約・自分予約）を提供しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="environment" class="p-environment u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">ENVIRONMENT</span>
+        <span class="c-title__ja">働く環境・福利厚生</span>
+      </div>
+      <div class="p-environment__numbers js-anim js-anim-delay-1">
+        <div class="p-environment__number-item">
+          <div class="p-environment__number-label">社内平均年齢</div>
+          <div class="p-environment__number-val">42<span>歳</span></div>
+        </div>
+        <div class="p-environment__number-item">
+          <div class="p-environment__number-label">社内男女比</div>
+          <div class="p-environment__number-val">7:3</div>
+        </div>
+        <div class="p-environment__number-item">
+          <div class="p-environment__number-label">転勤の有無</div>
+          <div class="p-environment__number-val">なし</div>
+        </div>
+      </div>
+      <div class="p-environment__features">
+        <div class="p-environment__feature js-anim js-anim-delay-1">
+          <div class="p-environment__feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <h3 class="p-environment__feature-title">資格取得全額サポート</h3>
+          <p class="p-environment__feature-desc">未経験からでも教習指導員（国家資格）の取得費用を全額負担。成長を応援します。</p>
+        </div>
+        <div class="p-environment__feature js-anim js-anim-delay-2">
+          <div class="p-environment__feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="p-environment__feature-title">手厚い育児・生活支援</h3>
+          <p class="p-environment__feature-desc">産休・育休（男性実績あり）、子供手当（月5,000円）、退職金制度など長く働ける環境です。</p>
+        </div>
+        <div class="p-environment__feature js-anim js-anim-delay-3">
+          <div class="p-environment__feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <h3 class="p-environment__feature-title">充実した休暇制度</h3>
+          <p class="p-environment__feature-desc">完全週休2日制（シフト制）、連休取得推進、20年勤続表彰（旅行券10万円＋有給5日）があります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interview" class="p-interview u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">INTERVIEW</span>
+        <span class="c-title__ja">先輩インタビュー</span>
+      </div>
+      <div class="p-interview__grid">
+        <article class="p-interview__card c-card js-anim js-anim-delay-1 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-int-1">
+          <div class="p-interview__img-wrap">
+            <img src="assets/interview-1.png" alt="田中太郎" class="p-interview__img">
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">田中太郎</h3>
+              <p class="p-interview__quote">地元・知多半島で、人の役に立つ実感が持てる仕事。</p>
+              <span class="p-interview__readmore">インタビューを読む <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </article>
+        <article class="p-interview__card c-card js-anim js-anim-delay-2 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-int-2">
+          <div class="p-interview__img-wrap">
+            <img src="assets/interview-2.png" alt="高橋優子" class="p-interview__img">
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">高橋優子</h3>
+              <p class="p-interview__quote">生徒さんの満面の笑みと「一生忘れません！」という言葉が宝物です。</p>
+              <span class="p-interview__readmore">インタビューを読む <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </article>
+        <article class="p-interview__card c-card js-anim js-anim-delay-3 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-int-3">
+          <div class="p-interview__img-wrap">
+            <img src="assets/interview-3.png" alt="佐藤祐介" class="p-interview__img">
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">佐藤祐介</h3>
+              <p class="p-interview__quote">「お節介なくらい、教え好きで温かい集団」です。</p>
+              <span class="p-interview__readmore">インタビューを読む <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="jobs" class="p-jobs u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">JOB OPENINGS</span>
+        <span class="c-title__ja">募集要項</span>
+      </div>
+      <div class="p-jobs__grid">
+        <div class="p-jobs__card c-card js-anim js-anim-delay-1 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-job-1">
+          <span class="p-jobs__type">正社員・契約社員</span>
+          <h3 class="p-jobs__title">教習指導員</h3>
+          <div class="p-jobs__summary">
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">対象</div>
+              <div class="p-jobs__summary-dd">21歳以上 / 普通自動車免許</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">勤務地</div>
+              <div class="p-jobs__summary-dd">愛知県半田市（転勤なし）</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">給与</div>
+              <div class="p-jobs__summary-dd">基本給 20万1400円～</div>
+            </div>
+          </div>
+          <button class="p-jobs__btn" aria-label="詳細を見る">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="p-jobs__card c-card js-anim js-anim-delay-2 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-job-2">
+          <span class="p-jobs__type">正社員</span>
+          <h3 class="p-jobs__title">事務職員</h3>
+          <div class="p-jobs__summary">
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">仕事内容</div>
+              <div class="p-jobs__summary-dd">一般事務</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">対象</div>
+              <div class="p-jobs__summary-dd">18歳以上（学歴・経験不問）</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">給与</div>
+              <div class="p-jobs__summary-dd">基本給 20万1400円～</div>
+            </div>
+          </div>
+          <button class="p-jobs__btn" aria-label="詳細を見る">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+
+        <div class="p-jobs__card c-card js-anim js-anim-delay-3 js-modal-open" aria-haspopup="dialog" data-modal-target="modal-job-3">
+          <span class="p-jobs__type">契約社員</span>
+          <h3 class="p-jobs__title">送迎バス運転士</h3>
+          <div class="p-jobs__summary">
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">対象</div>
+              <div class="p-jobs__summary-dd">中型自動車免許以上</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">勤務地</div>
+              <div class="p-jobs__summary-dd">愛知県半田市（転勤なし）</div>
+            </div>
+            <div class="p-jobs__summary-row">
+              <div class="p-jobs__summary-dt">給与</div>
+              <div class="p-jobs__summary-dd">時給 1,200円</div>
+            </div>
+          </div>
+          <button class="p-jobs__btn" aria-label="詳細を見る">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="p-faq u-section-padding">
+    <div class="u-container">
+      <div class="c-title js-anim">
+        <span class="c-title__en">PROCESS & FAQ</span>
+        <span class="c-title__ja">選考フロー・よくあるご質問</span>
+      </div>
+      
+      <div class="p-process js-anim js-anim-delay-1">
+        <div class="p-process__steps">
+          <div class="p-process__step">
+            <span class="p-process__step-num">STEP 01</span>
+            <h3 class="p-process__step-title">エントリー</h3>
+            <p style="font-size:0.85rem; color:var(--color-text-sub); margin-top:8px;">Webフォームまたはお電話（0120-33-3755）にてご応募ください。</p>
+          </div>
+          <div class="p-process__step">
+            <span class="p-process__step-num">STEP 02</span>
+            <h3 class="p-process__step-title">面接・適性検査</h3>
+            <p style="font-size:0.85rem; color:var(--color-text-sub); margin-top:8px;">人物重視の選考を行います。</p>
+          </div>
+          <div class="p-process__step">
+            <span class="p-process__step-num">STEP 03</span>
+            <h3 class="p-process__step-title">内定・入社</h3>
+            <p style="font-size:0.85rem; color:var(--color-text-sub); margin-top:8px;">入社時期のご相談も承ります。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-faq__list">
+        <div class="p-faq__item js-anim js-anim-delay-1">
+          <button class="p-faq__q js-accordion-trigger" aria-expanded="false">
+            <span>Q. 未経験でも教習指導員になれますか？</span>
+            <svg class="p-faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="p-faq__a">
+            <div class="p-faq__a-inner">
+              はい、可能です。学歴や経験は問いません。資格取得まで（最長1年間）は契約社員としての採用となりますが、教習指導員資格（国家資格）の取得費用は全額サポートいたしますので、未経験からでも安心して挑戦できます。
+            </div>
+          </div>
+        </div>
+        <div class="p-faq__item js-anim js-anim-delay-2">
+          <button class="p-faq__q js-accordion-trigger" aria-expanded="false">
+            <span>Q. 転勤や異動はありますか？</span>
+            <svg class="p-faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="p-faq__a">
+            <div class="p-faq__a-inner">
+              転勤はございません。愛知県半田市（駐車場完備）での勤務となり、地域に根ざして長く働ける環境です。
+            </div>
+          </div>
+        </div>
+        <div class="p-faq__item js-anim js-anim-delay-3">
+          <button class="p-faq__q js-accordion-trigger" aria-expanded="false">
+            <span>Q. お休みや育児支援について教えてください。</span>
+            <svg class="p-faq__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+          <div class="p-faq__a">
+            <div class="p-faq__a-inner">
+              完全週休2日制（シフト制）で、連続5日以上の連休取得も推進しています。また、産休・育休制度は男女ともに取得実績があり、子供手当等も充実しているためライフステージの変化に柔軟に対応できます。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-entry u-section-padding">
+    <div class="p-entry__bg-circle p-entry__bg-circle-1"></div>
+    <div class="p-entry__bg-circle p-entry__bg-circle-2"></div>
+    <div class="u-container p-entry__inner js-anim">
+      <h2 class="p-entry__msg">私たちと一緒に、知多半島で<br class="u-br-pc">新しいキャリアを描きませんか？</h2>
+      <p class="p-entry__sub">あなたのご応募を心よりお待ちしております。</p>
+      <a href="https://en-gage.net/chitaji_jobs/work_12407387/" target="_blank" rel="noopener" class="c-btn" style="font-size:1.2rem; padding: 20px 60px;">
+        エントリーフォームへ進む
+        <svg class="c-btn__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="l-footer">
+  <div class="u-container">
+    <div class="l-footer__info">
+      <img src="assets/logo.png" alt="知多自動車学校" class="l-footer__logo">
+      <p class="l-footer__address">
+        〒475-0916 愛知県半田市柊町2丁目13番地の3<br>
+        TEL: 0120-33-3755 (担当：総務部 酒井)
+      </p>
+    </div>
+    <p class="l-footer__copy">&copy; 2026 Chita Driving School. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- Modal Overlay -->
+<div class="c-modal-overlay js-modal-overlay" aria-hidden="true"></div>
+
+<!-- Modals for Interview -->
+<div id="modal-int-1" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-int-1-title">
+  <div class="c-modal__header">
+    <h2 id="modal-int-1-title" class="c-modal__title">先輩インタビュー</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-int__header">
+      <img src="assets/interview-1.png" alt="田中太郎" class="p-modal-int__img">
+      <div>
+        <h3 class="p-modal-int__name">田中太郎</h3>
+      </div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">この会社を選んだ理由は何ですか？</div>
+      <div class="p-modal-int__a">もともと運転が好きだったこともありますが、一番は「地元・知多半島で、人の役に立つ実感が持てる仕事」をしたかったからです。知多自動車学校は地域での信頼が厚く、アットホームな雰囲気が決め手になりました。</div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">入社して一番驚いた「いい意味でのギャップ」は何ですか？</div>
+      <div class="p-modal-int__a">「教習所＝厳しい」という昔のイメージを持っていましたが、実際は「いかに楽しく、リラックスして学んでもらうか」を追求する、サービス精神に溢れた職場だったことです。指導員同士も仲が良く、休憩時間はいつも賑やかですね。</div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-int-2" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-int-2-title">
+  <div class="c-modal__header">
+    <h2 id="modal-int-2-title" class="c-modal__title">先輩インタビュー</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-int__header">
+      <img src="assets/interview-2.png" alt="高橋優子" class="p-modal-int__img">
+      <div>
+        <h3 class="p-modal-int__name">高橋優子</h3>
+      </div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">これまでで最も達成感を感じたプロジェクトや、忘れられない仕事のエピソードを教えてください。</div>
+      <div class="p-modal-int__a">運転に自信がなく、何度も諦めそうになっていた生徒さんがいたのですが、二人三脚で練習を重ね、卒業検定に合格されたときのことです。最後に見せてくれた満面の笑みと「一生忘れません！」という言葉は、私の宝物です。</div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">この会社で働く中で、自分自身が一番成長したと感じる能力は何ですか？</div>
+      <div class="p-modal-int__a">「相手に合わせたコミュニケーション能力」です。高校生からご高齢の方まで、一人ひとりの性格や理解度に合わせた伝え方を考える中で、観察力と忍耐強さが養われました。</div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-int-3" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-int-3-title">
+  <div class="c-modal__header">
+    <h2 id="modal-int-3-title" class="c-modal__title">先輩インタビュー</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-int__header">
+      <img src="assets/interview-3.png" alt="佐藤祐介" class="p-modal-int__img">
+      <div>
+        <h3 class="p-modal-int__name">佐藤祐介</h3>
+      </div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">一言で表すと、この会社は「どんな人が集まっている集団」ですか？</div>
+      <div class="p-modal-int__a">「お節介なくらい、教え好きで温かい集団」です。生徒さんの上達を自分のことのように喜べる、情熱的なメンバーばかりです。</div>
+    </div>
+    <div class="p-modal-int__qa">
+      <div class="p-modal-int__q">これから入社してくる後輩たちと一緒に、どんな新しい挑戦をしていきたいですか？</div>
+      <div class="p-modal-int__a">最近はオンライン学科教習なども導入されていますが、今後はさらにITを活用して「もっと分かりやすく、もっと面白い教習」を一緒に作り上げていきたいです。新しい感性で、教習所のイメージを変えていきたいですね。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modals for Jobs -->
+<div id="modal-job-1" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-job-1-title">
+  <div class="c-modal__header">
+    <h2 id="modal-job-1-title" class="c-modal__title">募集要項：教習指導員</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">基本情報</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>仕事内容</th><td>教習指導員</td></tr>
+          <tr><th>対象の方</th><td>21歳以上<br>普通自動車免許をお持ちの方<br>※他車種免許取得の補助あり<br>※学歴・経験・性別不問<br>※教習指導員資格をお持ちの方優遇</td></tr>
+          <tr><th>雇用形態</th><td>正社員<br>※資格取得まで（最長1年間）は契約社員としての採用</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">給与・勤務条件</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>給与</th><td>基本給 20万1400円～<br>※大卒初任給。年齢・学歴・資格により変動<br>※資格・経験のある方は待遇面考慮</td></tr>
+          <tr><th>賞与・昇給</th><td>賞与：年3回（7月、12月、4月）<br>昇給：年1回</td></tr>
+          <tr><th>勤務地</th><td>愛知県半田市柊町2丁目13番地の3（転勤なし / 駐車場完備）</td></tr>
+          <tr><th>勤務時間</th><td>平日 8:55～18:30 (休憩1時間20分)<br>土曜 9:10～17:00 (休憩50分)</td></tr>
+          <tr><th>休日・休暇</th><td>完全週休2日制（シフト制、土日祝勤務あり）<br>※繁忙期に限り休日出勤あり<br>年末年始、お盆休み、GW、特別休暇（夏季・慶弔・誕生日）<br>有給休暇（入社6ヶ月後10日付与、連続5日以上の連休取得推進）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">待遇・福利厚生</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>制度・手当</th><td>
+            <ul>
+              <li>社会保険完備</li>
+              <li>教習指導員資格取得費用 全額サポート</li>
+              <li>退職金制度（企業型確定拠出年金/DC）</li>
+              <li>産休・育休制度（男性取得実績あり）</li>
+              <li>子供手当（子1人につき5,000円/月 大学まで）</li>
+              <li>通勤手当（実通勤距離に応じて支給）</li>
+              <li>乗車手当</li>
+            </ul>
+          </td></tr>
+          <tr><th>その他</th><td>
+            <ul>
+              <li>福利厚生倶楽部加入</li>
+              <li>制服貸与、健康診断、インフルエンザ予防接種</li>
+              <li>社員価格での自販機、食堂、自家用車燃料、洗車機無料</li>
+              <li>20年勤続表彰（旅行券10万円分、5日間有給）</li>
+              <li>屋内完全禁煙（分煙の喫煙室あり）</li>
+            </ul>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="modal-job-2" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-job-2-title">
+  <div class="c-modal__header">
+    <h2 id="modal-job-2-title" class="c-modal__title">募集要項：事務職員</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">基本情報</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>仕事内容</th><td>一般事務</td></tr>
+          <tr><th>対象の方</th><td>18歳以上<br>※学歴・経験・性別・年齢不問<br>※免許取得補助（入校申込金免除等）あり</td></tr>
+          <tr><th>雇用形態</th><td>正社員<br>※中途採用の場合は試用期間3ヶ月、終了時正社員登用</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">給与・勤務条件</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>給与</th><td>基本給 20万1400円～<br>※大卒初任給。年齢、学歴により変動</td></tr>
+          <tr><th>賞与・昇給</th><td>賞与：年3回（7月、12月、4月）<br>昇給：年1回</td></tr>
+          <tr><th>勤務地</th><td>愛知県半田市柊町2丁目13番地の3（転勤なし / 駐車場完備）</td></tr>
+          <tr><th>勤務時間</th><td>平日 8:55～18:10 (休憩1時間)<br>土曜 9:10～17:00 (休憩50分)</td></tr>
+          <tr><th>休日・休暇</th><td>完全週休2日制（シフト制、土日祝勤務あり）<br>※週に2回程度残業あり、繁忙期休日出勤あり<br>年末年始、お盆休み、GW、特別休暇（夏季・慶弔・誕生日）<br>有給休暇（入社6ヶ月後10日付与、連続5日以上の連休取得推進）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">待遇・福利厚生</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>制度・手当</th><td>
+            <ul>
+              <li>社会保険完備</li>
+              <li>教習指導員資格取得費用 全額サポート</li>
+              <li>退職金制度（企業型確定拠出年金/DC）</li>
+              <li>産休・育休制度（男性取得実績あり）</li>
+              <li>子供手当（子1人につき5,000円/月 大学まで）</li>
+              <li>通勤手当（実通勤距離に応じて支給）</li>
+            </ul>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="modal-job-3" class="c-modal js-modal" role="dialog" aria-modal="true" aria-labelledby="modal-job-3-title">
+  <div class="c-modal__header">
+    <h2 id="modal-job-3-title" class="c-modal__title">募集要項：送迎バス運転士</h2>
+    <button class="c-modal__close js-modal-close" aria-label="閉じる">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="c-modal__body">
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">基本情報</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>仕事内容</th><td>送迎バス運転士</td></tr>
+          <tr><th>対象の方</th><td>中型自動車免許以上をお持ちの方<br>※学歴・経験・性別・年齢不問</td></tr>
+          <tr><th>雇用形態</th><td>契約社員</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">給与・勤務条件</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>給与</th><td>時給制 1時間1,200円<br>（月収例：約25万円 ※週5日勤務時）</td></tr>
+          <tr><th>勤務地</th><td>愛知県半田市柊町2丁目13番地の3（転勤なし / 駐車場完備）</td></tr>
+          <tr><th>勤務時間</th><td>勤務表による（シフト制、土日祝勤務あり）</td></tr>
+          <tr><th>休日・休暇</th><td>年末年始休暇、お盆休み<br>有給休暇（入社6ヶ月後10日付与）</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="p-modal-job__section">
+      <h3 class="p-modal-job__h3">待遇・福利厚生</h3>
+      <table class="p-modal-job__table">
+        <tbody>
+          <tr><th>制度・手当</th><td>
+            <ul>
+              <li>社会保険完備</li>
+              <li>教習指導員資格取得費用 全額サポート</li>
+              <li>通勤手当（実通勤距離に応じて支給）</li>
+              <li>制服貸与、健康診断、インフルエンザ予防接種</li>
+              <li>社員価格での自販機、食堂、自家用車燃料、洗車機無料</li>
+              <li>屋内完全禁煙（分煙の喫煙室あり）</li>
+            </ul>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Navigation & Scroll Header
+  const header = document.querySelector('.js-header');
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.js-nav-link');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('is-active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('is-active');
+      }
+    });
+  });
+
+  // 2. Scroll Animation
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+  const animObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.js-anim').forEach(el => {
+    animObserver.observe(el);
+  });
+
+  // 3. Modal Control
+  const modalOpens = document.querySelectorAll('.js-modal-open');
+  const modalCloses = document.querySelectorAll('.js-modal-close');
+  const modalOverlay = document.querySelector('.js-modal-overlay');
+  const modals = document.querySelectorAll('.js-modal');
+  let activeElementBeforeModal = null;
+
+  function openModal(modalId) {
+    activeElementBeforeModal = document.activeElement;
+    const modal = document.getElementById(modalId);
+    if(!modal) return;
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    modalOverlay.classList.add('is-active');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    
+    // Focus on close button
+    const closeBtn = modal.querySelector('.js-modal-close');
+    if(closeBtn) closeBtn.focus();
+  }
+
+  function closeAllModals() {
+    modals.forEach(m => {
+      m.classList.remove('is-active');
+      m.setAttribute('aria-hidden', 'true');
+    });
+    modalOverlay.classList.remove('is-active');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if(activeElementBeforeModal) activeElementBeforeModal.focus();
+  }
+
+  modalOpens.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-modal-target');
+      openModal(target);
+    });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const target = btn.getAttribute('data-modal-target');
+        openModal(target);
+      }
+    });
+  });
+
+  modalCloses.forEach(btn => {
+    btn.addEventListener('click', closeAllModals);
+  });
+
+  modalOverlay.addEventListener('click', closeAllModals);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
+  });
+
+  // 4. Accordion Control
+  const accordionTriggers = document.querySelectorAll('.js-accordion-trigger');
+  accordionTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const target = trigger.nextElementSibling;
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      
+      trigger.setAttribute('aria-expanded', !isExpanded);
+      if (!isExpanded) {
+        target.style.maxHeight = target.scrollHeight + "px";
+      } else {
+        target.style.maxHeight = "0px";
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
