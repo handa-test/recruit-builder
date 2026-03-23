@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報｜尾張製粉株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-bg: #FDFDFD;
+      --c-bg-light: #F4F5F7;
+      --c-text: #222222;
+      --c-text-sub: #555555;
+      --c-primary: #122240;
+      --c-accent: #B89050;
+      --c-glass-bg: rgba(255, 255, 255, 0.65);
+      --c-glass-border: rgba(255, 255, 255, 0.4);
+      --font-ja: 'Noto Sans JP', sans-serif;
+      --font-en: 'Inter', sans-serif;
+      --font-head: 'Cormorant Garamond', serif;
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+      --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.08);
+      --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--font-ja); color: var(--c-text); background-color: var(--c-bg); line-height: 1.8; letter-spacing: 0.04em; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; transition: var(--transition); }
+    ul, ol { list-style: none; }
+    button { background: none; border: none; cursor: pointer; font-family: inherit; }
+
+    /* --- Typography --- */
+    .t-en { font-family: var(--font-en); }
+    .t-head { font-family: var(--font-head); }
+    .sec-title { text-align: center; margin-bottom: 4rem; }
+    .sec-title__en { display: block; font-family: var(--font-head); font-size: 2.5rem; color: var(--c-primary); letter-spacing: 0.1em; line-height: 1.2; }
+    .sec-title__ja { display: block; font-size: 0.875rem; color: var(--c-accent); font-weight: 500; margin-top: 0.5rem; letter-spacing: 0.2em; }
+
+    /* --- Animations --- */
+    .animate-elem { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-elem.is-visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* --- Glassmorphism --- */
+    .glass { background: var(--c-glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--c-glass-border); }
+    .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid #fff; box-shadow: var(--shadow-soft); border-radius: 16px; }
+
+    /* --- Components --- */
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 3rem; background: var(--c-primary); color: #fff; font-weight: 500; border-radius: 999px; letter-spacing: 0.1em; transition: var(--transition); position: relative; overflow: hidden; z-index: 1; }
+    .btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--c-accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; z-index: -1; }
+    .btn:hover::before { transform: scaleX(1); transform-origin: left; }
+    .btn svg { width: 16px; height: 16px; margin-left: 10px; fill: none; stroke: currentColor; stroke-width: 2; }
+    
+    .section { padding: 8rem 5%; position: relative; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .bg-light { background: var(--c-bg-light); }
+
+    /* --- Header & Nav --- */
+    .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+    .header.is-scrolled { padding: 0.8rem 5%; background: var(--c-glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--c-glass-border); box-shadow: var(--shadow-soft); }
+    .logo img { height: 40px; }
+    .pc-nav { display: none; }
+    @media (min-width: 992px) {
+      .pc-nav { display: flex; gap: 2rem; align-items: center; }
+      .pc-nav a { font-size: 0.85rem; font-family: var(--font-en); font-weight: 500; letter-spacing: 0.05em; color: var(--c-primary); position: relative; }
+      .pc-nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px; background: var(--c-accent); transform: scaleX(0); transition: var(--transition); transform-origin: right; }
+      .pc-nav a:hover::after, .pc-nav a.is-active::after { transform: scaleX(1); transform-origin: left; }
+      .pc-nav .btn-small { padding: 0.6rem 1.5rem; background: var(--c-primary); color: #fff; border-radius: 999px; font-family: var(--font-ja); }
+      .pc-nav .btn-small::after { display: none; }
+      .pc-nav .btn-small:hover { background: var(--c-accent); }
+    }
+    .sp-nav { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; z-index: 100; border-radius: 999px; padding: 0.5rem; display: flex; justify-content: space-around; box-shadow: var(--shadow-float); }
+    @media (min-width: 992px) { .sp-nav { display: none; } }
+    .sp-nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--c-primary); font-family: var(--font-en); width: 25%; text-align: center; }
+    .sp-nav-item svg { width: 20px; height: 20px; margin-bottom: 2px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .sp-nav-item.is-active { color: var(--c-accent); }
+    .sp-nav-entry { background: var(--c-primary); color: #fff; border-radius: 999px; padding: 0.5rem 1rem; }
+
+    /* --- 1. Hero --- */
+    .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/hero.png') center/cover no-repeat; z-index: -2; transform: scale(1.05); animation: bgZoom 20s infinite alternate linear; }
+    @keyframes bgZoom { from { transform: scale(1.05); } to { transform: scale(1.15); } }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 100%); z-index: -1; }
+    .hero-content { text-align: center; max-width: 800px; padding: 3rem; border-radius: 24px; }
+    .hero-logo { width: 200px; margin: 0 auto 2rem; }
+    .hero-catch { font-size: 2.5rem; font-weight: 700; color: var(--c-primary); line-height: 1.4; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+    .hero-sub { font-size: 1rem; color: var(--c-text); margin-bottom: 3rem; }
+    @media (max-width: 768px) {
+      .hero-catch { font-size: 1.8rem; }
+      .hero-sub { font-size: 0.9rem; }
+      .hero-content { padding: 1.5rem; width: 90%; }
+    }
+    .scroll-down { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; font-family: var(--font-en); font-size: 0.75rem; letter-spacing: 0.1em; color: var(--c-primary); z-index: 10; }
+    .scroll-down::after { content: ''; width: 1px; height: 40px; background: var(--c-primary); margin-top: 10px; animation: scrollLine 2s infinite; }
+    @keyframes scrollLine { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 50.1% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* --- 2. About --- */
+    .about-grid { display: grid; gap: 3rem; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+    .about-message { position: relative; }
+    .about-message::before { content: '"'; position: absolute; top: -3rem; left: -1rem; font-family: var(--font-head); font-size: 6rem; color: var(--c-accent); opacity: 0.2; line-height: 1; }
+    .about-lead { font-size: 1.5rem; font-weight: 600; color: var(--c-primary); margin-bottom: 1.5rem; line-height: 1.6; }
+    .about-text { color: var(--c-text-sub); margin-bottom: 2rem; }
+    .values { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .value-tag { padding: 0.4rem 1rem; background: var(--c-bg-light); border: 1px solid rgba(0,0,0,0.05); border-radius: 999px; font-size: 0.85rem; color: var(--c-primary); }
+
+    /* --- 3. Business --- */
+    .business-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .biz-card { padding: 2.5rem 2rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; }
+    .biz-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-float); }
+    .biz-icon-wrapper { width: 60px; height: 60px; margin: 0 auto 1.5rem; background: var(--c-bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--c-accent); }
+    .biz-icon-wrapper svg { width: 30px; height: 30px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+    .biz-title { font-size: 1.25rem; font-weight: 600; color: var(--c-primary); margin-bottom: 1rem; }
+    .biz-desc { font-size: 0.9rem; color: var(--c-text-sub); text-align: left; }
+    .biz-strength { margin-top: 3rem; padding: 2rem; border-left: 4px solid var(--c-accent); }
+    .biz-strength-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    /* --- 4. Environment --- */
+    .env-numbers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 3rem; }
+    @media (min-width: 768px) { .env-numbers { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+    .num-card { padding: 2rem 1rem; text-align: center; }
+    .num-val { font-family: var(--font-head); font-size: 2.5rem; color: var(--c-accent); line-height: 1; margin-bottom: 0.5rem; display: flex; justify-content: center; align-items: baseline; gap: 0.2rem; }
+    .num-unit { font-size: 1rem; font-family: var(--font-ja); font-weight: 500; }
+    .num-label { font-size: 0.85rem; font-weight: 500; color: var(--c-primary); }
+    .culture-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .culture-tag { padding: 1rem 2rem; background: #fff; border-radius: 8px; box-shadow: var(--shadow-sm); font-weight: 500; color: var(--c-primary); display: flex; align-items: center; gap: 0.5rem; }
+    .culture-tag::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--c-accent); border-radius: 50%; }
+
+    /* --- 5. Interview --- */
+    .clip-section { position: relative; }
+    .clip-section::before { content: ''; position: absolute; top: -3vw; left: 0; width: 100%; height: 6vw; background: var(--c-bg-light); clip-path: polygon(0 100%, 100% 0, 100% 100%); z-index: -1; }
+    .interview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .int-card { cursor: pointer; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .int-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-float); }
+    .int-img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.6s ease; }
+    .int-card:hover .int-img { transform: scale(1.05); }
+    .int-body { padding: 1.5rem; }
+    .int-name { font-size: 1.2rem; font-weight: 600; color: var(--c-primary); margin-bottom: 0.2rem; }
+    .int-quote { font-size: 0.95rem; font-weight: 500; margin-top: 1rem; line-height: 1.5; }
+    .int-quote::before { content: '"'; color: var(--c-accent); font-size: 1.2rem; margin-right: 0.2rem; }
+    .int-quote::after { content: '"'; color: var(--c-accent); font-size: 1.2rem; margin-left: 0.2rem; }
+    .read-more { display: inline-flex; align-items: center; font-size: 0.8rem; color: var(--c-accent); margin-top: 1rem; font-family: var(--font-en); font-weight: 500; }
+    .read-more svg { width: 14px; height: 14px; margin-left: 4px; transition: transform 0.3s; }
+    .int-card:hover .read-more svg { transform: translateX(4px); }
+
+    /* --- 6. Recruit --- */
+    .recruit-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .req-card { display: flex; flex-direction: column; padding: 2rem; border-left: 4px solid transparent; transition: var(--transition); cursor: pointer; }
+    @media (min-width: 768px) { .req-card { flex-direction: row; align-items: center; justify-content: space-between; } }
+    .req-card:hover { border-left-color: var(--c-accent); transform: translateX(5px); }
+    .req-info { flex: 1; }
+    .req-job { font-size: 1.25rem; font-weight: 600; color: var(--c-primary); margin-bottom: 0.5rem; }
+    .req-desc { font-size: 0.9rem; color: var(--c-text-sub); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (min-width: 768px) { .req-desc { margin-bottom: 0; padding-right: 2rem; } }
+    .req-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--c-glass-border); display: flex; align-items: center; justify-content: center; color: var(--c-primary); transition: var(--transition); background: rgba(0,0,0,0.02); }
+    .req-card:hover .req-arrow { background: var(--c-primary); color: #fff; }
+
+    /* --- 7. FAQ & Flow --- */
+    .faq-container { display: grid; grid-template-columns: 1fr; gap: 4rem; }
+    @media (min-width: 992px) { .faq-container { grid-template-columns: 1fr 1fr; } }
+    
+    /* Flow */
+    .flow-steps { position: relative; padding-left: 2rem; }
+    .flow-steps::before { content: ''; position: absolute; top: 0; left: 6px; width: 2px; height: 100%; background: var(--c-glass-border); }
+    .flow-step { position: relative; padding-bottom: 2rem; }
+    .flow-step:last-child { padding-bottom: 0; }
+    .flow-step::before { content: ''; position: absolute; top: 0; left: -2rem; width: 14px; height: 14px; border-radius: 50%; background: var(--c-accent); border: 3px solid var(--c-bg-light); box-shadow: 0 0 0 2px var(--c-accent); z-index: 1; }
+    .step-title { font-weight: 600; color: var(--c-primary); margin-bottom: 0.5rem; line-height: 1.2; }
+    
+    /* Accordion */
+    .faq-item { margin-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .faq-q { width: 100%; text-align: left; padding: 1.5rem 0; font-weight: 600; color: var(--c-primary); display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .faq-q-text { display: flex; gap: 1rem; align-items: flex-start; }
+    .faq-q-text::before { content: 'Q.'; color: var(--c-accent); font-family: var(--font-en); font-size: 1.2rem; }
+    .faq-icon { position: relative; width: 20px; height: 20px; }
+    .faq-icon::before, .faq-icon::after { content: ''; position: absolute; top: 50%; left: 50%; width: 12px; height: 2px; background: var(--c-primary); transform: translate(-50%, -50%); transition: var(--transition); }
+    .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .faq-q[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-a-inner { padding: 0 0 1.5rem 2.5rem; color: var(--c-text-sub); display: flex; gap: 1rem; }
+    .faq-a-inner::before { content: 'A.'; color: var(--c-primary); font-family: var(--font-en); font-size: 1.2rem; font-weight: 600; }
+
+    /* --- 8. Entry --- */
+    .entry { text-align: center; padding: 8rem 5%; position: relative; overflow: hidden; }
+    .entry-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--c-primary) 0%, #2A3B5C 100%); z-index: -2; }
+    .entry-bg::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+') repeat; z-index: -1; }
+    .entry .sec-title__en, .entry .sec-title__ja { color: #fff; }
+    .entry-message { color: rgba(255,255,255,0.8); margin-bottom: 3rem; font-size: 1.1rem; }
+    .btn-large { background: #fff; color: var(--c-primary); padding: 1.2rem 4rem; font-size: 1.1rem; }
+    .btn-large::before { background: var(--c-accent); }
+    .btn-large:hover { color: #fff; }
+
+    /* --- Footer --- */
+    .footer { padding: 3rem 5%; background: var(--c-primary); color: rgba(255,255,255,0.6); text-align: center; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { filter: brightness(0) invert(1); height: 30px; margin-bottom: 1rem; opacity: 0.8; }
+
+    /* --- Modals --- */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; opacity: 0; visibility: hidden; transition: var(--transition); display: flex; justify-content: center; align-items: center; padding: 2rem 5%; }
+    .modal-overlay.is-open { opacity: 1; visibility: visible; }
+    .modal-content { background: #fff; border-radius: 16px; width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 3rem; position: relative; transform: translateY(20px); transition: var(--transition); opacity: 0; box-shadow: var(--shadow-float); }
+    .modal-overlay.is-open .modal-content { transform: translateY(0); opacity: 1; }
+    .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; width: 40px; height: 40px; background: var(--c-bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--c-text); transition: background 0.3s; }
+    .modal-close:hover { background: #E2E8F0; }
+    .modal-close svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; }
+    
+    .modal-header { margin-bottom: 2rem; border-bottom: 1px solid var(--c-bg-light); padding-bottom: 1.5rem; }
+    .modal-title { font-size: 1.5rem; color: var(--c-primary); font-weight: 600; }
+    .modal-sub { color: var(--c-accent); font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .modal-body h4 { font-size: 1.1rem; color: var(--c-primary); margin: 1.5rem 0 0.5rem; border-left: 3px solid var(--c-accent); padding-left: 0.8rem; }
+    .modal-body p { color: var(--c-text-sub); margin-bottom: 1rem; }
+    .modal-body ul { list-style: disc; padding-left: 1.5rem; color: var(--c-text-sub); margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+
+  <header class="header glass js-header">
+    <a href="#" class="logo">
+      <img src="assets/logo.png" alt="尾張製粉株式会社">
+    </a>
+    <nav class="pc-nav">
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#business" class="nav-link">BUSINESS</a>
+      <a href="#environment" class="nav-link">ENVIRONMENT</a>
+      <a href="#interview" class="nav-link">INTERVIEW</a>
+      <a href="#recruit" class="nav-link">RECRUIT</a>
+      <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn-small">ENTRY</a>
+    </nav>
+  </header>
+
+  <nav class="sp-nav glass">
+    <a href="#about" class="sp-nav-item nav-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      ABOUT
+    </a>
+    <a href="#interview" class="sp-nav-item nav-link">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      PEOPLE
+    </a>
+    <a href="#recruit" class="sp-nav-item nav-link">
+      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      RECRUIT
+    </a>
+    <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="sp-nav-item sp-nav-entry">
+      ENTRY
+    </a>
+  </nav>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content animate-elem">
+        <img src="assets/logo.png" alt="尾張製粉株式会社" class="hero-logo">
+        <h1 class="hero-catch">伝統と革新、<br>食卓に笑顔と安全を。</h1>
+        <p class="hero-sub">135年以上の歴史と、国際認証に裏打ちされた<br>「食の安全・高品質」への揺るぎないコミットメント。</p>
+        <a href="#about" class="btn">
+          DISCOVER MORE
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="scroll-down">SCROLL</div>
+    </section>
+
+    <section id="about" class="about section container">
+      <div class="sec-title animate-elem">
+        <span class="sec-title__en">VISION & VALUES</span>
+        <span class="sec-title__ja">会社概要・大切にしていること</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-message animate-elem">
+          <h2 class="about-lead">「食」にまつわる事業を通じて、<br>消費者の「食べる」シーンに貢献する。</h2>
+          <p class="about-text">
+            明治18年（1885年）の創業以来、135年以上にわたり「食」にまつわる事業を営んできました。<br>
+            小麦粉、飼料、乾麺、煎麦など多岐にわたる商品、特に加工用の素材・原料を提供し、食卓に届くまでの長い工程においても、常に消費者の「食べる」シーンを意識して仕事に取り組んでいます。
+          </p>
+          <p class="about-text">
+            私たちの基本方針は「安心・安全で高品質な商品を提供する」こと。<br>
+            日々変化し多様化するお客様のニーズに応えるため、絶えず努力を続け、社会への貢献を目指します。
+          </p>
+        </div>
+        <div class="about-values glass-card animate-elem delay-1" style="padding: 3rem 2rem;">
+          <h3 style="margin-bottom: 1.5rem; color: var(--c-primary); font-family: var(--font-en); letter-spacing: 0.1em;">OUR VALUES</h3>
+          <div class="values">
+            <span class="value-tag">安心・安全</span>
+            <span class="value-tag">高品質</span>
+            <span class="value-tag">顧客ニーズへの対応</span>
+            <span class="value-tag">継続的な努力</span>
+            <span class="value-tag">社員一丸となった商品づくり</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business" class="business section bg-light">
+      <div class="container">
+        <div class="sec-title animate-elem">
+          <span class="sec-title__en">BUSINESS</span>
+          <span class="sec-title__ja">事業・サービス紹介</span>
+        </div>
+        <div class="business-cards">
+          <div class="biz-card glass-card animate-elem">
+            <div class="biz-icon-wrapper">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="biz-title">食品部門</h3>
+            <p class="biz-desc">
+              小麦粉・麺類・スープ・菓子原料の製造販売。外国産・国内産小麦を種類別に製粉し、ユーザーニーズに応じてブレンド。必要量を迅速に小ロットでも提供できる体制を完備しています。
+            </p>
+          </div>
+          <div class="biz-card glass-card animate-elem delay-1">
+            <div class="biz-icon-wrapper">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+            </div>
+            <h3 class="biz-title">製煎部門</h3>
+            <p class="biz-desc">
+              麦茶・煎麦・こうせん・きな粉等の製造販売。伝統的な製法と最新の品質管理を融合させ、安全で香り高い製品をお届けします。
+            </p>
+          </div>
+          <div class="biz-card glass-card animate-elem delay-2">
+            <div class="biz-icon-wrapper">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="biz-title">飼料部門</h3>
+            <p class="biz-desc">
+              ふすま・圧ぺん飼料の製造販売。製粉工程で生まれる副産物を有効活用し、高品質な飼料として畜産業界を支えています。
+            </p>
+          </div>
+        </div>
+        
+        <div class="biz-strength glass-card animate-elem" style="margin-top: 4rem;">
+          <h4 class="biz-strength-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            国際基準の品質管理と科学的アプローチ
+          </h4>
+          <p style="color: var(--c-text-sub);">
+            ISO22000取得、FSSC22000取得、AIB監査での「Excellent」達成など、国際的に認められた高い品質管理体制を敷いています。原料小麦の分析や物性試験など、科学的なアプローチによる徹底した品質チェックが私たちの誇りです。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="environment" class="environment section container">
+      <div class="sec-title animate-elem">
+        <span class="sec-title__en">ENVIRONMENT</span>
+        <span class="sec-title__ja">数字とカルチャーで見る尾張製粉</span>
+      </div>
+      
+      <div class="env-numbers">
+        <div class="num-card glass-card animate-elem">
+          <div class="num-label">創業</div>
+          <div class="num-val">1885<span class="num-unit">年</span></div>
+        </div>
+        <div class="num-card glass-card animate-elem delay-1">
+          <div class="num-label">資本金</div>
+          <div class="num-val">7,425<span class="num-unit">万円</span></div>
+        </div>
+        <div class="num-card glass-card animate-elem delay-2">
+          <div class="num-label">平均年齢</div>
+          <div class="num-val">42<span class="num-unit">歳</span></div>
+        </div>
+        <div class="num-card glass-card animate-elem delay-3">
+          <div class="num-label">男女比</div>
+          <div class="num-val">5:5</div>
+        </div>
+      </div>
+
+      <div class="culture-tags animate-elem">
+        <div class="culture-tag">健康経営優良法人 4年連続認定</div>
+        <div class="culture-tag">FSSC22000 / ISO22000 取得</div>
+        <div class="culture-tag">AIB監査 Excellent 達成</div>
+        <div class="culture-tag">社員一丸となった品質への情熱</div>
+      </div>
+    </section>
+
+    <section id="interview" class="interview section bg-light clip-section">
+      <div class="container">
+        <div class="sec-title animate-elem">
+          <span class="sec-title__en">PEOPLE</span>
+          <span class="sec-title__ja">先輩社員インタビュー</span>
+        </div>
+        
+        <div class="interview-grid">
+          <!-- 1 -->
+          <div class="int-card animate-elem" data-modal="modal-int-1">
+            <img src="assets/interview-1.png" alt="T・Kさん" class="int-img">
+            <div class="int-body">
+              <div class="int-name t-en">T・Kさん</div>
+              <p class="int-quote">老舗＝アナログというイメージを覆す、コンピュータ制御の現代の職人技。</p>
+              <span class="read-more">READ INTERVIEW <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+            </div>
+          </div>
+          <!-- 2 -->
+          <div class="int-card animate-elem delay-1" data-modal="modal-int-2">
+            <img src="assets/interview-2.png" alt="K・Sさん" class="int-img">
+            <div class="int-body">
+              <div class="int-name t-en">K・Sさん</div>
+              <p class="int-quote">音、振動、手触り。五感を研ぎ澄ませて気づく、プロとしての感覚。</p>
+              <span class="read-more">READ INTERVIEW <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+            </div>
+          </div>
+          <!-- 3 -->
+          <div class="int-card animate-elem delay-2" data-modal="modal-int-3">
+            <img src="assets/interview-3.png" alt="N・Mさん" class="int-img">
+            <div class="int-body">
+              <div class="int-name t-en">N・Mさん</div>
+              <p class="int-quote">食の安全に対してどこまでも実直な集団。新しい視点で追求し続けたい。</p>
+              <span class="read-more">READ INTERVIEW <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recruit" class="recruit section container">
+      <div class="sec-title animate-elem">
+        <span class="sec-title__en">RECRUIT</span>
+        <span class="sec-title__ja">募集要項</span>
+      </div>
+
+      <div class="recruit-grid">
+        <!-- 技術職 -->
+        <div class="req-card glass-card animate-elem" data-modal="modal-req-tech">
+          <div class="req-info">
+            <h3 class="req-job">技術職</h3>
+            <p class="req-desc">製造ラインの改善やリニューアル、IT導入、DX推進、品質管理などに携わります。最初は製造現場のオペレーションを通じラインを把握することからスタートします。</p>
+          </div>
+          <div class="req-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        </div>
+        <!-- 製造職 -->
+        <div class="req-card glass-card animate-elem delay-1" data-modal="modal-req-mfg">
+          <div class="req-info">
+            <h3 class="req-job">製造職</h3>
+            <p class="req-desc">製造ラインのオペレーション、小改善、原料管理を担当します。業務習熟後は、小改善から徐々に高度な改善へとステップアップしていただきます。</p>
+          </div>
+          <div class="req-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        </div>
+        <!-- 営業職 -->
+        <div class="req-card glass-card animate-elem delay-2" data-modal="modal-req-sales">
+          <div class="req-info">
+            <h3 class="req-job">営業職</h3>
+            <p class="req-desc">既存顧客へのルートセールスがベースですが、近年はマーケティング活動にも注力し始めており、新たな価値提案を行っていただきます。</p>
+          </div>
+          <div class="req-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        </div>
+        <!-- パート社員 -->
+        <div class="req-card glass-card animate-elem delay-3" data-modal="modal-req-part">
+          <div class="req-info">
+            <h3 class="req-job">パート社員（製造ライン）</h3>
+            <p class="req-desc">小麦粉包装ラインの運転、乾麺ギフトの詰め合わせなど。9時〜16時勤務が基本ですが、日数や時間は相談に応じます。</p>
+          </div>
+          <div class="req-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq section bg-light">
+      <div class="container faq-container">
+        <div class="animate-elem">
+          <div class="sec-title" style="text-align: left; margin-bottom: 2rem;">
+            <span class="sec-title__en">PROCESS</span>
+            <span class="sec-title__ja">選考フロー</span>
+          </div>
+          <div class="flow-steps">
+            <div class="flow-step">
+              <div class="step-title">STEP 1. エントリー</div>
+              <p style="font-size: 0.9rem; color: var(--c-text-sub);">本サイトのエントリーフォームよりご応募ください。</p>
+            </div>
+            <div class="flow-step">
+              <div class="step-title">STEP 2. 書類選考</div>
+              <p style="font-size: 0.9rem; color: var(--c-text-sub);">お送りいただいた内容をもとに選考を行います。</p>
+            </div>
+            <div class="flow-step">
+              <div class="step-title">STEP 3. 面接（複数回）</div>
+              <p style="font-size: 0.9rem; color: var(--c-text-sub);">お互いを知る場として、ざっくばらんにお話ししましょう。</p>
+            </div>
+            <div class="flow-step">
+              <div class="step-title">STEP 4. 内定</div>
+              <p style="font-size: 0.9rem; color: var(--c-text-sub);">一緒に働ける日を楽しみにしています。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="animate-elem delay-1">
+          <div class="sec-title" style="text-align: left; margin-bottom: 2rem;">
+            <span class="sec-title__en">Q&A</span>
+            <span class="sec-title__ja">よくあるご質問</span>
+          </div>
+          <div class="faq-list">
+            <!-- Q1 -->
+            <div class="faq-item">
+              <button class="faq-q js-accordion" aria-expanded="false">
+                <span class="faq-q-text">どのようなキャリアプランが描けますか？</span>
+                <span class="faq-icon"></span>
+              </button>
+              <div class="faq-a">
+                <div class="faq-a-inner">
+                  昇格志向・安定志向のほか、両者の中間の働き方を選べる制度があります。毎年自己申告面談を実施しており、1年・3年・10年後のキャリアプランについて話し合える環境です。
+                </div>
+              </div>
+            </div>
+            <!-- Q2 -->
+            <div class="faq-item">
+              <button class="faq-q js-accordion" aria-expanded="false">
+                <span class="faq-q-text">資格取得のサポートはありますか？</span>
+                <span class="faq-icon"></span>
+              </button>
+              <div class="faq-a">
+                <div class="faq-a-inner">
+                  はい、資格・検定取得は積極的に支援しています。受験費用・講習会・教材費用は会社で支給し、資格取得時には難易度に応じて資格手当も支給しています。
+                </div>
+              </div>
+            </div>
+            <!-- Q3 -->
+            <div class="faq-item">
+              <button class="faq-q js-accordion" aria-expanded="false">
+                <span class="faq-q-text">福利厚生について教えてください。</span>
+                <span class="faq-icon"></span>
+              </button>
+              <div class="faq-a">
+                <div class="faq-a-inner">
+                  仲間同士で趣味を楽しむ社内サークルへの補助、新年会・歓送迎会の会社負担参加などがあります。また、正社員および1年以上勤務のパート社員には医療費の補助も行っています。
+                </div>
+              </div>
+            </div>
+            <!-- Q4 -->
+            <div class="faq-item">
+              <button class="faq-q js-accordion" aria-expanded="false">
+                <span class="faq-q-text">業務改善の提案はできますか？</span>
+                <span class="faq-icon"></span>
+              </button>
+              <div class="faq-a">
+                <div class="faq-a-inner">
+                  もちろんです。業務改善を報告してもらうことで表彰する制度があります。継続的な課題解決を進める場合には、プロジェクト活動として携わっていただきます。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="entry" class="entry">
+      <div class="entry-bg"></div>
+      <div class="container animate-elem">
+        <h2 class="sec-title__en" style="font-size: 3rem; margin-bottom: 0.5rem;">ENTRY</h2>
+        <p class="sec-title__ja" style="margin-bottom: 2rem;">エントリー</p>
+        <p class="entry-message">
+          「食」の未来を支える、確かな品質と技術。<br>私たちと共に、新しい歴史を創りませんか？
+        </p>
+        <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn btn-large">
+          採用フォームへ進む
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="assets/logo.png" alt="尾張製粉株式会社" class="footer-logo">
+    <p>&copy; Owari Seifun Co., Ltd. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Modals -->
+  <!-- Interview 1 -->
+  <div id="modal-int-1" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">INTERVIEW</div>
+        <h3 class="modal-title">T・Kさん</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Q. この会社を選んだ理由は何ですか？</h4>
+        <p>140年近い歴史があり、地元・半田市を代表する企業であることに誇りを感じたからです。また、小麦粉はパンや麺など、あらゆる食のベースになるもの。「人々の生活に欠かせないものを作っている」という安定感と社会的意義に惹かれました。</p>
+        <h4>Q. 入社して一番驚いた「いい意味でのギャップ」は何ですか？</h4>
+        <p>「老舗＝アナログ」という勝手なイメージを持っていましたが、工場のデジタル化・自動化が進んでいることに驚きました。巨大なサイロや最新鋭のロール機を、コンピュータで精密に制御する。まさに「現代の職人技」だと感じました。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview 2 -->
+  <div id="modal-int-2" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">INTERVIEW</div>
+        <h3 class="modal-title">K・Sさん</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Q. これまでで最も達成感を感じたプロジェクトや、忘れられない仕事のエピソードを教えてください。</h4>
+        <p>原料小麦の産地や特性が変わるタイミングでの調整作業です。小麦は生き物なので、機械の設定一つで品質が変わります。チームで試行錯誤し、納得のいく仕上がりになった粉が、有名メーカーの商品に使われているのを見たときは、言葉にできない達成感がありました。</p>
+        <h4>Q. この会社で働く中で、自分自身が一番成長したと感じる能力は何ですか？</h4>
+        <p>「小さな変化に気づく洞察力」です。音、振動、手触り。機械の数値だけでなく、五感を研ぎ澄ませて「いつもとの違い」を察知するプロとしての感覚が養われました。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview 3 -->
+  <div id="modal-int-3" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">INTERVIEW</div>
+        <h3 class="modal-title">N・Mさん</h3>
+      </div>
+      <div class="modal-body">
+        <h4>Q. 一言で表すと、この会社は「どんな人が集まっている集団」ですか？</h4>
+        <p>「食の安全に対して、どこまでも実直な集団」です。目に見えない粒子の細かさや水分量にまでこだわり、お客様に「いつもと同じ高品質」を届けることに全員が真剣です。</p>
+        <h4>Q. これから入社してくる後輩たちと一緒に、どんな新しい挑戦をしていきたいですか？</h4>
+        <p>伝統を守ることは、変化し続けることだと思っています。より効率的で環境に優しい製造プロセスの構築や、「尾張製粉にしか出せない味・食感」の追求を、新しい視点を持つ後輩たちと一緒に研究していきたいです。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruit: 技術職 -->
+  <div id="modal-req-tech" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">募集要項</div>
+        <h3 class="modal-title">技術職</h3>
+      </div>
+      <div class="modal-body">
+        <h4>仕事内容</h4>
+        <p>製造ラインの改善やリニュアル、IT導入、DX推進、品質管理などに携わります。</p>
+        <p>※技術職と製造職は明確な区分けをしていません。新しい技術の導入には現場の知識が不可欠なため、最初は製造現場のオペレーションを通じラインを覚えていただくことになります。<br>業務の主体をどうするかは、本人の意向や特性を考慮して配分します。</p>
+        <h4>制度・待遇（全社共通）</h4>
+        <ul>
+          <li><strong>給与制度：</strong>昇格志向・安定志向のほか、両者の中間の働き方を選択可能。毎年自己申告面談を実施。</li>
+          <li><strong>資格支援：</strong>受験費用・講習会・教材費用を会社支給。取得時には資格手当あり。</li>
+          <li><strong>評価制度：</strong>業務改善の報告表彰、継続的な課題解決を行うプロジェクト活動。</li>
+          <li><strong>福利厚生：</strong>社内サークル補助、新年会・歓送迎会の会社負担、医療費補助（規定あり）。</li>
+        </ul>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn">エントリーする</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruit: 製造職 -->
+  <div id="modal-req-mfg" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">募集要項</div>
+        <h3 class="modal-title">製造職</h3>
+      </div>
+      <div class="modal-body">
+        <h4>仕事内容</h4>
+        <p>製造ラインのオペレーション、小改善、原料管理を担当します。</p>
+        <p>オペレーションを習得した後は、小改善から徐々に高度な改善業務にも携わっていただきます。技術職同様、本人の特性と意向に合わせて業務の主体を配分していきます。</p>
+        <h4>制度・待遇（全社共通）</h4>
+        <ul>
+          <li><strong>給与制度：</strong>昇格志向・安定志向のほか、両者の中間の働き方を選択可能。毎年自己申告面談を実施。</li>
+          <li><strong>資格支援：</strong>受験費用・講習会・教材費用を会社支給。取得時には資格手当あり。</li>
+          <li><strong>評価制度：</strong>業務改善の報告表彰、継続的な課題解決を行うプロジェクト活動。</li>
+          <li><strong>福利厚生：</strong>社内サークル補助、新年会・歓送迎会の会社負担、医療費補助（規定あり）。</li>
+        </ul>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn">エントリーする</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruit: 営業職 -->
+  <div id="modal-req-sales" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">募集要項</div>
+        <h3 class="modal-title">営業職</h3>
+      </div>
+      <div class="modal-body">
+        <h4>仕事内容</h4>
+        <p>既存顧客へのルートセールスをベースとしながら、お客様のニーズに深く応える営業活動を行います。<br>近年はマーケティングにも力を入れ始めており、市場動向を見据えた新たな価値提案にも挑戦できる環境です。</p>
+        <h4>制度・待遇（全社共通）</h4>
+        <ul>
+          <li><strong>給与制度：</strong>昇格志向・安定志向のほか、両者の中間の働き方を選択可能。毎年自己申告面談を実施。</li>
+          <li><strong>資格支援：</strong>受験費用・講習会・教材費用を会社支給。取得時には資格手当あり。</li>
+          <li><strong>評価制度：</strong>業務改善の報告表彰、継続的な課題解決を行うプロジェクト活動。</li>
+          <li><strong>福利厚生：</strong>社内サークル補助、新年会・歓送迎会の会社負担、医療費補助（規定あり）。</li>
+        </ul>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn">エントリーする</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruit: パート社員 -->
+  <div id="modal-req-part" class="modal-overlay js-modal">
+    <div class="modal-content">
+      <button class="modal-close js-modal-close" aria-label="閉じる">
+        <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <div class="modal-header">
+        <div class="modal-sub">募集要項</div>
+        <h3 class="modal-title">パート社員（製造ライン）</h3>
+      </div>
+      <div class="modal-body">
+        <h4>仕事内容</h4>
+        <p>製造ラインでの作業を担当していただきます。<br>具体的には、小麦粉包装ラインの運転補助や、乾麺ギフトの詰め合わせ作業などを行います。</p>
+        <h4>勤務条件</h4>
+        <p>9時から16時勤務が基本となりますが、勤務日や時間についてはご相談に応じます。ライフスタイルに合わせた働き方が可能です。</p>
+        <h4>福利厚生</h4>
+        <ul>
+          <li>1年以上勤務されたパート社員の方には、医療費の補助制度があります。</li>
+        </ul>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="https://www.owari-seifun.co.jp/profile/recruit" target="_blank" rel="noopener" class="btn">エントリーする</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. スクロールアニメーション (IntersectionObserver)
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-elem').forEach(el => {
+        observer.observe(el);
+      });
+
+      // 2. ヘッダーのスクロール検知
+      const header = document.querySelector('.js-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      });
+
+      // 3. ナビゲーションのアクティブ状態管理
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('is-active');
+          }
+        });
+      });
+
+      // 4. モーダル制御
+      const modalTriggers = document.querySelectorAll('[data-modal]');
+      const modals = document.querySelectorAll('.js-modal');
+      const closeBtns = document.querySelectorAll('.js-modal-close');
+
+      const openModal = (modalId) => {
+        const modal = document.getElementById(modalId);
+        if(modal) {
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      const closeModal = () => {
+        modals.forEach(modal => {
+          modal.classList.remove('is-open');
+        });
+        document.body.style.overflow = '';
+      };
+
+      modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modalId = trigger.getAttribute('data-modal');
+          openModal(modalId);
+        });
+      });
+
+      closeBtns.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+      });
+
+      modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+          if(e.target === modal) {
+            closeModal();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+          closeModal();
+        }
+      });
+
+      // 5. アコーディオン制御
+      const accordions = document.querySelectorAll('.js-accordion');
+      accordions.forEach(acc => {
+        acc.addEventListener('click', function() {
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+          this.setAttribute('aria-expanded', !isExpanded);
+          
+          const content = this.nextElementSibling;
+          if (!isExpanded) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          } else {
+            content.style.maxHeight = '0';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
