@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>岩部建設株式会社 | 採用サイト</title>
+  <meta name="description" content="岩部建設株式会社の採用サイトです。100年の堅実経営と、人間らしい成長の追求。夢とチャレンジ精神を持った、新しい仲間を募集しています。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-primary: #0A1D3A;
+      --c-accent: #B8995E;
+      --c-text-main: #2C2F33;
+      --c-text-light: #666A73;
+      --c-bg-body: #F9F9FB;
+      --c-bg-white: #FFFFFF;
+      --c-border: #E5E7EB;
+      
+      --font-en: 'Inter', sans-serif;
+      --font-ja: 'Noto Sans JP', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      
+      --spacing-section: 120px;
+      --spacing-section-sp: 80px;
+      
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 8px 24px rgba(10, 29, 58, 0.08);
+      --shadow-lg: 0 16px 40px rgba(10, 29, 58, 0.12);
+      
+      --ease-out: cubic-bezier(0.21, 0.83, 0.26, 1);
+    }
+
+    /* Reset & Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-ja);
+      color: var(--c-text-main);
+      background-color: var(--c-bg-body);
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
+    button { border: none; background: none; font: inherit; cursor: pointer; }
+
+    /* Utility Classes */
+    .l-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 768px) { .l-container { padding: 0 20px; } }
+    
+    .u-section-pb { padding-bottom: var(--spacing-section); }
+    .u-section-pt { padding-top: var(--spacing-section); }
+    @media (max-width: 768px) {
+      .u-section-pb { padding-bottom: var(--spacing-section-sp); }
+      .u-section-pt { padding-top: var(--spacing-section-sp); }
+    }
+
+    .u-text-center { text-align: center; }
+    .u-mb-sm { margin-bottom: 16px; }
+    .u-mb-md { margin-bottom: 32px; }
+    .u-mb-lg { margin-bottom: 64px; }
+
+    /* Glassmorphism */
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Typography */
+    .c-sec-title-wrap {
+      position: relative;
+      margin-bottom: 64px;
+      text-align: center;
+    }
+    .c-sec-title-en {
+      font-family: var(--font-en);
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(10, 29, 58, 0.03);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      pointer-events: none;
+    }
+    .c-sec-title-ja {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      position: relative;
+      display: inline-block;
+    }
+    .c-sec-title-ja::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background-color: var(--c-accent);
+    }
+    @media (max-width: 768px) {
+      .c-sec-title-en { font-size: 2.5rem; }
+      .c-sec-title-ja { font-size: 1.5rem; }
+      .c-sec-title-wrap { margin-bottom: 40px; }
+    }
+
+    /* Buttons */
+    .c-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      background-color: var(--c-primary);
+      color: var(--c-bg-white);
+      border-radius: 4px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(10, 29, 58, 0.3);
+    }
+    .c-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    .c-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10, 29, 58, 0.4); }
+    .c-btn:hover::before { left: 100%; }
+    
+    .c-btn--accent {
+      background-color: var(--c-accent);
+      box-shadow: 0 4px 12px rgba(184, 153, 94, 0.3);
+    }
+    .c-btn--accent:hover { box-shadow: 0 8px 24px rgba(184, 153, 94, 0.4); }
+
+    .c-btn-icon::after {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-left: 12px;
+    }
+    .c-btn-external::after {
+      content: '';
+      display: inline-block;
+      width: 12px; height: 12px;
+      margin-left: 12px;
+      background: currentColor;
+      mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg>') no-repeat center / contain;
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7h-2v7Z"/></svg>') no-repeat center / contain;
+    }
+
+    /* Header & Navigation */
+    .l-header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 1000;
+      transition: background 0.3s ease, padding 0.3s ease;
+      padding: 20px 0;
+    }
+    .l-header.is-scrolled {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+    }
+    .l-header__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .l-header__logo img {
+      height: 32px;
+    }
+    .l-nav__list {
+      display: flex;
+      gap: 32px;
+    }
+    .l-nav__link {
+      font-family: var(--font-en);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--c-primary);
+      text-transform: uppercase;
+      position: relative;
+    }
+    .l-header:not(.is-scrolled) .l-nav__link {
+      color: var(--c-bg-white);
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .l-nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background-color: var(--c-accent);
+      transition: width 0.3s ease;
+    }
+    .l-nav__link:hover::after, .l-nav__link.is-active::after {
+      width: 100%;
+    }
+    .l-header__entry {
+      display: none;
+    }
+    @media (min-width: 769px) {
+      .l-header__entry { display: block; }
+      .l-header__entry .c-btn { padding: 10px 24px; font-size: 0.9rem; }
+    }
+
+    /* SP Floating Nav */
+    .l-sp-nav {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      max-width: 400px;
+      z-index: 999;
+      border-radius: 50px;
+      padding: 8px;
+    }
+    .l-sp-nav__list {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .l-sp-nav__item { flex: 1; text-align: center; }
+    .l-sp-nav__link {
+      display: block;
+      font-size: 0.65rem;
+      font-family: var(--font-en);
+      color: var(--c-primary);
+      padding: 8px 0;
+      border-radius: 30px;
+    }
+    .l-sp-nav__link.is-active {
+      background-color: var(--c-primary);
+      color: var(--c-bg-white);
+    }
+    .l-sp-nav__entry { flex: 1.5; }
+    .l-sp-nav__entry .c-btn {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 0.8rem;
+      border-radius: 30px;
+    }
+    @media (max-width: 768px) {
+      .l-header .l-nav { display: none; }
+      .l-sp-nav { display: block; }
+    }
+
+    /* Section: Hero */
+    .p-hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+    .p-hero__bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('assets/hero.png');
+      background-size: cover;
+      background-position: center;
+      z-index: -2;
+      transform: scale(1.05);
+      animation: heroZoom 20s infinite alternate linear;
+    }
+    @keyframes heroZoom {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.15); }
+    }
+    .p-hero__overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(10, 29, 58, 0.8) 0%, rgba(10, 29, 58, 0.4) 100%);
+      z-index: -1;
+    }
+    .p-hero__content {
+      text-align: center;
+      color: var(--c-bg-white);
+      padding: 0 20px;
+      width: 100%;
+    }
+    .p-hero__logo {
+      width: 180px;
+      margin: 0 auto 40px;
+      filter: brightness(0) invert(1);
+    }
+    .p-hero__copy {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .p-hero__sub {
+      font-size: 1.125rem;
+      font-weight: 300;
+      margin-bottom: 48px;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+      .p-hero__copy { font-size: 1.8rem; }
+      .p-hero__sub { font-size: 0.9rem; }
+      .p-hero__logo { width: 140px; }
+    }
+    .p-hero__scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--c-bg-white);
+      font-family: var(--font-en);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      opacity: 0.7;
+    }
+    .p-hero__scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: var(--c-bg-white);
+      margin-top: 8px;
+      animation: scrollLine 2s infinite cubic-bezier(0.77, 0, 0.175, 1);
+      transform-origin: top;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); opacity: 0; }
+      50% { transform: scaleY(1); opacity: 1; }
+      100% { transform: scaleY(0); opacity: 0; transform-origin: bottom; }
+    }
+
+    /* Section: About */
+    .p-about {
+      position: relative;
+      background: linear-gradient(180deg, var(--c-bg-white) 0%, var(--c-bg-body) 100%);
+    }
+    .p-about__intro {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      text-align: center;
+      font-family: var(--font-serif);
+    }
+    .p-about__intro-lead {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--c-primary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .p-about__intro-text {
+      font-family: var(--font-ja);
+      font-size: 1rem;
+      color: var(--c-text-light);
+    }
+    @media (max-width: 768px) {
+      .p-about__intro-lead { font-size: 1.25rem; }
+    }
+    .p-about__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .p-about__card {
+      padding: 40px 32px;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .p-about__card:hover {
+      transform: translateY(-8px);
+    }
+    .p-about__card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(184, 153, 94, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--c-accent);
+    }
+    .p-about__card-icon svg { width: 32px; height: 32px; fill: currentColor; }
+    .p-about__card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+    }
+    .p-about__card-text {
+      font-size: 0.95rem;
+      color: var(--c-text-light);
+      text-align: left;
+    }
+
+    /* Section: Service */
+    .p-service {
+      background-color: var(--c-primary);
+      color: var(--c-bg-white);
+      clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+      padding: 160px 0;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .p-service {
+        clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
+        padding: 100px 0;
+      }
+    }
+    .p-service .c-sec-title-en { color: rgba(255, 255, 255, 0.05); }
+    .p-service .c-sec-title-ja { color: var(--c-bg-white); }
+    
+    .p-service__list {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .p-service__item {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .p-service__info {
+      padding: 48px;
+      flex: 1;
+    }
+    .p-service__head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 16px;
+    }
+    .p-service__num {
+      font-family: var(--font-en);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--c-accent);
+    }
+    .p-service__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .p-service__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .p-service__tag {
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+    }
+    .p-service__desc {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+    @media (max-width: 768px) {
+      .p-service__info { padding: 32px 24px; }
+      .p-service__title { font-size: 1.25rem; }
+    }
+
+    /* Section: Environment */
+    .p-env {
+      position: relative;
+      background-image: radial-gradient(circle at right top, #fff 0%, #f0f2f5 100%);
+    }
+    .p-env__numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .p-env__num-card {
+      background: var(--c-bg-white);
+      padding: 32px 24px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .p-env__num-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background-color: var(--c-accent);
+    }
+    .p-env__num-label {
+      font-size: 0.9rem;
+      color: var(--c-text-light);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .p-env__num-val {
+      font-family: var(--font-en);
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--c-primary);
+      line-height: 1;
+    }
+    .p-env__num-unit {
+      font-size: 1rem;
+      font-family: var(--font-ja);
+      font-weight: 700;
+      margin-left: 4px;
+    }
+    .p-env__features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .p-env__feature {
+      background: var(--c-bg-white);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--c-border);
+    }
+    .p-env__feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .p-env__feature-title::before {
+      content: '';
+      display: block;
+      width: 8px; height: 8px;
+      background-color: var(--c-accent);
+      border-radius: 50%;
+    }
+    .p-env__feature-list li {
+      font-size: 0.9rem;
+      color: var(--c-text-light);
+      margin-bottom: 8px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .p-env__feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 4px; height: 1px;
+      background-color: var(--c-text-light);
+    }
+    @media (max-width: 900px) {
+      .p-env__features { grid-template-columns: 1fr; }
+    }
+
+    /* Section: Interview */
+    .p-interview {
+      background-color: #EAECEF;
+      position: relative;
+    }
+    .p-interview::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 50%;
+      background-color: var(--c-bg-body);
+    }
+    .p-interview .l-container { position: relative; z-index: 1; }
+    .p-interview__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .p-interview__card {
+      background: var(--c-bg-white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .p-interview__card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .p-interview__img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .p-interview__card:hover .p-interview__img {
+      transform: scale(1.05);
+    }
+    .p-interview__img-wrap {
+      overflow: hidden;
+    }
+    .p-interview__info {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .p-interview__name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .p-interview__name span {
+      font-size: 0.8rem;
+      color: var(--c-text-light);
+      font-weight: 400;
+    }
+    .p-interview__excerpt {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--c-text-main);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+    .p-interview__readmore {
+      align-self: flex-start;
+      font-size: 0.85rem;
+      font-family: var(--font-en);
+      color: var(--c-accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .p-interview__readmore::after {
+      content: '';
+      width: 20px; height: 1px;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+    .p-interview__card:hover .p-interview__readmore::after {
+      width: 30px;
+    }
+    @media (max-width: 900px) {
+      .p-interview__grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    }
+
+    /* Section: Recruit */
+    .p-recruit {
+      background-color: var(--c-bg-white);
+    }
+    .p-recruit__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    .p-recruit__card {
+      border: 1px solid var(--c-border);
+      border-radius: 12px;
+      padding: 40px;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+    .p-recruit__card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .p-recruit__type {
+      position: absolute;
+      top: -16px;
+      left: 32px;
+      background-color: var(--c-primary);
+      color: var(--c-bg-white);
+      padding: 4px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+    .p-recruit__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--c-primary);
+    }
+    .p-recruit__dl {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+    }
+    .p-recruit__dt {
+      font-weight: 700;
+      color: var(--c-text-light);
+    }
+    .p-recruit__dd {
+      color: var(--c-text-main);
+    }
+    @media (max-width: 768px) {
+      .p-recruit__grid { grid-template-columns: 1fr; }
+      .p-recruit__card { padding: 32px 20px; }
+    }
+
+    /* Section: Flow & FAQ */
+    .p-flow-faq {
+      background-color: var(--c-bg-body);
+      position: relative;
+    }
+    .p-flow {
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+    .p-flow__list {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+    .p-flow__list::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--c-border);
+      z-index: 1;
+    }
+    .p-flow__item {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 120px;
+    }
+    .p-flow__step {
+      width: 60px;
+      height: 60px;
+      background-color: var(--c-bg-white);
+      border: 2px solid var(--c-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-en);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin: 0 auto 16px;
+      box-shadow: 0 0 0 4px var(--c-bg-body);
+    }
+    .p-flow__label {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    @media (max-width: 600px) {
+      .p-flow__list {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+      .p-flow__list::before {
+        top: 0; left: 50%;
+        width: 2px; height: 100%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .p-faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .p-faq__item {
+      background-color: var(--c-bg-white);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .p-faq__q {
+      width: 100%;
+      text-align: left;
+      padding: 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .p-faq__q::before {
+      content: 'Q.';
+      font-family: var(--font-en);
+      color: var(--c-accent);
+      font-size: 1.5rem;
+      margin-right: 16px;
+    }
+    .p-faq__icon {
+      width: 20px; height: 2px;
+      background-color: currentColor;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .p-faq__icon::after {
+      content: '';
+      position: absolute;
+      top: -9px; left: 9px;
+      width: 2px; height: 20px;
+      background-color: currentColor;
+      transition: transform 0.3s ease;
+    }
+    .p-faq__item.is-open .p-faq__icon::after {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+    .p-faq__a {
+      display: none;
+      padding: 0 24px 24px 60px;
+      font-size: 0.95rem;
+      color: var(--c-text-main);
+      border-top: 1px dashed var(--c-border);
+      margin-top: -8px;
+      padding-top: 24px;
+    }
+    .p-faq__a::before {
+      content: 'A.';
+      font-family: var(--font-en);
+      color: var(--c-text-light);
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 8px;
+      position: absolute;
+      left: 24px;
+    }
+    .p-faq__a-inner { position: relative; }
+
+    /* Section: Entry (CTA) */
+    .p-entry {
+      background: url('assets/hero.png') no-repeat center/cover;
+      position: relative;
+      padding: 120px 0;
+      text-align: center;
+      color: var(--c-bg-white);
+      clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+    }
+    .p-entry::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 29, 58, 0.85);
+      backdrop-filter: blur(4px);
+    }
+    .p-entry .l-container { position: relative; z-index: 1; }
+    .p-entry__title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 0.1em;
+    }
+    .p-entry__text {
+      font-size: 1.1rem;
+      margin-bottom: 48px;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    .l-footer {
+      background-color: #051020;
+      color: #fff;
+      padding: 64px 0 24px;
+      text-align: center;
+    }
+    .l-footer__logo {
+      width: 160px;
+      margin: 0 auto 32px;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+    }
+    .l-footer__info {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+    }
+    .l-footer__copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-family: var(--font-en);
+    }
+
+    /* Modal */
+    .c-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .c-modal.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .c-modal__bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(10, 29, 58, 0.8);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+    }
+    .c-modal__content {
+      position: relative;
+      background: var(--c-bg-white);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      border-radius: 16px;
+      padding: 40px;
+      overflow-y: auto;
+      transform: translateY(20px);
+      transition: transform 0.3s var(--ease-out);
+      box-shadow: var(--shadow-lg);
+    }
+    .c-modal.is-active .c-modal__content {
+      transform: translateY(0);
+    }
+    .c-modal__close {
+      position: absolute;
+      top: 24px; right: 24px;
+      width: 40px; height: 40px;
+      background: #f0f2f5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    .c-modal__close:hover {
+      background: #e0e2e5;
+    }
+    .c-modal__close::before, .c-modal__close::after {
+      content: '';
+      position: absolute;
+      width: 20px; height: 2px;
+      background: var(--c-text-main);
+    }
+    .c-modal__close::before { transform: rotate(45deg); }
+    .c-modal__close::after { transform: rotate(-45deg); }
+    
+    /* Modal Content Styles */
+    .p-modal-qa__item { margin-bottom: 32px; }
+    .p-modal-qa__q {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+    .p-modal-qa__q::before { content: 'Q.'; color: var(--c-accent); font-family: var(--font-en); }
+    .p-modal-qa__a {
+      font-size: 1rem;
+      color: var(--c-text-main);
+      padding-left: 28px;
+      line-height: 1.8;
+    }
+    .p-modal-req__table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .p-modal-req__table th, .p-modal-req__table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--c-border);
+      text-align: left;
+    }
+    .p-modal-req__table th {
+      width: 20%;
+      font-weight: 700;
+      color: var(--c-text-light);
+      white-space: nowrap;
+    }
+    @media (max-width: 600px) {
+      .c-modal__content { padding: 32px 20px; }
+      .p-modal-req__table th, .p-modal-req__table td { display: block; width: 100%; }
+      .p-modal-req__table th { padding-bottom: 4px; border-bottom: none; }
+    }
+
+    /* Animations */
+    .js-fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out); }
+    .js-fade-in.is-visible { opacity: 1; transform: translateY(0); }
+    .js-delay-1 { transition-delay: 0.1s; }
+    .js-delay-2 { transition-delay: 0.2s; }
+    .js-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="l-header js-header">
+    <div class="l-container l-header__inner">
+      <a href="#" class="l-header__logo">
+        <img src="assets/logo.png" alt="岩部建設株式会社">
+      </a>
+      <nav class="l-nav">
+        <ul class="l-nav__list">
+          <li><a href="#about" class="l-nav__link">About</a></li>
+          <li><a href="#service" class="l-nav__link">Service</a></li>
+          <li><a href="#environment" class="l-nav__link">Environment</a></li>
+          <li><a href="#interview" class="l-nav__link">Interview</a></li>
+          <li><a href="#recruit" class="l-nav__link">Recruit</a></li>
+        </ul>
+      </nav>
+      <div class="l-header__entry">
+        <a href="https://job.mynavi.jp/27/pc/search/corp241938/outline.html" target="_blank" rel="noopener noreferrer" class="c-btn c-btn--accent c-btn-external">エントリー</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SP Floating Nav -->
+  <nav class="l-sp-nav glass-panel">
+    <ul class="l-sp-nav__list">
+      <li class="l-sp-nav__item"><a href="#about" class="l-sp-nav__link">About</a></li>
+      <li class="l-sp-nav__item"><a href="#service" class="l-sp-nav__link">Service</a></li>
+      <li class="l-sp-nav__item"><a href="#interview" class="l-sp-nav__link">Interview</a></li>
+      <li class="l-sp-nav__item l-sp-nav__entry">
+        <a href="https://job.mynavi.jp/27/pc/search/corp241938/outline.html" target="_blank" rel="noopener noreferrer" class="c-btn c-btn--accent">ENTRY</a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="p-hero">
+      <div class="p-hero__bg"></div>
+      <div class="p-hero__overlay"></div>
+      <div class="p-hero__content">
+        <img src="assets/logo.png" alt="岩部建設" class="p-hero__logo js-fade-in">
+        <h1 class="p-hero__copy js-fade-in js-delay-1">100年の堅実経営と、<br>人間らしい成長の追求。</h1>
+        <p class="p-hero__sub js-fade-in js-delay-2">夢とチャレンジ精神を持った、新しい仲間を。</p>
+        <div class="js-fade-in js-delay-3">
+          <a href="https://job.mynavi.jp/27/pc/search/corp241938/outline.html" target="_blank" rel="noopener noreferrer" class="c-btn c-btn-external">採用情報を見る</a>
+        </div>
+      </div>
+      <div class="p-hero__scroll">SCROLL</div>
+    </section>
+
+    <!-- 2. About -->
+    <section id="about" class="p-about u-section-pt u-section-pb">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Philosophy</span>
+          <h2 class="c-sec-title-ja">会社について</h2>
+        </div>
+        
+        <div class="p-about__intro js-fade-in">
+          <p class="p-about__intro-lead">AI時代だからこそ、<br>悩み、考え続ける「生身の人間」に価値がある。</p>
+          <p class="p-about__intro-text">
+            テクノロジーがどれほど進化しても、人々の生活を支える場を形にするのは人間の営みです。<br>
+            私たちは、困難から逃げずに全力を尽くし、自らの存在意義を問い続ける「真の大人集団」を目指しています。<br>
+            安全最重視を根底に、夢とチャレンジ精神を持った仲間と共に、未来に向かって廻り続けていきます。
+          </p>
+        </div>
+
+        <div class="p-about__grid">
+          <div class="p-about__card glass-panel js-fade-in js-delay-1">
+            <div class="p-about__card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.83L18.17 19H5.83L12 5.83z"/></svg>
+            </div>
+            <h3 class="p-about__card-title">夢とチャレンジ精神</h3>
+            <p class="p-about__card-text">新しい仲間と共に未来を創造していく意欲を何よりも大切にしています。現場の毎日は新鮮で、分からないことにも積極的に挑戦できる環境です。</p>
+          </div>
+          <div class="p-about__card glass-panel js-fade-in js-delay-2">
+            <div class="p-about__card-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <h3 class="p-about__card-title">人財育成と成長</h3>
+            <p class="p-about__card-text">会社を挙げて資格取得をバックアップ。常に学び、技術を磨き、成長し続けるプロフェッショナルな技術者集団を目指します。</p>
+          </div>
+          <div class="p-about__card glass-panel js-fade-in js-delay-3">
+            <div class="p-about__card-icon">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+            </div>
+            <h3 class="p-about__card-title">堅実経営と信頼</h3>
+            <p class="p-about__card-text">長きにわたる無借金経営と健全な財務力による安定した基盤。地域社会に貢献し、確かな達成感と信頼を築き上げます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Service -->
+    <section id="service" class="p-service">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Service</span>
+          <h2 class="c-sec-title-ja">事業内容</h2>
+        </div>
+        
+        <div class="p-service__list">
+          <div class="p-service__item js-fade-in">
+            <div class="p-service__info">
+              <div class="p-service__head">
+                <span class="p-service__num">01</span>
+                <h3 class="p-service__title">建築事業</h3>
+              </div>
+              <div class="p-service__tags">
+                <span class="p-service__tag">高層建築</span>
+                <span class="p-service__tag">免震建築</span>
+                <span class="p-service__tag">再生建築</span>
+                <span class="p-service__tag">多彩な建築</span>
+              </div>
+              <p class="p-service__desc">高度な技術と豊富な実績を持つ大規模プロジェクトから、地震の揺れを吸収する免震構造、既存の価値を最大化する大規模リノベーションまで。商業施設や公共施設、賃貸マンションなど、多様なニーズに応える建築を手掛けています。</p>
+            </div>
+          </div>
+          
+          <div class="p-service__item js-fade-in">
+            <div class="p-service__info">
+              <div class="p-service__head">
+                <span class="p-service__num">02</span>
+                <h3 class="p-service__title">土木事業</h3>
+              </div>
+              <div class="p-service__tags">
+                <span class="p-service__tag">社会インフラ整備</span>
+                <span class="p-service__tag">土木施工技術</span>
+              </div>
+              <p class="p-service__desc">道路、橋梁、上下水道など、人々の生活と社会の基盤を支える重要なインフラ整備。高い技術力と長年のノウハウを活かし、安全最重視で幅広い土木工事を完遂し、地域社会に貢献します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Environment -->
+    <section id="environment" class="p-env u-section-pt u-section-pb">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Environment</span>
+          <h2 class="c-sec-title-ja">働く環境と制度</h2>
+        </div>
+
+        <div class="p-env__numbers">
+          <div class="p-env__num-card js-fade-in">
+            <div class="p-env__num-label">設立年月</div>
+            <div class="p-env__num-val">1954<span class="p-env__num-unit">年</span></div>
+            <div style="font-size:0.8rem;color:#666;margin-top:8px;">創業は1926年(大正15年)</div>
+          </div>
+          <div class="p-env__num-card js-fade-in js-delay-1">
+            <div class="p-env__num-label">自己資本額</div>
+            <div class="p-env__num-val">77<span class="p-env__num-unit">億円</span></div>
+            <div style="font-size:0.8rem;color:#666;margin-top:8px;">長きにわたる無借金経営</div>
+          </div>
+          <div class="p-env__num-card js-fade-in js-delay-2">
+            <div class="p-env__num-label">年間休日</div>
+            <div class="p-env__num-val">120<span class="p-env__num-unit">日</span></div>
+            <div style="font-size:0.8rem;color:#666;margin-top:8px;">完全週休2日制(計画年休含)</div>
+          </div>
+        </div>
+
+        <div class="p-env__features">
+          <div class="p-env__feature js-fade-in">
+            <h3 class="p-env__feature-title">充実のサポート・手当</h3>
+            <ul class="p-env__feature-list">
+              <li>奨学金返還支援制度（月額最高3万円、完済まで会社が代理返還）</li>
+              <li>資格取得支援制度（取得時に社長特別褒賞有）</li>
+              <li>社有社宅完備</li>
+              <li>時間外・通勤・資格・現場所長・役職手当</li>
+            </ul>
+          </div>
+          <div class="p-env__feature js-fade-in js-delay-1">
+            <h3 class="p-env__feature-title">ライフイベント支援</h3>
+            <ul class="p-env__feature-list">
+              <li>産前産後休暇、育児休業（出生時含む）</li>
+              <li>子の看護等休暇、介護休暇（実績あり）</li>
+              <li>ジョブリターン制度</li>
+              <li>永年勤続表彰制度、退職金制度</li>
+            </ul>
+          </div>
+          <div class="p-env__feature js-fade-in js-delay-2">
+            <h3 class="p-env__feature-title">健康とコミュニケーション</h3>
+            <ul class="p-env__feature-list">
+              <li>健康経営優良法人認定</li>
+              <li>予防接種全額会社負担（インフルエンザ等）</li>
+              <li>全社懇親会や会社負担での季節の差し入れ</li>
+              <li>保養施設利用（別荘、会員制リゾート）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Interview -->
+    <section id="interview" class="p-interview u-section-pt u-section-pb">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Interview</span>
+          <h2 class="c-sec-title-ja">先輩インタビュー</h2>
+        </div>
+
+        <div class="p-interview__grid">
+          <!-- Interview 1 -->
+          <div class="p-interview__card js-fade-in js-modal-trigger" data-target="modal-int-1">
+            <div class="p-interview__img-wrap">
+              <img src="assets/interview-1.png" alt="T・Kさん" class="p-interview__img">
+            </div>
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">T・K <span>さん</span></h3>
+              <p class="p-interview__excerpt">「建設現場＝厳しい」という先入観を覆す、チームでひとつのモノを創り上げる強い一体感。</p>
+              <span class="p-interview__readmore">Read More</span>
+            </div>
+          </div>
+
+          <!-- Interview 2 -->
+          <div class="p-interview__card js-fade-in js-delay-1 js-modal-trigger" data-target="modal-int-2">
+            <div class="p-interview__img-wrap">
+              <img src="assets/interview-2.png" alt="K・Mさん" class="p-interview__img">
+            </div>
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">K・M <span>さん</span></h3>
+              <p class="p-interview__excerpt">数年がかりのプロジェクト。足場が外れた時の震えるような達成感と、市民の方々の笑顔。</p>
+              <span class="p-interview__readmore">Read More</span>
+            </div>
+          </div>
+
+          <!-- Interview 3 -->
+          <div class="p-interview__card js-fade-in js-delay-2 js-modal-trigger" data-target="modal-int-3">
+            <div class="p-interview__img-wrap">
+              <img src="assets/interview-3.png" alt="T・Aさん" class="p-interview__img">
+            </div>
+            <div class="p-interview__info">
+              <h3 class="p-interview__name">T・A <span>さん</span></h3>
+              <p class="p-interview__excerpt">目に見えない部分まで手を抜かない誠実な集団。建設DXを取り入れ、次世代の現場を作る。</p>
+              <span class="p-interview__readmore">Read More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Recruit -->
+    <section id="recruit" class="p-recruit u-section-pt u-section-pb">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Recruit</span>
+          <h2 class="c-sec-title-ja">募集要項</h2>
+        </div>
+
+        <div class="p-recruit__grid">
+          <!-- New Grad -->
+          <div class="p-recruit__card js-fade-in">
+            <span class="p-recruit__type">新卒採用</span>
+            <h3 class="p-recruit__title">施工管理 / 営業・企画 / 事務管理</h3>
+            <dl class="p-recruit__dl">
+              <dt>対象</dt>
+              <dd>2027年3月までに卒業された方および卒業見込みの方</dd>
+              <dt>給与</dt>
+              <dd>大卒：230,000円<br><span style="font-size:0.8em;color:#666;">※別途諸手当、奨学金返還支援制度あり</span></dd>
+              <dt>勤務地</dt>
+              <dd>本社または各支店エリア</dd>
+            </dl>
+            <button class="c-btn js-modal-trigger" style="width:100%;" data-target="modal-req-new">詳細を見る</button>
+          </div>
+
+          <!-- Mid-career -->
+          <div class="p-recruit__card js-fade-in js-delay-1">
+            <span class="p-recruit__type">中途採用</span>
+            <h3 class="p-recruit__title">施工管理(建築・土木) / 事務管理</h3>
+            <dl class="p-recruit__dl">
+              <dt>対象</dt>
+              <dd>施工管理経験者、各種有資格者優遇（建築士、施工管理技士、宅建士など）</dd>
+              <dt>給与</dt>
+              <dd>月給24万円～35万円 ＋ 賞与年2回<br><span style="font-size:0.8em;color:#666;">※前職給与・経験を考慮</span></dd>
+              <dt>勤務地</dt>
+              <dd>本社または各支店エリア</dd>
+            </dl>
+            <button class="c-btn js-modal-trigger" style="width:100%;" data-target="modal-req-mid">詳細を見る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Flow & FAQ -->
+    <section class="p-flow-faq u-section-pt u-section-pb">
+      <div class="l-container">
+        <div class="c-sec-title-wrap js-fade-in">
+          <span class="c-sec-title-en">Flow & FAQ</span>
+          <h2 class="c-sec-title-ja">選考フロー・よくある質問</h2>
+        </div>
+
+        <div class="p-flow js-fade-in">
+          <div class="p-flow__list">
+            <div class="p-flow__item">
+              <div class="p-flow__step">01</div>
+              <div class="p-flow__label">エントリー</div>
+            </div>
+            <div class="p-flow__item">
+              <div class="p-flow__step">02</div>
+              <div class="p-flow__label">書類選考</div>
+            </div>
+            <div class="p-flow__item">
+              <div class="p-flow__step">03</div>
+              <div class="p-flow__label">面接</div>
+            </div>
+            <div class="p-flow__item">
+              <div class="p-flow__step">04</div>
+              <div class="p-flow__label">内定</div>
+            </div>
+          </div>
+          <p style="text-align:center;font-size:0.85rem;color:#666;margin-top:32px;">※上記は一般的なフローです。募集職種や状況により変更となる場合があります。</p>
+        </div>
+
+        <div class="p-faq js-fade-in">
+          <div class="p-faq__item js-accordion">
+            <button class="p-faq__q" aria-expanded="false">
+              建設業界の専門知識がなくても応募可能ですか？
+              <span class="p-faq__icon"></span>
+            </button>
+            <div class="p-faq__a">
+              <div class="p-faq__a-inner">
+                はい、可能です。学部学科不問で募集しており、新入社員が一人前になるまでの成長を所長や先輩社員が熱心に指導・サポートする風土があります。日々の業務を通じて新しい知識や技術を習得していただけます。
+              </div>
+            </div>
+          </div>
+          <div class="p-faq__item js-accordion">
+            <button class="p-faq__q" aria-expanded="false">
+              資格取得のサポートはありますか？
+              <span class="p-faq__icon"></span>
+            </button>
+            <div class="p-faq__a">
+              <div class="p-faq__a-inner">
+                全社を挙げて資格取得を強力にバックアップしています。充実した「資格取得支援制度」があり、対象資格を取得した際には社長特別褒賞が支給されます。
+              </div>
+            </div>
+          </div>
+          <div class="p-faq__item js-accordion">
+            <button class="p-faq__q" aria-expanded="false">
+              働く環境や休日について教えてください。
+              <span class="p-faq__icon"></span>
+            </button>
+            <div class="p-faq__a">
+              <div class="p-faq__a-inner">
+                年間休日は120日（計画年休含む）の完全週休2日制です。有給休暇に加え、産前産後・育児休暇、子の看護休暇、介護休暇などライフイベントをサポートする多様な休暇制度を整備しており、育児・介護休暇の取得実績もあります。
+              </div>
+            </div>
+          </div>
+          <div class="p-faq__item js-accordion">
+            <button class="p-faq__q" aria-expanded="false">
+              奨学金返還支援制度とはどのようなものですか？
+              <span class="p-faq__icon"></span>
+            </button>
+            <div class="p-faq__a">
+              <div class="p-faq__a-inner">
+                奨学金を利用している社員に対し、基本給とは別に毎月上限3万円を支給し、完済まで会社が代理返還する手厚い制度です。社員の生活基盤安定をサポートします。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Entry -->
+    <section class="p-entry">
+      <div class="l-container">
+        <h2 class="p-entry__title js-fade-in">未来を共に創る仲間へ。</h2>
+        <p class="p-entry__text js-fade-in">あなたの「夢とチャレンジ精神」をお待ちしています。</p>
+        <div class="js-fade-in">
+          <a href="https://job.mynavi.jp/27/pc/search/corp241938/outline.html" target="_blank" rel="noopener noreferrer" class="c-btn c-btn--accent c-btn-external" style="font-size: 1.1rem; padding: 20px 60px;">
+            ENTRY
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="l-footer">
+    <div class="l-container">
+      <img src="assets/logo.png" alt="岩部建設" class="l-footer__logo">
+      <p class="l-footer__info">〒470-2345 愛知県知多郡武豊町字西門74番地</p>
+      <p class="l-footer__copy">&copy; IWABE KENSETSU CO., LTD. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modals -->
+  <!-- Interview 1 -->
+  <div id="modal-int-1" class="c-modal" role="dialog" aria-modal="true">
+    <div class="c-modal__bg js-modal-close"></div>
+    <div class="c-modal__content">
+      <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+      <div style="margin-bottom: 32px; border-bottom: 2px solid var(--c-accent); padding-bottom: 16px;">
+        <h3 class="p-interview__name" style="font-size: 1.5rem;">T・K <span>さん</span></h3>
+      </div>
+      <div class="p-modal-qa">
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">この会社を選んだ理由は何ですか？</p>
+          <p class="p-modal-qa__a">地元・知多半島に根ざして100年以上の歴史があり、「岩部さんなら安心だ」という地域の方々の信頼を肌で感じたからです。また、学校や公共施設など、自分が慣れ親しんだ街の風景を自らの手で造り、守っていけることに魅力を感じました。</p>
+        </div>
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">入社して一番驚いた「いい意味でのギャップ」は何ですか？</p>
+          <p class="p-modal-qa__a">「建設現場＝厳しい上下関係」という先入観がありましたが、実際は<strong>「チームでひとつのモノを創り上げる一体感」</strong>が強かったことです。若手の声にもベテランの職人さんが耳を傾けてくれたり、所長が親身に相談に乗ってくれたりと、非常に風通しが良いですね。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview 2 -->
+  <div id="modal-int-2" class="c-modal" role="dialog" aria-modal="true">
+    <div class="c-modal__bg js-modal-close"></div>
+    <div class="c-modal__content">
+      <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+      <div style="margin-bottom: 32px; border-bottom: 2px solid var(--c-accent); padding-bottom: 16px;">
+        <h3 class="p-interview__name" style="font-size: 1.5rem;">K・M <span>さん</span></h3>
+      </div>
+      <div class="p-modal-qa">
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">これまでで最も達成感を感じたプロジェクトは？</p>
+          <p class="p-modal-qa__a">初めて担当した公共施設の竣工式です。数年がかりのプロジェクトが終わり、足場が外れて建物が姿を現した時の感動、そして利用する市民の方々の笑顔を見た時は、この仕事を選んで本当に良かったと震えるような達成感がありました。</p>
+        </div>
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">一番成長したと感じる能力は何ですか？</p>
+          <p class="p-modal-qa__a"><strong>「先を見越した段取り力と調整力」</strong>です。何十人もの職人さんや協力会社の方々と連携し、天候や進捗を見極めながら「次の一手」を打つ。現場全体を俯瞰して動かす力が身につきました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interview 3 -->
+  <div id="modal-int-3" class="c-modal" role="dialog" aria-modal="true">
+    <div class="c-modal__bg js-modal-close"></div>
+    <div class="c-modal__content">
+      <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+      <div style="margin-bottom: 32px; border-bottom: 2px solid var(--c-accent); padding-bottom: 16px;">
+        <h3 class="p-interview__name" style="font-size: 1.5rem;">T・A <span>さん</span></h3>
+      </div>
+      <div class="p-modal-qa">
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">一言で表すと、この会社はどんな集団ですか？</p>
+          <p class="p-modal-qa__a"><strong>「誠実で、責任感の塊のような集団」</strong>です。現場の安全はもちろん、近隣住民の方への配慮や品質へのこだわりなど、目に見えない部分まで決して手を抜かない職人気質な人が多いです。</p>
+        </div>
+        <div class="p-modal-qa__item">
+          <p class="p-modal-qa__q">これからどんな新しい挑戦をしていきたいですか？</p>
+          <p class="p-modal-qa__a">最近ではドローンによる測量や施工管理アプリの導入など、<strong>建設DX</strong>が進んでいます。新しい技術を積極的に取り入れ、より効率的で、より安全な「次世代の現場」を後輩たちと一緒に作っていきたいです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recruit New Grad -->
+  <div id="modal-req-new" class="c-modal" role="dialog" aria-modal="true">
+    <div class="c-modal__bg js-modal-close"></div>
+    <div class="c-modal__content">
+      <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+      <h3 style="font-size: 1.5rem; color: var(--c-primary); margin-bottom: 24px;">新卒採用 募集要項</h3>
+      <table class="p-modal-req__table">
+        <tbody>
+          <tr><th>募集職種</th><td>施工管理（建築/土木）、営業・企画、事務管理（総務/経理）</td></tr>
+          <tr><th>応募資格</th><td>2027年3月までに卒業された方および卒業見込みの方すべて<br>※学部学科不問</td></tr>
+          <tr><th>初任給</th><td>大学院了：260,000円<br>大卒：230,000円<br>短大・高専・専門卒：220,000円<br>高卒：210,000円<br><span style="font-size:0.85em;color:#666;">※奨学金返還制度を利用する場合は、上記とは別に毎月上限3万円を支給の上、完済まで会社が代理返還</span></td></tr>
+          <tr><th>諸手当</th><td>時間外手当、通勤手当、資格手当、現場所長手当、役職手当 等</td></tr>
+          <tr><th>昇給・賞与</th><td>昇給：年1回（7月）<br>賞与：年2回（6月、12月）※支給時に別途社長賞・奨励賞・功労賞有り</td></tr>
+          <tr><th>勤務地</th><td>本社または各支店エリア</td></tr>
+          <tr><th>勤務時間</th><td>午前8時～午後5時（実働7時間45分）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Recruit Mid-career -->
+  <div id="modal-req-mid" class="c-modal" role="dialog" aria-modal="true">
+    <div class="c-modal__bg js-modal-close"></div>
+    <div class="c-modal__content">
+      <button class="c-modal__close js-modal-close" aria-label="閉じる"></button>
+      <h3 style="font-size: 1.5rem; color: var(--c-primary); margin-bottom: 24px;">中途採用 募集要項</h3>
+      <table class="p-modal-req__table">
+        <tbody>
+          <tr><th>募集職種</th><td>施工管理（建築・土木） / 事務管理（営業・総務・経理）</td></tr>
+          <tr><th>応募資格</th><td>必須ではありませんが、下記条件を満たす方を優遇します。<br>・施工管理業務経験者<br>・1級または2級の建築士、施工管理技士等<br>・宅建士、衛生管理者、日商簿記2級等</td></tr>
+          <tr><th>給与</th><td>月給24万円～35万円 ＋ 賞与年2回（初年度モデル）<br><span style="font-size:0.85em;color:#666;">※面接の上、前職給与および年齢・経験等を考慮して決定します。<br>※試用期間最大3か月あり（月給23万円以上）<br><br>【モデル年収】<br>480万円/29歳、600万円/35歳、700万円/45歳（施工管理）</span></td></tr>
+          <tr><th>諸手当</th><td>時間外手当、通勤手当、資格手当、現場所長手当、役職手当 等</td></tr>
+          <tr><th>勤務地</th><td>本社または各支店エリア</td></tr>
+          <tr><th>勤務時間</th><td>午前8時～午後5時（実働7時間45分）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // 1. Navigation & Scroll Handling
+      const header = document.querySelector('.js-header');
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.l-nav__link, .l-sp-nav__link');
+
+      window.addEventListener('scroll', () => {
+        // Header style change
+        if (window.scrollY > 50) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+
+        // Active link highlighting
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('is-active');
+          if (link.getAttribute('href').includes(current)) {
+            link.classList.add('is-active');
+          }
+        });
+      });
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // 2. Scroll Animation (Intersection Observer)
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.js-fade-in').forEach(el => {
+        observer.observe(el);
+      });
+
+      // 3. Modal Control
+      const modalTriggers = document.querySelectorAll('.js-modal-trigger');
+      const modals = document.querySelectorAll('.c-modal');
+      const modalCloses = document.querySelectorAll('.js-modal-close');
+
+      const openModal = (modalId) => {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      const closeModal = () => {
+        modals.forEach(modal => modal.classList.remove('is-active'));
+        document.body.style.overflow = '';
+      };
+
+      modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const target = trigger.getAttribute('data-target');
+          openModal(target);
+        });
+      });
+
+      modalCloses.forEach(close => {
+        close.addEventListener('click', closeModal);
+      });
+
+      // Esc key to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // 4. Accordion Control
+      const accordions = document.querySelectorAll('.js-accordion');
+      accordions.forEach(acc => {
+        const btn = acc.querySelector('.p-faq__q');
+        const content = acc.querySelector('.p-faq__a');
+        
+        btn.addEventListener('click', () => {
+          const isOpen = acc.classList.contains('is-open');
+          
+          // Close all others
+          accordions.forEach(other => {
+            other.classList.remove('is-open');
+            other.querySelector('.p-faq__q').setAttribute('aria-expanded', 'false');
+            // simple slideUp via JS
+            const otherContent = other.querySelector('.p-faq__a');
+            if(otherContent) otherContent.style.display = 'none';
+          });
+
+          if (!isOpen) {
+            acc.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true');
+            // simple slideDown via JS (since CSS max-height transition is tricky with dynamic content, use display block and CSS animation/opacity or just display block for simplicity and stability)
+            // For smooth slide, a utility or complex CSS is needed. Here we use display toggle + CSS transition on inner elements.
+            content.style.display = 'block';
+          }
+        });
+      });
+
+    });
+  </script>
+</body>
+</html>
