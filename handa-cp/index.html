@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>採用情報 | 半田中央印刷株式会社 - BEYOND THE PRINT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+       Variables
+    ========================================== */
+        :root {
+            --color-primary: #1a2b4c;
+            --color-accent: #c49a6c;
+            --color-bg-base: #f8f9fa;
+            --color-bg-surface: #ffffff;
+            --color-text-main: #333333;
+            --color-text-muted: #666666;
+            --color-border: rgba(26, 43, 76, 0.1);
+            --font-ja: 'Noto Sans JP', sans-serif;
+            --font-en: 'Inter', sans-serif;
+            --font-serif: 'Cormorant Garamond', serif;
+            --space-section: 120px;
+            --space-container: 5%;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-float: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-blur: blur(16px);
+            --transition-base: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================
+       Reset & Base
+    ========================================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-ja);
+            color: var(--color-text-main);
+            background-color: var(--color-bg-base);
+            line-height: 1.8;
+            letter-spacing: 0.04em;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-base);
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            color: inherit;
+        }
+
+        /* ==========================================
+       Typography
+    ========================================== */
+        .t-serif {
+            font-family: var(--font-serif);
+        }
+
+        .t-en {
+            font-family: var(--font-en);
+        }
+
+        .sec-title-wrap {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .sec-title {
+            font-family: var(--font-en);
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .sec-subtitle {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+       Layout
+    ========================================== */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 var(--space-container);
+        }
+
+        .section {
+            padding: var(--space-section) 0;
+            position: relative;
+        }
+
+        .section-light {
+            background-color: var(--color-bg-surface);
+        }
+
+        /* ==========================================
+       UI Components
+    ========================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 3rem;
+            background-color: var(--color-primary);
+            color: #fff;
+            border-radius: 100px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: var(--transition-base);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform var(--transition-base);
+        }
+
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-accent {
+            background-color: var(--color-accent);
+        }
+
+        /* ==========================================
+       Header & Navigation
+    ========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition-base);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            padding: 0 var(--space-container);
+        }
+
+        .header-logo img {
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .gnav-list {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .gnav-item a {
+            font-family: var(--font-en);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            position: relative;
+            color: var(--color-text-main);
+        }
+
+        .gnav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-base);
+        }
+
+        .gnav-item a:hover::after,
+        .gnav-item a.is-active::after {
+            width: 100%;
+        }
+
+        .header-entry {
+            font-size: 0.875rem;
+            padding: 0.6rem 1.5rem;
+        }
+
+        /* スマホ用下部フローティングナビ */
+        .mobile-nav {
+            display: none;
+        }
+
+        /* ==========================================
+       Hero Section
+    ========================================== */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('assets/hero.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            animation: zoomBg 20s linear infinite alternate;
+        }
+
+        @keyframes zoomBg {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 43, 76, 0.8) 0%, rgba(26, 43, 76, 0.3) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-family: var(--font-en);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, #fff, transparent);
+            margin-top: 10px;
+            animation: scrollLine 2s infinite;
+        }
+
+        @keyframes scrollLine {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+
+            50.1% {
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        /* ==========================================
+       Vision Section
+    ========================================== */
+        .vision-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .vision-lead {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-text {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .value-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .value-item {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 2rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-accent);
+        }
+
+        /* ==========================================
+       Services Section
+    ========================================== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-bg-surface);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-float);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            opacity: 0;
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-en {
+            font-family: var(--font-en);
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .service-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ==========================================
+       Environment Section
+    ========================================== */
+        .env-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #0f192d 100%);
+            z-index: -1;
+            transform: skewY(-3deg);
+            transform-origin: top left;
+        }
+
+        .section-env {
+            color: #fff;
+            padding: 10rem 0;
+            margin-top: 5rem;
+        }
+
+        .section-env .sec-title {
+            color: #fff;
+        }
+
+        .env-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: var(--font-en);
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+        }
+
+        .env-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .feature-tag {
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ==========================================
+       Interviews Section
+    ========================================== */
+        .interview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .interview-card {
+            cursor: pointer;
+            group;
+            position: relative;
+        }
+
+        .interview-img-wrap {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            position: relative;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .interview-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .interview-card:hover .interview-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .interview-img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: #fff;
+        }
+
+        .interview-dept {
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+            margin-bottom: 0.2rem;
+        }
+
+        .interview-name {
+            font-size: 1.25rem;
+            font-weight: 500;
+            font-family: var(--font-serif);
+            letter-spacing: 0.1em;
+        }
+
+        .interview-quote {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ==========================================
+       Jobs Section
+    ========================================== */
+        .jobs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .job-card {
+            background: var(--color-bg-surface);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition-base);
+            cursor: pointer;
+        }
+
+        .job-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .job-info h3 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .job-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-bg-base);
+            color: var(--color-text-muted);
+            border-radius: 4px;
+        }
+
+        .job-desc {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .job-action {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-base);
+            color: var(--color-primary);
+        }
+
+        .job-card:hover .job-action {
+            background: var(--color-primary);
+            color: #fff;
+            border-color: var(--color-primary);
+        }
+
+        /* ==========================================
+       Flow & FAQ Section
+    ========================================== */
+        .flow-qa-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .flow-step {
+            display: flex;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 50px;
+            width: 1px;
+            height: calc(100% - 30px);
+            background: var(--color-border);
+        }
+
+        .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--color-bg-surface);
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-en);
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-content h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            padding-top: 10px;
+        }
+
+        .step-content p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .accordion-header {
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-primary);
+        }
+
+        .accordion-icon {
+            position: relative;
+            width: 16px;
+            height: 16px;
+        }
+
+        .accordion-icon::before,
+        .accordion-icon::after {
+            content: '';
+            position: absolute;
+            background: currentColor;
+            transition: transform 0.3s;
+        }
+
+        .accordion-icon::before {
+            top: 7px;
+            left: 0;
+            width: 16px;
+            height: 2px;
+        }
+
+        .accordion-icon::after {
+            top: 0;
+            left: 7px;
+            width: 2px;
+            height: 16px;
+        }
+
+        .accordion-item.is-active .accordion-icon::after {
+            transform: rotate(90deg);
+            opacity: 0;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-inner {
+            padding-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        /* ==========================================
+       Entry Section
+    ========================================== */
+        .section-entry {
+            text-align: center;
+            padding: 8rem 0;
+            background: var(--color-primary);
+            color: #fff;
+            position: relative;
+        }
+
+        .entry-bg-shape {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(circle at 50% 50%, #ffffff 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+
+        .section-entry .sec-title {
+            color: #fff;
+        }
+
+        .section-entry .sec-subtitle {
+            color: #fff;
+            opacity: 0.8;
+        }
+
+        .entry-msg {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-lg {
+            padding: 1.2rem 4rem;
+            font-size: 1.125rem;
+        }
+
+        /* ==========================================
+       Footer
+    ========================================== */
+        .footer {
+            background: #0f192d;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 0.75rem;
+        }
+
+        /* ==========================================
+       Modals
+    ========================================== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .modal.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            background: var(--color-bg-surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-float);
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal.is-open .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: sticky;
+            top: 1rem;
+            right: 1rem;
+            float: right;
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-base);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: var(--transition-base);
+        }
+
+        .modal-close:hover {
+            background: var(--color-border);
+        }
+
+        .modal-body {
+            padding: 3rem;
+            clear: both;
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+
+        .modal-dl {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1.5rem 1rem;
+            font-size: 0.875rem;
+        }
+
+        .modal-dl dt {
+            font-weight: 600;
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+        }
+
+        .modal-dl dd {
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 0.5rem;
+            color: var(--color-text-main);
+            white-space: pre-wrap;
+        }
+
+        /* インタビューモーダル固有 */
+        .qa-block {
+            margin-bottom: 2rem;
+        }
+
+        .qa-q {
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .qa-q::before {
+            content: 'Q.';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-family: var(--font-en);
+        }
+
+        .qa-a {
+            color: var(--color-text-muted);
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .qa-a::before {
+            content: 'A.';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-family: var(--font-en);
+            font-weight: 600;
+        }
+
+        /* ==========================================
+       Animations & Utilities
+    ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* ==========================================
+       Responsive
+    ========================================== */
+        @media (max-width: 992px) {
+
+            .vision-wrap,
+            .flow-qa-wrap {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .services-grid,
+            .interview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .env-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                height: 60px;
+            }
+
+            .gnav-list,
+            .header-entry {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--glass-bg);
+                backdrop-filter: var(--glass-blur);
+                -webkit-backdrop-filter: var(--glass-blur);
+                padding: 0.8rem 1.5rem;
+                border-radius: 100px;
+                box-shadow: var(--shadow-md);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                z-index: 1000;
+                gap: 1.5rem;
+            }
+
+            .mobile-nav a {
+                font-size: 0.75rem;
+                font-family: var(--font-en);
+                font-weight: 500;
+                color: var(--color-primary);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .interview-grid,
+            .env-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .job-action {
+                align-self: flex-end;
+            }
+
+            .modal-dl {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .modal-dl dt {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="header-logo">
+                <img src="assets/logo.png" alt="半田中央印刷株式会社">
+            </a>
+            <nav>
+                <ul class="gnav-list">
+                    <li class="gnav-item"><a href="#vision" class="nav-link">Vision</a></li>
+                    <li class="gnav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="gnav-item"><a href="#environment" class="nav-link">Environment</a></li>
+                    <li class="gnav-item"><a href="#interviews" class="nav-link">Interviews</a></li>
+                    <li class="gnav-item"><a href="#jobs" class="nav-link">Jobs</a></li>
+                </ul>
+            </nav>
+            <a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" rel="noopener noreferrer" class="btn btn-accent header-entry">ENTRY</a>
+        </div>
+    </header>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-nav">
+        <a href="#vision">Vision</a>
+        <a href="#services">Services</a>
+        <a href="#interviews">Interviews</a>
+        <a href="#jobs">Jobs</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content reveal">
+                <h1 class="hero-title t-serif">BEYOND THE<br>PRINT</h1>
+                <p class="hero-subtitle">伝統と革新を融合した、総合的な課題解決力。</p>
+                <a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" rel="noopener noreferrer" class="btn">ENTRY</a>
+            </div>
+            <div class="hero-scroll">SCROLL</div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="section" id="vision">
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Vision & Value</h2>
+                    <p class="sec-subtitle">会社について</p>
+                </div>
+                <div class="vision-wrap">
+                    <div class="vision-content reveal delay-1">
+                        <h3 class="vision-lead">「伝える」ことを通して、<br>社会と人の役に立つ。</h3>
+                        <p class="vision-text">
+                            私たちは社会の相互扶助の中で存在しており、情報発信者のサポートを通じて社会を支える役割を担っています。<br><br>
+                            1886年の創業以来「小さくても一流」を目指し、常に価値ある商品づくりに邁進してきました。印刷という伝統的基盤を強みに持ちながらも、現在ではWeb、空間デザイン、マーケティング、経営コンサルティングまで、多岐にわたる「トータルソリューション」をワンストップで提供しています。
+                        </p>
+                    </div>
+                    <div class="vision-values reveal delay-2">
+                        <ul class="value-list">
+                            <li class="value-item">
+                                <strong>働く意義と誇り</strong><br>
+                                <span style="font-size:0.875rem; color:var(--color-text-muted);">社員一人ひとりが豊かな気持ちで仕事ができ、成長できる環境を重視します。</span>
+                            </li>
+                            <li class="value-item">
+                                <strong>小さくても一流を目指す</strong><br>
+                                <span style="font-size:0.875rem; color:var(--color-text-muted);">既成概念にとらわれない飽くなき探求心と、新たな価値創造を追求します。</span>
+                            </li>
+                            <li class="value-item">
+                                <strong>ビジネスパートナーシップ</strong><br>
+                                <span style="font-size:0.875rem; color:var(--color-text-muted);">お客様と成長を共感しあえる、真のビジネスパートナーであり続けます。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section section-light" id="services">
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Services</h2>
+                    <p class="sec-subtitle">事業・サービス紹介</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Card 1 -->
+                    <div class="service-card reveal delay-1">
+                        <span class="service-en">01. Creative</span>
+                        <h3 class="service-title">クリエイティブ</h3>
+                        <p class="service-desc">既成概念やメディアの枠にとらわれず、自由な発想で課題解決へ導きます。各種媒体の企画、設計、デザイン、CI・VIまで幅広く提供します。</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="service-card reveal delay-2">
+                        <span class="service-en">02. Digital</span>
+                        <h3 class="service-title">デジタル</h3>
+                        <p class="service-desc">お客様の課題の本質を見極め、WEBサイトやシステム、アプリ、PR動画、リスティング広告運用など、最適なデジタル解決策を提案します。</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="service-card reveal delay-3">
+                        <span class="service-en">03. Space</span>
+                        <h3 class="service-title">空間デザイン</h3>
+                        <p class="service-desc">展示会ブースや店舗、ショールームでコミュニケーションを促す空間装飾ツールをデザイン。自社製品「EcoDiss」を用いた提案も行います。</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="service-card reveal delay-1">
+                        <span class="service-en">04. Printing</span>
+                        <h3 class="service-title">印刷ソリューション</h3>
+                        <p class="service-desc">大量印刷から小ロット多品種、インクジェットによる重機・ディスプレイ印刷まで。製品精度の追求と迅速な対応で高品質を実現します。</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="service-card reveal delay-2">
+                        <span class="service-en">05. Marketing</span>
+                        <h3 class="service-title">マーケティング</h3>
+                        <p class="service-desc">データから有益な情報を見い出し、企画から実施、改善までPDCAサイクルをサポート。施策の立案や業務改善全般に対応します。</p>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="service-card reveal delay-3">
+                        <span class="service-en">06. Consulting</span>
+                        <h3 class="service-title">経営コンサル</h3>
+                        <p class="service-desc">経営管理、人財育成、改善活動など、お客様の経営資源に対しパートナーとして実証済みノウハウで成長をサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Environment Section -->
+        <section class="section section-env" id="environment">
+            <div class="env-bg"></div>
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Environment</h2>
+                    <p class="sec-subtitle">数字・キーワードで見る働く環境</p>
+                </div>
+                <div class="env-stats reveal delay-1">
+                    <div class="stat-item">
+                        <div class="stat-num">1886</div>
+                        <div class="stat-label">創業年（明治19年）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">45</div>
+                        <div class="stat-label">社員数（名）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">120</div>
+                        <div class="stat-label">年間休日（日）</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">5:5</div>
+                        <div class="stat-label">男女比</div>
+                    </div>
+                </div>
+                <div class="env-features reveal delay-2">
+                    <span class="feature-tag">キャンピングオフィス導入</span>
+                    <span class="feature-tag">テレワーク制度</span>
+                    <span class="feature-tag">ジャケパンスタイルOK</span>
+                    <span class="feature-tag">Pマーク / FSC森林認証</span>
+                    <span class="feature-tag">グリーンプリンティング認定</span>
+                    <span class="feature-tag">地域・社会貢献活動</span>
+                    <span class="feature-tag">社員の安全・健康配慮</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interviews Section -->
+        <section class="section" id="interviews">
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Interviews</h2>
+                    <p class="sec-subtitle">先輩インタビュー</p>
+                </div>
+                <div class="interview-grid">
+                    <!-- Interview 1 -->
+                    <div class="interview-card reveal delay-1" data-modal-target="modal-int-1" tabindex="0" role="button">
+                        <div class="interview-img-wrap">
+                            <img src="assets/interview-1.png" alt="ST">
+                            <div class="interview-img-overlay">
+                                <div class="interview-dept">デジタルマーケティングチーム</div>
+                                <div class="interview-name">ST</div>
+                            </div>
+                        </div>
+                        <p class="interview-quote">「社内のデジタルシフトが非常に速いこと」に良い意味で驚かされました。</p>
+                    </div>
+                    <!-- Interview 2 -->
+                    <div class="interview-card reveal delay-2" data-modal-target="modal-int-2" tabindex="0" role="button">
+                        <div class="interview-img-wrap">
+                            <img src="assets/interview-2.png" alt="MN">
+                            <div class="interview-img-overlay">
+                                <div class="interview-dept">クリエイティブチーム</div>
+                                <div class="interview-name">MN</div>
+                            </div>
+                        </div>
+                        <p class="interview-quote">プレッシャーはありますが、丁寧な仕事の進め方が自然と身につきました。</p>
+                    </div>
+                    <!-- Interview 3 -->
+                    <div class="interview-card reveal delay-3" data-modal-target="modal-int-3" tabindex="0" role="button">
+                        <div class="interview-img-wrap">
+                            <img src="assets/interview-3.png" alt="ST">
+                            <div class="interview-img-overlay">
+                                <div class="interview-dept">営業</div>
+                                <div class="interview-name">HM</div>
+                            </div>
+                        </div>
+                        <p class="interview-quote">真面目な遊び心を持った、クリエイティブ集団です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jobs Section -->
+        <section class="section section-light" id="jobs">
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Jobs</h2>
+                    <p class="sec-subtitle">募集要項</p>
+                </div>
+                <div class="jobs-list">
+                    <!-- Job 1 -->
+                    <div class="job-card reveal delay-1" data-modal-target="modal-job-1" tabindex="0" role="button">
+                        <div class="job-info">
+                            <h3>企画営業</h3>
+                            <div class="job-tags">
+                                <span class="job-tag">未経験歓迎</span>
+                                <span class="job-tag">第二新卒OK</span>
+                                <span class="job-tag">正社員</span>
+                            </div>
+                            <p class="job-desc">印刷物からWEB、イベント装飾まで、お客様の集客や販促・PRなどの課題を解決する施策を考えカタチにする仕事です。お客様と制作スタッフと共にゼロからつくりあげる面白さがあります。</p>
+                        </div>
+                        <div class="job-action">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Job 2 -->
+                    <div class="job-card reveal delay-2" data-modal-target="modal-job-2" tabindex="0" role="button">
+                        <div class="job-info">
+                            <h3>制作</h3>
+                            <div class="job-tags">
+                                <span class="job-tag">芸大出身者歓迎</span>
+                                <span class="job-tag">第二新卒OK</span>
+                                <span class="job-tag">正社員</span>
+                            </div>
+                            <p class="job-desc">各種印刷物のグラフィックデザイン・WEBデザイン・動画編集・ブース装飾デザインなど。将来はディレクターとしてお客様へ直接提案するチャンスもあります。</p>
+                        </div>
+                        <div class="job-action">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Job 3 -->
+                    <div class="job-card reveal delay-3" data-modal-target="modal-job-3" tabindex="0" role="button">
+                        <div class="job-info">
+                            <h3>デジタルマーケティング</h3>
+                            <div class="job-tags">
+                                <span class="job-tag">経験者歓迎</span>
+                                <span class="job-tag">第二新卒OK</span>
+                                <span class="job-tag">正社員</span>
+                            </div>
+                            <p class="job-desc">WEB広告の設定・分析・改善提案を担当。リスティングからSNS広告まで幅広く扱い、最大限の効果を狙った手法の選定やPDCA運用を行います。</p>
+                        </div>
+                        <div class="job-action">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flow & FAQ Section -->
+        <section class="section" id="flow-qa">
+            <div class="container">
+                <div class="sec-title-wrap reveal">
+                    <h2 class="sec-title">Flow & Q&A</h2>
+                    <p class="sec-subtitle">選考フロー・よくある質問</p>
+                </div>
+                <div class="flow-qa-wrap">
+                    <div class="flow-wrap reveal delay-1">
+                        <div class="flow-step">
+                            <div class="step-num">1</div>
+                            <div class="step-content">
+                                <h4>エントリー</h4>
+                                <p>専用フォームよりご応募ください。職場見学だけでも受け付けております。</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-num">2</div>
+                            <div class="step-content">
+                                <h4>書類選考</h4>
+                                <p>お送りいただいた内容をもとに書類選考を行います。</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-num">3</div>
+                            <div class="step-content">
+                                <h4>面接（複数回）</h4>
+                                <p>人物重視の面接を行います。これまでの経験や今後のビジョンをお聞かせください。</p>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="step-num">4</div>
+                            <div class="step-content">
+                                <h4>内定</h4>
+                                <p>入社日についてはご相談に応じます。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qa-wrap reveal delay-2">
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    未経験でも応募可能ですか？
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-inner">
+                                        企画営業・制作などの職種において、未経験者歓迎、第二新卒OK、ブランクがある方も歓迎しています。入社後は丁寧なOJTや研修制度を用意しており、安心してスタートできる環境です。
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    求める人物像を教えてください。
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-inner">
+                                        素直で誠実で明るい方、新たなビジネスモデルの構築に興味がある方、チームワークを大事にできる方を求めています。若手のやる気のある方を積極的に採用しています。
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    働き方やオフィスの環境について教えてください。
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-inner">
+                                        通常の勤務はネクタイなしのジャケパンスタイルでOKです。また、キャンピングオフィスの導入やテレワーク制度など、社員が豊かな気持ちでクリエイティブに働ける環境づくりに力を入れています。
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <button class="accordion-header" aria-expanded="false">
+                                    キャリアパスや研修制度について教えてください。
+                                    <span class="accordion-icon"></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="accordion-inner">
+                                        新卒向けには愛知県印刷工業組合でのOFF-JTや社内OJT、中途採用の方には経験に合わせたサポートを実施。キャリアパスとしては、マネージャーコースだけでなく、専門技術を極めるスペシャリストコースも用意しています。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Entry Section -->
+        <section class="section-entry" id="entry">
+            <div class="entry-bg-shape"></div>
+            <div class="container">
+                <div class="reveal">
+                    <h2 class="sec-title t-serif">Join Us</h2>
+                    <p class="sec-subtitle">エントリー</p>
+                    <div class="entry-msg">
+                        伝統と革新を融合し、<br>共に未来を創造する仲間を待っています。
+                    </div>
+                    <a href="https://business.form-mailer.jp/fms/3d1ad4f0266350" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">ENTRY FORM</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; Handa Chuo Printing Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modals">
+        <!-- Interview Modals -->
+        <div class="modal" id="modal-int-1" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <p class="modal-subtitle">デジタルマーケティングチーム</p>
+                        <h3 class="modal-title t-serif">ST</h3>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">この会社を選んだ理由は何ですか？</div>
+                        <div class="qa-a">地元・知多半島に密着し、自治体から民間企業まで幅広いお客様と取引がある点に惹かれました。「ただ印刷する」だけでなく、「どうすればお客様の課題を解決できるか」という企画段階から関われる環境に魅力を感じて入社を決めました。</div>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">入社して一番驚いた「いい意味でのギャップ」は何ですか？</div>
+                        <div class="qa-a"><strong>「社内のデジタルシフトが非常に速いこと」</strong>です。伝統的な印刷技術を大切にしながらも、Web制作、動画、電子ブック、SNS活用など、クロスメディアな提案を積極的に行っている。アナログとデジタルの両輪を回すスピード感に、良い意味で驚かされました。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-int-2" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <p class="modal-subtitle">クリエイティブチーム</p>
+                        <h3 class="modal-title t-serif">MN</h3>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">これまでで最も達成感を感じたプロジェクトや、忘れられない仕事のエピソードを教えてください。</div>
+                        <div class="qa-a">色の再現が極めて難しい、写真集のようなパンフレットの印刷を担当した時のことです。何度も色校正を重ね、現場でインクを微調整して、クライアントが納得する「最高の色」を出せた時。納品後に「綺麗に刷ってくれてありがとう」という声が届いた瞬間は格別でした。</div>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">この会社で働く中で、自分自身が一番成長したと感じる能力は何ですか？</div>
+                        <div class="qa-a"><strong>「細部への注意力と、徹底した自己管理能力」</strong>です。一箇所のミスが数万枚の無駄に繋がる責任ある仕事です。プレッシャーはありますが、それを乗り越えるための確認作業や、丁寧な仕事の進め方が自然と身につきました。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-int-3" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <p class="modal-subtitle">デジタルマーケティングチーム</p>
+                        <h3 class="modal-title t-serif">ST</h3>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">一言で表すと、この会社は「どんな人が集まっている集団」ですか？</div>
+                        <div class="qa-a"><strong>「真面目な遊び心を持った、クリエイティブ集団」</strong>です。仕事に対しては非常に誠実で緻密ですが、「もっと面白くできないか？」という好奇心を持って、新しい表現に挑戦する姿勢がある人が多いですね。</div>
+                    </div>
+                    <div class="qa-block">
+                        <div class="qa-q">これから入社してくる後輩たちと一緒に、どんな新しい挑戦をしていきたいですか？</div>
+                        <div class="qa-a">印刷という枠にとらわれず、<strong>「地域の魅力を発信する新しいプラットフォーム」</strong>を一緒に作りたいです。メタバースやAR（拡張現実）など、最新技術を地域のプロモーションにどう活かせるか、若手の柔軟な発想で形にしていきたいですね。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Modals -->
+        <div class="modal" id="modal-job-1" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <h3 class="modal-title">企画営業</h3>
+                        <p class="modal-subtitle">お客様の課題解決に寄り添うトータルプランナー</p>
+                    </div>
+                    <dl class="modal-dl">
+                        <dt>仕事内容</dt>
+                        <dd>パンフレットやDMなど各種印刷物、WEBサイト・WEB広告等のデジタル商品、イベント出展の際のブース装飾など、お客様の集客や販促・PRなどの課題を解決することを目的とした施策の提案・進行管理。お客様や制作スタッフと一緒にゼロからつくりあげていく面白さがあります。</dd>
+                        <dt>応募条件</dt>
+                        <dd>■普通自動車免許取得者（AT限定可）
+                            ■未経験者歓迎
+                            ■第二新卒OK
+                            ■ブランクがある方もOK</dd>
+                        <dt>求める人材像</dt>
+                        <dd>素直で誠実で明るい方 / 新たなビジネスモデルの構築に興味がある方 / チームワークを大事にできる方</dd>
+                        <dt>勤務地</dt>
+                        <dd>愛知県半田市潮干町1-21（自動車通勤OK、駐車場完備）</dd>
+                        <dt>勤務時間</dt>
+                        <dd>月〜金曜日 8:30〜17:30（休憩1時間）</dd>
+                        <dt>給与・待遇</dt>
+                        <dd>大卒基本給: 181,000円 / 短大・専門卒: 172,000円（※2025年予定、半年間研修期間あり）
+                            各種手当（残業、通勤、家族、営業達成、資格、役職、精勤）</dd>
+                        <dt>休日休暇</dt>
+                        <dd>週休2日制（土日祝休み、月により土曜出社あり）。年間休日120日。夏期・年末年始、有給、誕生日休暇など</dd>
+                        <dt>福利厚生</dt>
+                        <dd>退職金制度、テレワーク制度、リゾートクラブ会員、出産・育児休業制度など</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-job-2" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <h3 class="modal-title">制作</h3>
+                        <p class="modal-subtitle">多様なメディアで表現するクリエイター</p>
+                    </div>
+                    <dl class="modal-dl">
+                        <dt>仕事内容</dt>
+                        <dd>各種印刷物のグラフィックデザイン、WEBデザイン、ノーコードツールを使用したコーディング、動画編集、ブース装飾デザインなど。将来はディレクターとして直接お客様にヒアリング・提案するポジションにも挑戦可能です。</dd>
+                        <dt>応募条件</dt>
+                        <dd>■普通自動車免許取得者（AT限定可）
+                            ■芸大出身者歓迎
+                            ■第二新卒OK
+                            ■ブランクがある方もOK</dd>
+                        <dt>求める人材像</dt>
+                        <dd>素直で誠実で明るい方 / 新たなビジネスモデルの構築に興味がある方 / チームワークを大事にできる方</dd>
+                        <dt>勤務地</dt>
+                        <dd>愛知県半田市潮干町1-21（自動車通勤OK、駐車場完備）</dd>
+                        <dt>勤務時間</dt>
+                        <dd>月〜金曜日 8:30〜17:30（休憩1時間）</dd>
+                        <dt>給与・待遇</dt>
+                        <dd>大卒基本給: 181,000円 / 短大・専門卒: 172,000円（※2025年予定、半年間研修期間あり）
+                            各種手当（残業、通勤、家族、営業達成、資格、役職、精勤）</dd>
+                        <dt>休日休暇</dt>
+                        <dd>週休2日制（土日祝休み、月により土曜出社あり）。年間休日120日。夏期・年末年始、有給、誕生日休暇など</dd>
+                        <dt>福利厚生</dt>
+                        <dd>退職金制度、テレワーク制度、リゾートクラブ会員、出産・育児休業制度など</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-job-3" aria-hidden="true">
+            <div class="modal-overlay" tabindex="-1" data-modal-close></div>
+            <div class="modal-container" role="dialog" aria-modal="true">
+                <button class="modal-close" aria-label="閉じる" data-modal-close>&times;</button>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <h3 class="modal-title">デジタルマーケティング</h3>
+                        <p class="modal-subtitle">データとデジタルでビジネスを加速させる</p>
+                    </div>
+                    <dl class="modal-dl">
+                        <dt>仕事内容</dt>
+                        <dd>WEB広告の設定と分析・改善提案。リスティング、ディスプレイ、SNS（Instagram、LINE等）広告などの手法を選定し、PDCAを回します。また、インサイドセールス施策やPRにおけるデジタル媒体の提案も行います。</dd>
+                        <dt>応募条件</dt>
+                        <dd>■普通自動車免許取得者（AT限定可）
+                            ■WEB関連業務経験者歓迎
+                            ■第二新卒OK</dd>
+                        <dt>求める人材像</dt>
+                        <dd>素直で誠実で明るい方 / 新たなビジネスモデルの構築に興味がある方 / チームワークを大事にできる方</dd>
+                        <dt>勤務地</dt>
+                        <dd>愛知県半田市潮干町1-21（自動車通勤OK、駐車場完備）</dd>
+                        <dt>勤務時間</dt>
+                        <dd>月〜金曜日 8:30〜17:30（休憩1時間）</dd>
+                        <dt>給与・待遇</dt>
+                        <dd>大卒基本給: 181,000円 / 短大・専門卒: 172,000円（※2025年予定、半年間研修期間あり）
+                            各種手当（残業、通勤、家族、営業達成、資格、役職、精勤）</dd>
+                        <dt>休日休暇</dt>
+                        <dd>週休2日制（土日祝休み、月により土曜出社あり）。年間休日120日。夏期・年末年始、有給、誕生日休暇など</dd>
+                        <dt>福利厚生</dt>
+                        <dd>退職金制度、テレワーク制度、リゾートクラブ会員、出産・育児休業制度など</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- 1. スクロールアニメーション制御 ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // 一度発火したら監視解除
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // --- 2. ナビゲーション制御 (Active State & Header BG) ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.gnav-item a, .mobile-nav a');
+            const header = document.getElementById('header');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                const scrollY = window.pageYOffset;
+
+                // Header style update on scroll
+                if (scrollY > 50) {
+                    header.style.background = 'rgba(255,255,255,0.95)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
+                } else {
+                    header.style.background = 'var(--glass-bg)';
+                    header.style.boxShadow = 'none';
+                }
+
+                // Active Link update
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('is-active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('is-active');
+                    }
+                });
+            });
+
+            // --- 3. モーダル制御 ---
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            const modalCloses = document.querySelectorAll('[data-modal-close]');
+            const body = document.body;
+
+            const openModal = (modalId) => {
+                const modal = document.getElementById(modalId);
+                if (!modal) return;
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                body.style.overflow = 'hidden';
+            };
+
+            const closeModal = (modal) => {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                body.style.overflow = '';
+            };
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    openModal(trigger.getAttribute('data-modal-target'));
+                });
+                trigger.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(trigger.getAttribute('data-modal-target'));
+                    }
+                });
+            });
+
+            modalCloses.forEach(closeBtn => {
+                closeBtn.addEventListener('click', (e) => {
+                    const modal = e.target.closest('.modal');
+                    if (modal) closeModal(modal);
+                });
+            });
+
+            // Escキーでモーダルを閉じる
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    const openModals = document.querySelectorAll('.modal.is-open');
+                    openModals.forEach(modal => closeModal(modal));
+                }
+            });
+
+            // --- 4. アコーディオン制御 ---
+            const accordions = document.querySelectorAll('.accordion-header');
+            accordions.forEach(acc => {
+                acc.addEventListener('click', () => {
+                    const parent = acc.parentElement;
+                    const content = acc.nextElementSibling;
+                    const isActive = parent.classList.contains('is-active');
+
+                    // 複数開閉を許容する設計
+                    if (isActive) {
+                        parent.classList.remove('is-active');
+                        acc.setAttribute('aria-expanded', 'false');
+                        content.style.maxHeight = null;
+                    } else {
+                        parent.classList.add('is-active');
+                        acc.setAttribute('aria-expanded', 'true');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
